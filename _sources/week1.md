@@ -2,10 +2,11 @@
 
 ## Basic Concepts
 
-- [Basic Concepts](intro.md)
+- [Database Concepts](intro.md)
 
 
-## Introduction to sqlite
+## Introduction to SQLite
+
 - [SQLite](sqlite_intro.md)
 - [Practice](week1_sqlite_problems.ipynb)
 - [Solutions](week1_sqlite_solutions.ipynb)
