@@ -96,7 +96,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Week 1 Practice" href="week1_sqlite.html" />
+    <link rel="prev" title="Basic Concepts" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,16 +154,6 @@
    <li class="toctree-l2">
     <a class="reference internal" href="intro.html">
      Basic Concepts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sqlite-intro.html">
-     SQLite
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="week1_sqlite.html">
-     Week 1 Practice
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -500,6 +490,62 @@ SQL code
 (7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
 (7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
 (7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
 </pre></div>
 </div>
 </div>
@@ -546,20 +592,20 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    EMPNO   ENAME       JOB     MGR   HIREDATE   SAL    COMM  DEPTNO
-0    7369   SMITH     CLERK  7902.0  17-Dec-05   800     NaN      20
-1    7499   ALLEN  SALESMAN  7698.0  20-Feb-06  1600   300.0      30
-2    7521    WARD  SALESMAN  7698.0  22-Feb-06  1250   500.0      30
-3    7566   JONES   MANAGER  7839.0   2-Apr-06  2975     NaN      20
-4    7654  MARTIN  SALESMAN  7698.0  28-Sep-06  1250  1400.0      30
-..    ...     ...       ...     ...        ...   ...     ...     ...
-65   7844  TURNER  SALESMAN  7698.0   8-Sep-06  1500     0.0      30
-66   7876   ADAMS     CLERK  7788.0  12-Jan-08  1100     NaN      20
-67   7900   JAMES     CLERK  7698.0   3-Dec-06   950     NaN      30
-68   7902    FORD   ANALYST  7566.0   3-Dec-06  3000     NaN      20
-69   7934  MILLER     CLERK  7782.0  23-Jan-07  1300     NaN      10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     EMPNO   ENAME       JOB     MGR   HIREDATE   SAL    COMM  DEPTNO
+0     7369   SMITH     CLERK  7902.0  17-Dec-05   800     NaN      20
+1     7499   ALLEN  SALESMAN  7698.0  20-Feb-06  1600   300.0      30
+2     7521    WARD  SALESMAN  7698.0  22-Feb-06  1250   500.0      30
+3     7566   JONES   MANAGER  7839.0   2-Apr-06  2975     NaN      20
+4     7654  MARTIN  SALESMAN  7698.0  28-Sep-06  1250  1400.0      30
+..     ...     ...       ...     ...        ...   ...     ...     ...
+121   7844  TURNER  SALESMAN  7698.0   8-Sep-06  1500     0.0      30
+122   7876   ADAMS     CLERK  7788.0  12-Jan-08  1100     NaN      20
+123   7900   JAMES     CLERK  7698.0   3-Dec-06   950     NaN      30
+124   7902    FORD   ANALYST  7566.0   3-Dec-06  3000     NaN      20
+125   7934  MILLER     CLERK  7782.0  23-Jan-07  1300     NaN      10
 
-[70 rows x 8 columns]
+[126 rows x 8 columns]
 </pre></div>
 </div>
 </div>
@@ -689,6 +735,62 @@ DEPTNO
 (7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
 (7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
 (7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7499, &#39;ALLEN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;20-Feb-06&#39;, 1600, 300.0, 30)
+(7521, &#39;WARD&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;22-Feb-06&#39;, 1250, 500.0, 30)
+(7566, &#39;JONES&#39;, &#39;MANAGER&#39;, 7839.0, &#39;2-Apr-06&#39;, 2975, None, 20)
+(7654, &#39;MARTIN&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;28-Sep-06&#39;, 1250, 1400.0, 30)
+(7698, &#39;BLAKE&#39;, &#39;MANAGER&#39;, 7839.0, &#39;1-May-06&#39;, 2850, None, 30)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7788, &#39;SCOTT&#39;, &#39;ANALYST&#39;, 7566.0, &#39;9-Dec-07&#39;, 3000, None, 20)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7844, &#39;TURNER&#39;, &#39;SALESMAN&#39;, 7698.0, &#39;8-Sep-06&#39;, 1500, 0.0, 30)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7900, &#39;JAMES&#39;, &#39;CLERK&#39;, 7698.0, &#39;3-Dec-06&#39;, 950, None, 30)
+(7902, &#39;FORD&#39;, &#39;ANALYST&#39;, 7566.0, &#39;3-Dec-06&#39;, 3000, None, 20)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
 </pre></div>
 </div>
 </div>
@@ -702,6 +804,18 @@ DEPTNO
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
+(7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
+(7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
+(7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
 (7839, &#39;KING&#39;, &#39;PRESIDENT&#39;, None, &#39;17-Nov-06&#39;, 5000, None, 10)
 (7934, &#39;MILLER&#39;, &#39;CLERK&#39;, 7782.0, &#39;23-Jan-07&#39;, 1300, None, 10)
 (7782, &#39;CLARK&#39;, &#39;MANAGER&#39;, 7839.0, &#39;9-Jun-06&#39;, 2450, None, 10)
@@ -731,6 +845,14 @@ DEPTNO
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
+(7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
+(7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
 (7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
 (7369, &#39;SMITH&#39;, &#39;CLERK&#39;, 7902.0, &#39;17-Dec-05&#39;, 800, None, 20)
 (7876, &#39;ADAMS&#39;, &#39;CLERK&#39;, 7788.0, &#39;12-Jan-08&#39;, 1100, None, 20)
@@ -824,6 +946,62 @@ DEPTNO
 (&#39;JAMES&#39;, 30, 950)
 (&#39;FORD&#39;, 20, 3000)
 (&#39;MILLER&#39;, 10, 1300)
+(&#39;SMITH&#39;, 20, 800)
+(&#39;ALLEN&#39;, 30, 1600)
+(&#39;WARD&#39;, 30, 1250)
+(&#39;JONES&#39;, 20, 2975)
+(&#39;MARTIN&#39;, 30, 1250)
+(&#39;BLAKE&#39;, 30, 2850)
+(&#39;CLARK&#39;, 10, 2450)
+(&#39;SCOTT&#39;, 20, 3000)
+(&#39;KING&#39;, 10, 5000)
+(&#39;TURNER&#39;, 30, 1500)
+(&#39;ADAMS&#39;, 20, 1100)
+(&#39;JAMES&#39;, 30, 950)
+(&#39;FORD&#39;, 20, 3000)
+(&#39;MILLER&#39;, 10, 1300)
+(&#39;SMITH&#39;, 20, 800)
+(&#39;ALLEN&#39;, 30, 1600)
+(&#39;WARD&#39;, 30, 1250)
+(&#39;JONES&#39;, 20, 2975)
+(&#39;MARTIN&#39;, 30, 1250)
+(&#39;BLAKE&#39;, 30, 2850)
+(&#39;CLARK&#39;, 10, 2450)
+(&#39;SCOTT&#39;, 20, 3000)
+(&#39;KING&#39;, 10, 5000)
+(&#39;TURNER&#39;, 30, 1500)
+(&#39;ADAMS&#39;, 20, 1100)
+(&#39;JAMES&#39;, 30, 950)
+(&#39;FORD&#39;, 20, 3000)
+(&#39;MILLER&#39;, 10, 1300)
+(&#39;SMITH&#39;, 20, 800)
+(&#39;ALLEN&#39;, 30, 1600)
+(&#39;WARD&#39;, 30, 1250)
+(&#39;JONES&#39;, 20, 2975)
+(&#39;MARTIN&#39;, 30, 1250)
+(&#39;BLAKE&#39;, 30, 2850)
+(&#39;CLARK&#39;, 10, 2450)
+(&#39;SCOTT&#39;, 20, 3000)
+(&#39;KING&#39;, 10, 5000)
+(&#39;TURNER&#39;, 30, 1500)
+(&#39;ADAMS&#39;, 20, 1100)
+(&#39;JAMES&#39;, 30, 950)
+(&#39;FORD&#39;, 20, 3000)
+(&#39;MILLER&#39;, 10, 1300)
+(&#39;SMITH&#39;, 20, 800)
+(&#39;ALLEN&#39;, 30, 1600)
+(&#39;WARD&#39;, 30, 1250)
+(&#39;JONES&#39;, 20, 2975)
+(&#39;MARTIN&#39;, 30, 1250)
+(&#39;BLAKE&#39;, 30, 2850)
+(&#39;CLARK&#39;, 10, 2450)
+(&#39;SCOTT&#39;, 20, 3000)
+(&#39;KING&#39;, 10, 5000)
+(&#39;TURNER&#39;, 30, 1500)
+(&#39;ADAMS&#39;, 20, 1100)
+(&#39;JAMES&#39;, 30, 950)
+(&#39;FORD&#39;, 20, 3000)
+(&#39;MILLER&#39;, 10, 1300)
 </pre></div>
 </div>
 </div>
@@ -843,20 +1021,20 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    SALARY  COMMISSION
-0      800         NaN
-1     1600       300.0
-2     1250       500.0
-3     2975         NaN
-4     1250      1400.0
-..     ...         ...
-65    1500         0.0
-66    1100         NaN
-67     950         NaN
-68    3000         NaN
-69    1300         NaN
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     SALARY  COMMISSION
+0       800         NaN
+1      1600       300.0
+2      1250       500.0
+3      2975         NaN
+4      1250      1400.0
+..      ...         ...
+121    1500         0.0
+122    1100         NaN
+123     950         NaN
+124    3000         NaN
+125    1300         NaN
 
-[70 rows x 2 columns]
+[126 rows x 2 columns]
 </pre></div>
 </div>
 </div>
@@ -873,20 +1051,20 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    SALARY  COMMISSION
-0      800         NaN
-1     1600       300.0
-2     1250       500.0
-3     2975         NaN
-4     1250      1400.0
-..     ...         ...
-60    1500         0.0
-61    1100         NaN
-62     950         NaN
-63    3000         NaN
-64    1300         NaN
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     SALARY  COMMISSION
+0       800         NaN
+1      1600       300.0
+2      1250       500.0
+3      2975         NaN
+4      1250      1400.0
+..      ...         ...
+112    1500         0.0
+113    1100         NaN
+114     950         NaN
+115    3000         NaN
+116    1300         NaN
 
-[65 rows x 2 columns]
+[117 rows x 2 columns]
 </pre></div>
 </div>
 </div>
@@ -919,6 +1097,18 @@ DEPTNO
 12   CLARK WORKS AS A MANAGER
 13  KING WORKS AS A PRESIDENT
 14    MILLER WORKS AS A CLERK
+15   CLARK WORKS AS A MANAGER
+16  KING WORKS AS A PRESIDENT
+17    MILLER WORKS AS A CLERK
+18   CLARK WORKS AS A MANAGER
+19  KING WORKS AS A PRESIDENT
+20    MILLER WORKS AS A CLERK
+21   CLARK WORKS AS A MANAGER
+22  KING WORKS AS A PRESIDENT
+23    MILLER WORKS AS A CLERK
+24   CLARK WORKS AS A MANAGER
+25  KING WORKS AS A PRESIDENT
+26    MILLER WORKS AS A CLERK
 </pre></div>
 </div>
 </div>
@@ -947,20 +1137,20 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ename  salary     status
-0    SMITH     800  UNDERPAID
-1    ALLEN    1600  UNDERPAID
-2     WARD    1250  UNDERPAID
-3    JONES    2975         OK
-4   MARTIN    1250  UNDERPAID
-..     ...     ...        ...
-65  TURNER    1500  UNDERPAID
-66   ADAMS    1100  UNDERPAID
-67   JAMES     950  UNDERPAID
-68    FORD    3000         OK
-69  MILLER    1300  UNDERPAID
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ename  salary     status
+0     SMITH     800  UNDERPAID
+1     ALLEN    1600  UNDERPAID
+2      WARD    1250  UNDERPAID
+3     JONES    2975         OK
+4    MARTIN    1250  UNDERPAID
+..      ...     ...        ...
+121  TURNER    1500  UNDERPAID
+122   ADAMS    1100  UNDERPAID
+123   JAMES     950  UNDERPAID
+124    FORD    3000         OK
+125  MILLER    1300  UNDERPAID
 
-[70 rows x 3 columns]
+[126 rows x 3 columns]
 </pre></div>
 </div>
 </div>
@@ -1009,12 +1199,12 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ename      job
-0  JAMES    CLERK
-1  CLARK  MANAGER
-2   FORD  ANALYST
-3  SCOTT  ANALYST
-4  JAMES    CLERK
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    ename       job
+0    WARD  SALESMAN
+1   CLARK   MANAGER
+2  TURNER  SALESMAN
+3  MILLER     CLERK
+4   JAMES     CLERK
 </pre></div>
 </div>
 </div>
@@ -1037,51 +1227,14 @@ DEPTNO
 2   7698   BLAKE    MANAGER  7839.0   1-May-06  2850  None  30
 3   7782   CLARK    MANAGER  7839.0   9-Jun-06  2450  None  10
 4   7788   SCOTT    ANALYST  7566.0   9-Dec-07  3000  None  20
-5   7839    KING  PRESIDENT     NaN  17-Nov-06  5000  None  10
-6   7876   ADAMS      CLERK  7788.0  12-Jan-08  1100  None  20
-7   7900   JAMES      CLERK  7698.0   3-Dec-06   950  None  30
-8   7902    FORD    ANALYST  7566.0   3-Dec-06  3000  None  20
-9   7934  MILLER      CLERK  7782.0  23-Jan-07  1300  None  10
-10  7369   SMITH      CLERK  7902.0  17-Dec-05   800  None  20
-11  7566   JONES    MANAGER  7839.0   2-Apr-06  2975  None  20
-12  7698   BLAKE    MANAGER  7839.0   1-May-06  2850  None  30
-13  7782   CLARK    MANAGER  7839.0   9-Jun-06  2450  None  10
-14  7788   SCOTT    ANALYST  7566.0   9-Dec-07  3000  None  20
-15  7839    KING  PRESIDENT     NaN  17-Nov-06  5000  None  10
-16  7876   ADAMS      CLERK  7788.0  12-Jan-08  1100  None  20
-17  7900   JAMES      CLERK  7698.0   3-Dec-06   950  None  30
-18  7902    FORD    ANALYST  7566.0   3-Dec-06  3000  None  20
-19  7934  MILLER      CLERK  7782.0  23-Jan-07  1300  None  10
-20  7369   SMITH      CLERK  7902.0  17-Dec-05   800  None  20
-21  7566   JONES    MANAGER  7839.0   2-Apr-06  2975  None  20
-22  7698   BLAKE    MANAGER  7839.0   1-May-06  2850  None  30
-23  7782   CLARK    MANAGER  7839.0   9-Jun-06  2450  None  10
-24  7788   SCOTT    ANALYST  7566.0   9-Dec-07  3000  None  20
-25  7839    KING  PRESIDENT     NaN  17-Nov-06  5000  None  10
-26  7876   ADAMS      CLERK  7788.0  12-Jan-08  1100  None  20
-27  7900   JAMES      CLERK  7698.0   3-Dec-06   950  None  30
-28  7902    FORD    ANALYST  7566.0   3-Dec-06  3000  None  20
-29  7934  MILLER      CLERK  7782.0  23-Jan-07  1300  None  10
-30  7369   SMITH      CLERK  7902.0  17-Dec-05   800  None  20
-31  7566   JONES    MANAGER  7839.0   2-Apr-06  2975  None  20
-32  7698   BLAKE    MANAGER  7839.0   1-May-06  2850  None  30
-33  7782   CLARK    MANAGER  7839.0   9-Jun-06  2450  None  10
-34  7788   SCOTT    ANALYST  7566.0   9-Dec-07  3000  None  20
-35  7839    KING  PRESIDENT     NaN  17-Nov-06  5000  None  10
-36  7876   ADAMS      CLERK  7788.0  12-Jan-08  1100  None  20
-37  7900   JAMES      CLERK  7698.0   3-Dec-06   950  None  30
-38  7902    FORD    ANALYST  7566.0   3-Dec-06  3000  None  20
-39  7934  MILLER      CLERK  7782.0  23-Jan-07  1300  None  10
-40  7369   SMITH      CLERK  7902.0  17-Dec-05   800  None  20
-41  7566   JONES    MANAGER  7839.0   2-Apr-06  2975  None  20
-42  7698   BLAKE    MANAGER  7839.0   1-May-06  2850  None  30
-43  7782   CLARK    MANAGER  7839.0   9-Jun-06  2450  None  10
-44  7788   SCOTT    ANALYST  7566.0   9-Dec-07  3000  None  20
-45  7839    KING  PRESIDENT     NaN  17-Nov-06  5000  None  10
-46  7876   ADAMS      CLERK  7788.0  12-Jan-08  1100  None  20
-47  7900   JAMES      CLERK  7698.0   3-Dec-06   950  None  30
-48  7902    FORD    ANALYST  7566.0   3-Dec-06  3000  None  20
-49  7934  MILLER      CLERK  7782.0  23-Jan-07  1300  None  10
+..   ...     ...        ...     ...        ...   ...   ...  ..
+85  7839    KING  PRESIDENT     NaN  17-Nov-06  5000  None  10
+86  7876   ADAMS      CLERK  7788.0  12-Jan-08  1100  None  20
+87  7900   JAMES      CLERK  7698.0   3-Dec-06   950  None  30
+88  7902    FORD    ANALYST  7566.0   3-Dec-06  3000  None  20
+89  7934  MILLER      CLERK  7782.0  23-Jan-07  1300  None  10
+
+[90 rows x 8 columns]
 </pre></div>
 </div>
 </div>
@@ -1098,20 +1251,20 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         0
-0      0.0
-1    300.0
-2    500.0
-3      0.0
-4   1400.0
-..     ...
-65     0.0
-66     0.0
-67     0.0
-68     0.0
-69     0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          0
+0       0.0
+1     300.0
+2     500.0
+3       0.0
+4    1400.0
+..      ...
+121     0.0
+122     0.0
+123     0.0
+124     0.0
+125     0.0
 
-[70 rows x 1 columns]
+[126 rows x 1 columns]
 </pre></div>
 </div>
 </div>
@@ -1132,20 +1285,20 @@ DEPTNO
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         0
-0      0.0
-1    300.0
-2    500.0
-3      0.0
-4   1400.0
-..     ...
-65     0.0
-66     0.0
-67     0.0
-68     0.0
-69     0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          0
+0       0.0
+1     300.0
+2     500.0
+3       0.0
+4    1400.0
+..      ...
+121     0.0
+122     0.0
+123     0.0
+124     0.0
+125     0.0
 
-[70 rows x 1 columns]
+[126 rows x 1 columns]
 </pre></div>
 </div>
 </div>
@@ -1188,6 +1341,26 @@ DEPTNO
 22   CLARK    MANAGER
 23    KING  PRESIDENT
 24  MILLER      CLERK
+25   SMITH      CLERK
+26   JONES    MANAGER
+27   CLARK    MANAGER
+28    KING  PRESIDENT
+29  MILLER      CLERK
+30   SMITH      CLERK
+31   JONES    MANAGER
+32   CLARK    MANAGER
+33    KING  PRESIDENT
+34  MILLER      CLERK
+35   SMITH      CLERK
+36   JONES    MANAGER
+37   CLARK    MANAGER
+38    KING  PRESIDENT
+39  MILLER      CLERK
+40   SMITH      CLERK
+41   JONES    MANAGER
+42   CLARK    MANAGER
+43    KING  PRESIDENT
+44  MILLER      CLERK
 </pre></div>
 </div>
 </div>
@@ -1248,11 +1421,11 @@ DEPTNO
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="week1_sqlite.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Week 1 Practice</p>
+            <p class="prev-next-title">Basic Concepts</p>
         </div>
     </a>
 </div>

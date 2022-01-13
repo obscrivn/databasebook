@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; D-532 Applied Database Technologies</title>
+    <title>SQLite &#8212; D-532 Applied Database Technologies</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -73,17 +73,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Basic Concepts" href="intro.html" />
-    <link rel="prev" title="Welcome to D-532 Applied Database Technologies Spring 22" href="welcome.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,12 +118,12 @@
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week1.html">
    Introduction
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -191,7 +182,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/week1.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/sqlite_intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -211,7 +202,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsqlite_intro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -238,14 +229,31 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-concepts">
-   Basic Concepts
+  <a class="reference internal nav-link" href="#sqlite-basics">
+   Sqlite Basics
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-sqlite">
-   Introduction to sqlite
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect">
+     Connect
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create">
+     Create
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#execute">
+     Execute
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#close">
+     Close
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -258,23 +266,99 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="basic-concepts">
-<h2>Basic Concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="intro.html"><span class="doc std std-doc">Basic Concepts</span></a></p></li>
-</ul>
+  <div class="section" id="sqlite">
+<h1>SQLite<a class="headerlink" href="#sqlite" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>SQLite is an open-source, zero-configuration, self-contained, stand-alone, transaction relational database engine designed to be embedded into an application.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sqlite was designed by D. Richard Hipp in 2000 for the purpose of no administration required for operating a program.  It is very lightweight compared to others like MySql and Oracle, and so it was called SQLite.</p>
 </div>
-<div class="section" id="introduction-to-sqlite">
-<h2>Introduction to sqlite<a class="headerlink" href="#introduction-to-sqlite" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="sqlite_intro.html"><span class="doc std std-doc">SQLite</span></a></p></li>
-<li><p><a class="reference internal" href="week1_sqlite_problems.html"><span class="doc std std-doc">Problems</span></a></p></li>
-<li><p><a class="reference internal" href="week1_sqlite_solutions.html"><span class="doc std std-doc">Solutions</span></a></p></li>
-</ul>
+<p><img alt="" src="_static/diff.png" /></p>
+<p><small>Source: <a class="reference external" href="https://www.geeksforgeeks.org/introduction-to-sqlite/">https://www.geeksforgeeks.org/introduction-to-sqlite/</a></small></p>
+<div class="section" id="sqlite-basics">
+<h2>Sqlite Basics<a class="headerlink" href="#sqlite-basics" title="Permalink to this headline">¶</a></h2>
+<p>Python has a native library for SQLite3 called sqlite3.
+<small>Source: <a class="reference external" href="https://www.geeksforgeeks.org/sql-using-python/">https://www.geeksforgeeks.org/sql-using-python/</a></small></p>
+<p>The relation between SQLite datatypes and Python datatypes:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - None type is converted to NULL
+  - int type is converted to INTEGER
+  - float type is converted to REAL
+  - str type is converted to TEXT
+  - bytes type is converted to BLOB
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
+<p>Below are various steps using sqlite in python:</p>
+<div class="section" id="connect">
+<h3>Connect<a class="headerlink" href="#connect" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 1. Connecting to SQLite Database</strong></p>
+<ul class="simple">
+<li><p>we must import sqlite3</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+</pre></div>
+</div>
+<p><strong>Step 2. Create a connection using connect() method.</strong>  Pass the name of the database you want to access:  Python will create it or open the existing database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mydatabase.db&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 3. Call a cursor object to send commands to the SQL.</strong></p>
+<ul class="simple">
+<li><p>The cursor object is needed to make the connection for executing SQL queries.</p></li>
+<li><p>It acts as middleware between SQLite database connection and SQL query.</p></li>
+<li><p>The cursor is a control structure used to traverse and fetch the records of the database.</p></li>
+<li><p>All the commands will be executed using cursor object only.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create">
+<h3>Create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 5. Create a table</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sql_command</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;CREATE TABLE emp ( </span>
+<span class="s2">staff_number INTEGER PRIMARY KEY, </span>
+<span class="s2">JOB VARCHAR(20), </span>
+<span class="s2">SAL INTEGER, </span>
+<span class="s2">ENAME VARCHAR(20), </span>
+<span class="s2">HIREDATE DATE);&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Or read from CSV</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">read_emp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;emp.csv&#39;</span><span class="p">)</span>
+<span class="n">read_emp</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;emp&#39;</span><span class="p">,</span> <span class="n">conn</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="execute">
+<h3>Execute<a class="headerlink" href="#execute" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 6. Execute</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_command</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 7. Write a query to select all rows from a table emp</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM emp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Step 8. Fetch query data into a variable</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mydata</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Step 9. Print the results</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mydata</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close">
+<h3>Close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h3>
+<p><strong>Step 10. Close connection</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To learn more about SQLite queries, see <a class="reference external" href="https://www.pythoncentral.io/introduction-to-sqlite-in-python/">https://www.pythoncentral.io/introduction-to-sqlite-in-python/</a></p>
+</div>
 </div>
 </div>
 
@@ -302,21 +386,7 @@
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="welcome.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to D-532 Applied Database Technologies Spring 22</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="intro.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Basic Concepts</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
         
         </div>
