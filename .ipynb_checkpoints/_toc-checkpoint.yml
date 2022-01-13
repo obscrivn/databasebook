@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: welcome
+chapters:
+- file: week1
+  sections:
+    - file: intro
+    - file: sqlite-intro
+    - file: week1_sqlite
+    - file: week1_sqlite_solutions
+
