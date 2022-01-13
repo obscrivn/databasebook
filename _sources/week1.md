@@ -7,5 +7,5 @@
 
 ## Introduction to sqlite
 - [SQLite](sqlite_intro.md)
-- [Problems](week1_sqlite_problems.ipynb)
+- [Practice](week1_sqlite_problems.ipynb)
 - [Solutions](week1_sqlite_solutions.ipynb)
