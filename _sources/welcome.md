@@ -1,4 +1,4 @@
-# Welcome to D-532 Applied Database Technologies Spring 22
+# Welcome to D-532 Applied Database Technologies Summer 22
 
 ![](_static/quote.png)
 
