@@ -1,0 +1,1272 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mongo DB Cluster: Covid-19 Data Johns Hopkins Overview &#8212; D-532 Applied Database Technologies</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="MongoDB Client" href="mongodb.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">D-532 Applied Database Technologies</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="welcome.html">
+   Welcome to D-532 Applied Database Technologies Summer 22
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week1.html">
+   Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Basic Concepts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sqlite_intro.html">
+     SQLite
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1_sqlite_problems.html">
+     Practice
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1_sqlite_solutions.html">
+     Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week3.html">
+   Undestanding SQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algebra.html">
+     Relational Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ra_queries.html">
+     SQL Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week5.html">
+   SQLITE in R
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sqlite_r.html">
+     SQLite in R
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week6.html">
+   SQL vs noSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="postgres.html">
+     PostgreSQL and MySQL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="week7.html">
+   MongoDB Intergration
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="mongodb.html">
+     MongoDB Client
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Mongo DB Cluster: Covid-19 Data Johns Hopkins Overview
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/pyMongoOverview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FpyMongoOverview.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/pyMongoOverview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modules">
+   Modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-the-mongodb-server">
+   Connect to the MongoDB server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-the-databases-and-collections">
+   List the databases and collections
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-the-available-databases">
+     List the available databases
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-a-database">
+     Select a database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-database-collections">
+     List database collections
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-collection">
+     Select Collection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#queries">
+   Queries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-record-query">
+     Single Record Query
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-record-query">
+     Multiple Record Query
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-all-documents-in-a-collection">
+   Counting all documents in a collection
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#projecting">
+   Projecting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filtering">
+   Filtering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-value-filter">
+     Single Value Filter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean-or-query">
+     Boolean OR query
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-in">
+     Using IN
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-and">
+     Using AND
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distinct-values">
+   Distinct Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regular-expressions">
+   Regular Expressions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregations">
+   Aggregations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting">
+     Sorting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Sorting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aggregations-across-several-records">
+     Aggregations across several records
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframes">
+   Pandas dataframes
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="mongo-db-cluster-covid-19-data-johns-hopkins-overview">
+<h1>Mongo DB Cluster: Covid-19 Data Johns Hopkins Overview<a class="headerlink" href="#mongo-db-cluster-covid-19-data-johns-hopkins-overview" title="Permalink to this headline">¶</a></h1>
+<p>Adapted from Workshop: <a class="reference external" href="https://github.com/geoffswc/MongoDB-Python-Workshop">https://github.com/geoffswc/MongoDB-Python-Workshop</a></p>
+<p>This notebook will demo how to connect to remote client and work with mongoDB database.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install pymongo</span>
+<span class="c1">#!pip install dnspython</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="connect-to-the-mongodb-server">
+<h2>Connect to the MongoDB server<a class="headerlink" href="#connect-to-the-mongodb-server" title="Permalink to this headline">¶</a></h2>
+<p>Connect to the published URL for the Johns Hopkins covid-19 dataset hosted on Atlas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mongodb_url</span> <span class="o">=</span> <span class="s2">&quot;mongodb+srv://readonly:readonly@covid-19.hip2i.mongodb.net/covid19&quot;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">mongodb_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-the-databases-and-collections">
+<h2>List the databases and collections<a class="headerlink" href="#list-the-databases-and-collections" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a connection to the server, we can</p>
+<ol class="simple">
+<li><p>list the available databases</p></li>
+<li><p>select a database</p></li>
+<li><p>list the available collections within that database</p></li>
+<li><p>select a collection to query</p></li>
+</ol>
+<div class="section" id="list-the-available-databases">
+<h3>List the available databases<a class="headerlink" href="#list-the-available-databases" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;admin&#39;, &#39;config&#39;, &#39;covid19&#39;, &#39;local&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="select-a-database">
+<h3>Select a database<a class="headerlink" href="#select-a-database" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_database</span><span class="p">(</span><span class="s2">&quot;covid19&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">covid19_db</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pymongo.database.Database
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-database-collections">
+<h3>List database collections<a class="headerlink" href="#list-database-collections" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;metadata&#39;,
+ &#39;benford&#39;,
+ &#39;system.views&#39;,
+ &#39;countries_summary&#39;,
+ &#39;global&#39;,
+ &#39;global_and_us&#39;,
+ &#39;us_only&#39;,
+ &#39;benford_view&#39;,
+ &#39;benford_view_world&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="select-collection">
+<h3>Select Collection<a class="headerlink" href="#select-collection" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span> <span class="o">=</span> <span class="n">covid19_db</span><span class="p">[</span><span class="s1">&#39;countries_summary&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collection(Database(MongoClient(host=[&#39;covid-19-shard-00-02.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-00.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-01.hip2i.mongodb.net:27017&#39;], document_class=dict, tz_aware=False, connect=True, authsource=&#39;admin&#39;, replicaset=&#39;covid-19-shard-0&#39;, ssl=True), &#39;covid19&#39;), &#39;countries_summary&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="queries">
+<h2>Queries<a class="headerlink" href="#queries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-record-query">
+<h3>Single Record Query<a class="headerlink" href="#single-record-query" title="Permalink to this headline">¶</a></h3>
+<p>To inspect just one record from the countries_summary collection, we can use the <code class="docutils literal notranslate"><span class="pre">find_one()</span></code> command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find_one</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcade&#39;),
+ &#39;uids&#39;: [4],
+ &#39;confirmed&#39;: 0,
+ &#39;deaths&#39;: 0,
+ &#39;country&#39;: &#39;Afghanistan&#39;,
+ &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0),
+ &#39;country_iso2s&#39;: [&#39;AF&#39;],
+ &#39;country_iso3s&#39;: [&#39;AFG&#39;],
+ &#39;country_codes&#39;: [4],
+ &#39;combined_names&#39;: [&#39;Afghanistan&#39;],
+ &#39;population&#39;: 38928341,
+ &#39;recovered&#39;: 0,
+ &#39;confirmed_daily&#39;: 0,
+ &#39;deaths_daily&#39;: 0,
+ &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-record-query">
+<h3>Multiple Record Query<a class="headerlink" href="#multiple-record-query" title="Permalink to this headline">¶</a></h3>
+<p>To find multiple records, you can use the <code class="docutils literal notranslate"><span class="pre">find()</span></code> command along with the limit() method</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;confirmed&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcade&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcadf&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae0&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 24, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae1&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 25, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae2&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 26, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="counting-all-documents-in-a-collection">
+<h2>Counting all documents in a collection<a class="headerlink" href="#counting-all-documents-in-a-collection" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">count_documents</span><span class="p">({})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174921
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="projecting">
+<h2>Projecting<a class="headerlink" href="#projecting" title="Permalink to this headline">¶</a></h2>
+<p>The next two cells show examples of choosing which fields to display. By default, all values in the records returned from a query will display. To limit the number of them that are displayed, specify fields names.</p>
+<p>Note that once you specify a field to return, only those fields you project will be included in the results. The exception is the “_id” field, which will project by default unless you suppress it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({},{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcade&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcadf&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae0&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae1&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae2&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae3&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae4&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae5&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae6&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fbcae7&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({},{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<p>The next cells will query based on a</p>
+<ol class="simple">
+<li><p>single value</p></li>
+<li><p>multiple values joined by AND</p></li>
+<li><p>multiple values joined by OR</p></li>
+<li><p>query based on date</p></li>
+</ol>
+<div class="section" id="single-value-filter">
+<h3>Single Value Filter<a class="headerlink" href="#single-value-filter" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee4e&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee4f&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee50&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee51&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee52&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="boolean-or-query">
+<h3>Boolean OR query<a class="headerlink" href="#boolean-or-query" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span> <span class="s1">&#39;$or&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s1">&#39;country&#39;</span> <span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="s1">&#39;country&#39;</span> <span class="p">:</span> <span class="s1">&#39;India&#39;</span> <span class="p">}</span> <span class="p">]</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;confirmed&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>India 0
+India 0
+India 0
+India 0
+India 0
+India 0
+India 0
+India 0
+India 1
+India 1
+India 1
+India 2
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-in">
+<h3>Using IN<a class="headerlink" href="#using-in" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;Ireland&quot;</span><span class="p">,</span> <span class="s2">&quot;India&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fce06e&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fce06f&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fce070&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 24, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fce071&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 25, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fce072&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 26, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-and">
+<h3>Using AND<a class="headerlink" href="#using-and" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is analagous to the query in Compass: </span>
+<span class="c1"># { &quot;date&quot;: new Date(&#39;2020-01-22&#39;)}</span>
+<span class="c1"># and</span>
+<span class="c1"># { &#39;$and&#39; : [{ &#39;country&#39; : &#39;Ireland&#39; }, { &quot;date&quot;: new Date(&#39;2020-01-22&#39;)} ] }</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span> <span class="s1">&#39;$and&#39;</span> <span class="p">:</span> <span class="p">[</span> 
+        <span class="p">{</span> <span class="s1">&#39;country&#39;</span> <span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span> <span class="p">},</span> 
+        <span class="p">{</span> <span class="s1">&#39;date&#39;</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">}</span> <span class="p">]</span> <span class="p">}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee4f&#39;), &#39;uids&#39;: [372], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;IE&#39;], &#39;country_iso3s&#39;: [&#39;IRL&#39;], &#39;country_codes&#39;: [372], &#39;combined_names&#39;: [&#39;Ireland&#39;], &#39;population&#39;: 4937796, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="distinct-values">
+<h2>Distinct Values<a class="headerlink" href="#distinct-values" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Afghanistan&#39;, &#39;Albania&#39;, &#39;Algeria&#39;, &#39;Andorra&#39;, &#39;Angola&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="regular-expressions">
+<h2>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h2>
+<p>To partially match text, you can use a regular expression. Note that this is a computationally expensive operation and may be too slow to be effective on large text fields in large collections.</p>
+<p>For more information: <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/regex/">https://docs.mongodb.com/manual/reference/operator/query/regex/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:{</span> <span class="s1">&#39;$regex&#39;</span><span class="p">:</span> <span class="s1">&#39;land$&#39;</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fca171&#39;), &#39;uids&#39;: [246], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Finland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;FI&#39;], &#39;country_iso3s&#39;: [&#39;FIN&#39;], &#39;country_codes&#39;: [246], &#39;combined_names&#39;: [&#39;Finland&#39;], &#39;population&#39;: 5540718, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62afc117f59d991d14fca172&#39;), &#39;uids&#39;: [246], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Finland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;FI&#39;], &#39;country_iso3s&#39;: [&#39;FIN&#39;], &#39;country_codes&#39;: [246], &#39;combined_names&#39;: [&#39;Finland&#39;], &#39;population&#39;: 5540718, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can compile a regular expression with python <code class="docutils literal notranslate"><span class="pre">re</span></code> module</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">regx</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;ireland&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;$regex&#39;</span><span class="p">:</span> <span class="n">regx</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afc118f59d991d14fcee4e&#39;), &#39;uids&#39;: [372], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;IE&#39;], &#39;country_iso3s&#39;: [&#39;IRL&#39;], &#39;country_codes&#39;: [372], &#39;combined_names&#39;: [&#39;Ireland&#39;], &#39;population&#39;: 4937796, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="aggregations">
+<h2>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this headline">¶</a></h2>
+<p>Count: <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/count/">https://docs.mongodb.com/manual/reference/operator/aggregation/count/</a></p>
+<p>Sum: <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/sum/">https://docs.mongodb.com/manual/reference/operator/aggregation/sum/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">global_and_us_cln</span> <span class="o">=</span> <span class="n">covid19_db</span><span class="p">[</span><span class="s1">&#39;global_and_us&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">agg</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;$group&#39;</span><span class="p">:{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span><span class="s1">&#39;$country&#39;</span><span class="p">,</span><span class="s1">&#39;count&#39;</span><span class="p">:{</span><span class="s1">&#39;$sum&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}},</span>
+    <span class="p">{</span><span class="s1">&#39;$limit&#39;</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+<span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: &#39;Cuba&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Mauritania&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Cabo Verde&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Serbia&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Colombia&#39;, &#39;count&#39;: 879}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sorting">
+<h3>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h3>
+<p>To sort in an aggregation pipeline, use the $sort operator. This query will count the number of documents for each country in the collection, sorted in descending order of count, then in ascending order by ID in case of a tie.</p>
+<p><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/sort/">https://docs.mongodb.com/manual/reference/operator/aggregation/sort/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">agg</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span>
+        <span class="p">{</span><span class="s1">&#39;$group&#39;</span><span class="p">:{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span><span class="s1">&#39;$country&#39;</span><span class="p">,</span><span class="s1">&#39;count&#39;</span><span class="p">:{</span><span class="s1">&#39;$sum&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}},</span>
+        <span class="p">{</span><span class="s1">&#39;$sort&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;count&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;$limit&#39;</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+    <span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: &#39;US&#39;, &#39;count&#39;: 2938497}
+{&#39;_id&#39;: &#39;China&#39;, &#39;count&#39;: 29886}
+{&#39;_id&#39;: &#39;Canada&#39;, &#39;count&#39;: 14943}
+{&#39;_id&#39;: &#39;United Kingdom&#39;, &#39;count&#39;: 12306}
+{&#39;_id&#39;: &#39;France&#39;, &#39;count&#39;: 10548}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Sorting<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>To sort results by a field value, you use the $orderby operator. This query will return results sorted first by date, then by country. To reverse the ordering, use -1.</p>
+<p><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/meta/orderby/">https://docs.mongodb.com/manual/reference/operator/meta/orderby/</a></p>
+<p>Note that this has been replaced by .sort() at the mongo shell</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;$query&#39;</span><span class="p">:</span> <span class="p">{},</span> <span class="s1">&#39;$orderby&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;date&#39;</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-01-22 00:00:00 Afghanistan
+2020-01-22 00:00:00 Albania
+2020-01-22 00:00:00 Algeria
+2020-01-22 00:00:00 Andorra
+2020-01-22 00:00:00 Angola
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="aggregations-across-several-records">
+<h3>Aggregations across several records<a class="headerlink" href="#aggregations-across-several-records" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">agg</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span>
+        <span class="p">{</span><span class="s1">&#39;$group&#39;</span><span class="p">:{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span><span class="s1">&#39;$country&#39;</span><span class="p">,</span><span class="s1">&#39;recovered&#39;</span><span class="p">:{</span><span class="s1">&#39;$sum&#39;</span><span class="p">:</span> <span class="s1">&#39;$recovered&#39;</span><span class="p">}}},{</span><span class="s1">&#39;$limit&#39;</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+    <span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: &#39;Belize&#39;, &#39;recovered&#39;: 2947228}
+{&#39;_id&#39;: &#39;Liberia&#39;, &#39;recovered&#39;: 641874}
+{&#39;_id&#39;: &#39;Germany&#39;, &#39;recovered&#39;: 695248246}
+{&#39;_id&#39;: &#39;Poland&#39;, &#39;recovered&#39;: 487412435}
+{&#39;_id&#39;: &#39;Malta&#39;, &#39;recovered&#39;: 6085906}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pandas-dataframes">
+<h2>Pandas dataframes<a class="headerlink" href="#pandas-dataframes" title="Permalink to this headline">¶</a></h2>
+<p>You may at some point want to convert your results to pandas dataframes.</p>
+<p>Pandas provides a relatively straighforward method to convert mongodb results (as well as other types of JSON or dictionary-based data) into a dataframe. However, keep in mind that you may be cramming a nested, tree-like structure into a tabular data format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results of this query show how nested data such as dictionaries or lists gets placed into columns. This may or may not be a problem for you, though ther esult it is not a normalized table and may not be amenable to SQL or pandas operations that would work on fields in first normal form (i.e., with single, indivisible values).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>uid</th>
+      <th>country_iso2</th>
+      <th>country_iso3</th>
+      <th>country_code</th>
+      <th>country</th>
+      <th>combined_name</th>
+      <th>population</th>
+      <th>loc</th>
+      <th>date</th>
+      <th>confirmed</th>
+      <th>deaths</th>
+      <th>recovered</th>
+      <th>confirmed_daily</th>
+      <th>deaths_daily</th>
+      <th>recovered_daily</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>62afb9a1824e40bbd573c97c</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-22</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>62afb9a1824e40bbd573c97d</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-23</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>62afb9a1824e40bbd573c97e</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-24</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>62afb9a1824e40bbd573c97f</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>62afb9a1824e40bbd573c980</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For example, the “loc” column contains a dictionary with two keys, ‘type’ and ‘Point’ - where ‘Point’ maps to a list of coordinates</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;Point&#39;, &#39;coordinates&#39;: [-7.6921, 53.1424]}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="mongodb.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">MongoDB Client</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Olga Scrivner<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
