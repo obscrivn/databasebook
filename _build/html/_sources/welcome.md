@@ -1,6 +1,8 @@
-# Welcome to D-532 Applied Database Technologies Spring 22
+# Welcome to D-532 Applied Database Technologies Fall 23
 
-![](_static/quote.png)
+![banner](_static/D-532-banner.gif)
+
+![quote](_static/quote.png)
 
 This course provides practical skills and breadth of knowledge of many tools/technologies rather than deep knowledge of any particular tool/technology. 
 
@@ -10,21 +12,9 @@ This course provides practical skills and breadth of knowledge of many tools/tec
 - Data modeling and database design
 - Database querying 
 - SQL and noSQL
+- The art of database selection
+- Developing a web app with database integration
  
 
 ## Course Prerequisites:
 Python
-
-## Course Policy
-
-- Students are responsible for completing and submitting on time all assigned tasks
-- No late assignment
-- Course-related questions are posted via Piazza (do not use Canvas In-Box)
-- For more details, see Course Policy on Canvas
-
-## Office Hours and Review Sessions
-
-- Review sessions are held on Saturdays 6pm EST
-- Office hours are held via Discord (per students' request). Hours will be posted.
-
-

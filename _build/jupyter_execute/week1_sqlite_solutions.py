@@ -6,8 +6,8 @@
 # You will need:
 # - Chapter 1 (SQL Cook Book). In this notebook you will be practicing the code provided in the chapter.
 # - Download emp.csv and dept.csv
-#     - [emp.csv](_static/emp.csv)
-#     - [dept.csv](_static/dept.csv)
+#     - [emp.csv](emp.csv)
+#     - [dept.csv](dept.csv)
 # 
 # ************
 # - Step 1-4: You will create a database week1.db

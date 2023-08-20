@@ -4,10 +4,26 @@
 format: jb-book
 root: welcome
 chapters:
-- file: week1
+- file: module1
   sections:
     - file: intro
-    - file: sqlite-intro
-    - file: week1_sqlite
-    - file: week1_sqlite_solutions
+    - file: sqlite_intro
+    
+# - file: week3
+#   sections:
+#     - file: algebra
+#     - file: ra_queries
+    
+# - file: week5
+#   sections:
+#     - file: sqlite_r
+    
+# - file: week6
+#   sections:
+#    - file: postgres
+   
+# - file: week7
+#   sections:
+#   - file: mongosetup
+#   - file: pyMongoOverview
 

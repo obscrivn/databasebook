@@ -1,0 +1,1331 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Mongo DB Cluster &#8212; D-532 Applied Database Technologies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyMongoOverview';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="welcome.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="welcome.html">
+                    Welcome to D-532 Applied Database Technologies Fall 23
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="module1.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Basic Concepts</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FpyMongoOverview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pyMongoOverview.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mongo DB Cluster</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-covid-19-data-johns-hopkins-overview">Section 1: Covid-19 Data Johns Hopkins Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-the-mongodb-server">Connect to the MongoDB server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-the-databases-and-collections">List the databases and collections</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-the-available-databases">List the available databases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-database">Select a database</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-database-collections">List database collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#select-collection">Select Collection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-record-query">Single Record Query</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-record-query">Multiple Record Query</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-all-documents-in-a-collection">Counting all documents in a collection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projecting">Projecting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-value-filter">Single Value Filter</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-or-query">Boolean OR query</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-in">Using IN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-and">Using AND</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinct-values">Distinct Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregations">Aggregations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sorting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregations-across-several-records">Aggregations across several records</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframes">Pandas dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-upload-data">Section 2. Upload Data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mongo-db-cluster">
+<h1>Mongo DB Cluster<a class="headerlink" href="#mongo-db-cluster" title="Permalink to this heading">#</a></h1>
+<p>Adapted from Workshop: <a class="github reference external" href="https://github.com/geoffswc/MongoDB-Python-Workshop">geoffswc/MongoDB-Python-Workshop</a></p>
+<section id="section-1-covid-19-data-johns-hopkins-overview">
+<h2>Section 1: Covid-19 Data Johns Hopkins Overview<a class="headerlink" href="#section-1-covid-19-data-johns-hopkins-overview" title="Permalink to this heading">#</a></h2>
+<p>This notebook section  will demo how to connect to remote client and work with mongoDB database.</p>
+<section id="modules">
+<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install pymongo</span>
+<span class="c1">#!pip install dnspython</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymongo</span>
+<span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pymongo</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymongo&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="connect-to-the-mongodb-server">
+<h3>Connect to the MongoDB server<a class="headerlink" href="#connect-to-the-mongodb-server" title="Permalink to this heading">#</a></h3>
+<p>Connect to the published URL for the Johns Hopkins covid-19 dataset hosted on Atlas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mongodb_url</span> <span class="o">=</span> <span class="s2">&quot;mongodb+srv://readonly:readonly@covid-19.hip2i.mongodb.net/covid19&quot;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">mongodb_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-the-databases-and-collections">
+<h3>List the databases and collections<a class="headerlink" href="#list-the-databases-and-collections" title="Permalink to this heading">#</a></h3>
+<p>Now that we have a connection to the server, we can</p>
+<ol class="arabic simple">
+<li><p>list the available databases</p></li>
+<li><p>select a database</p></li>
+<li><p>list the available collections within that database</p></li>
+<li><p>select a collection to query</p></li>
+</ol>
+<section id="list-the-available-databases">
+<h4>List the available databases<a class="headerlink" href="#list-the-available-databases" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;admin&#39;, &#39;config&#39;, &#39;covid19&#39;, &#39;local&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-a-database">
+<h4>Select a database<a class="headerlink" href="#select-a-database" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_database</span><span class="p">(</span><span class="s2">&quot;covid19&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">covid19_db</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pymongo.database.Database
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-database-collections">
+<h4>List database collections<a class="headerlink" href="#list-database-collections" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;metadata&#39;,
+ &#39;benford&#39;,
+ &#39;global_and_us&#39;,
+ &#39;system.views&#39;,
+ &#39;global&#39;,
+ &#39;us_only&#39;,
+ &#39;countries_summary&#39;,
+ &#39;benford_view&#39;,
+ &#39;benford_view_world&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-collection">
+<h4>Select Collection<a class="headerlink" href="#select-collection" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span> <span class="o">=</span> <span class="n">covid19_db</span><span class="p">[</span><span class="s1">&#39;countries_summary&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collection(Database(MongoClient(host=[&#39;covid-19-shard-00-00.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-02.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-01.hip2i.mongodb.net:27017&#39;], document_class=dict, tz_aware=False, connect=True, authsource=&#39;admin&#39;, replicaset=&#39;covid-19-shard-0&#39;, ssl=True), &#39;covid19&#39;), &#39;countries_summary&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="queries">
+<h3>Queries<a class="headerlink" href="#queries" title="Permalink to this heading">#</a></h3>
+<section id="single-record-query">
+<h4>Single Record Query<a class="headerlink" href="#single-record-query" title="Permalink to this heading">#</a></h4>
+<p>To inspect just one record from the countries_summary collection, we can use the <code class="docutils literal notranslate"><span class="pre">find_one()</span></code> command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find_one</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f722f&#39;),
+ &#39;uids&#39;: [4],
+ &#39;confirmed&#39;: 0,
+ &#39;deaths&#39;: 0,
+ &#39;country&#39;: &#39;Afghanistan&#39;,
+ &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0),
+ &#39;country_iso2s&#39;: [&#39;AF&#39;],
+ &#39;country_iso3s&#39;: [&#39;AFG&#39;],
+ &#39;country_codes&#39;: [4],
+ &#39;combined_names&#39;: [&#39;Afghanistan&#39;],
+ &#39;population&#39;: 38928341,
+ &#39;recovered&#39;: 0,
+ &#39;confirmed_daily&#39;: 0,
+ &#39;deaths_daily&#39;: 0,
+ &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-record-query">
+<h4>Multiple Record Query<a class="headerlink" href="#multiple-record-query" title="Permalink to this heading">#</a></h4>
+<p>To find multiple records, you can use the <code class="docutils literal notranslate"><span class="pre">find()</span></code> command along with the limit() method</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;confirmed&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f722f&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7230&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7231&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 24, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7232&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 25, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+Afghanistan 0
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7233&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 26, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="counting-all-documents-in-a-collection">
+<h3>Counting all documents in a collection<a class="headerlink" href="#counting-all-documents-in-a-collection" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">count_documents</span><span class="p">({})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>174921
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="projecting">
+<h3>Projecting<a class="headerlink" href="#projecting" title="Permalink to this heading">#</a></h3>
+<p>The next two cells show examples of choosing which fields to display. By default, all values in the records returned from a query will display. To limit the number of them that are displayed, specify fields names.</p>
+<p>Note that once you specify a field to return, only those fields you project will be included in the results. The exception is the “_id” field, which will project by default unless you suppress it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({},{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f722f&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7230&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7231&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7232&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7233&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7234&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7235&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7236&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7237&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7238&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({},{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+{&#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering">
+<h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h3>
+<p>The next cells will query based on a</p>
+<ol class="arabic simple">
+<li><p>single value</p></li>
+<li><p>multiple values joined by AND</p></li>
+<li><p>multiple values joined by OR</p></li>
+<li><p>query based on date</p></li>
+</ol>
+<section id="single-value-filter">
+<h4>Single Value Filter<a class="headerlink" href="#single-value-filter" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095bf&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095c0&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095c1&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095c2&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095c3&#39;), &#39;confirmed&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boolean-or-query">
+<h4>Boolean OR query<a class="headerlink" href="#boolean-or-query" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span> <span class="s1">&#39;$or&#39;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s1">&#39;country&#39;</span> <span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span> <span class="p">},</span> <span class="p">{</span> <span class="s1">&#39;country&#39;</span> <span class="p">:</span> <span class="s1">&#39;India&#39;</span> <span class="p">}</span> <span class="p">]</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;confirmed&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>India 0
+India 0
+India 0
+India 0
+India 0
+India 0
+India 0
+India 0
+India 1
+India 1
+India 1
+India 2
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+India 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-in">
+<h4>Using IN<a class="headerlink" href="#using-in" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;$in&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;Ireland&quot;</span><span class="p">,</span> <span class="s2">&quot;India&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a087df&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a087e0&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a087e1&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 24, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a087e2&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 25, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a087e3&#39;), &#39;uids&#39;: [356], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;India&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 26, 0, 0), &#39;country_iso2s&#39;: [&#39;IN&#39;], &#39;country_iso3s&#39;: [&#39;IND&#39;], &#39;country_codes&#39;: [356], &#39;combined_names&#39;: [&#39;India&#39;], &#39;population&#39;: 1380004385, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-and">
+<h4>Using AND<a class="headerlink" href="#using-and" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is analagous to the query in Compass: </span>
+<span class="c1"># { &quot;date&quot;: new Date(&#39;2020-01-22&#39;)}</span>
+<span class="c1"># and</span>
+<span class="c1"># { &#39;$and&#39; : [{ &#39;country&#39; : &#39;Ireland&#39; }, { &quot;date&quot;: new Date(&#39;2020-01-22&#39;)} ] }</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span> <span class="s1">&#39;$and&#39;</span> <span class="p">:</span> <span class="p">[</span> 
+        <span class="p">{</span> <span class="s1">&#39;country&#39;</span> <span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span> <span class="p">},</span> 
+        <span class="p">{</span> <span class="s1">&#39;date&#39;</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">}</span> <span class="p">]</span> <span class="p">}):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095c0&#39;), &#39;uids&#39;: [372], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;IE&#39;], &#39;country_iso3s&#39;: [&#39;IRL&#39;], &#39;country_codes&#39;: [372], &#39;combined_names&#39;: [&#39;Ireland&#39;], &#39;population&#39;: 4937796, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="distinct-values">
+<h3>Distinct Values<a class="headerlink" href="#distinct-values" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Afghanistan&#39;, &#39;Albania&#39;, &#39;Algeria&#39;, &#39;Andorra&#39;, &#39;Angola&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="regular-expressions">
+<h3>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this heading">#</a></h3>
+<p>To partially match text, you can use a regular expression. Note that this is a computationally expensive operation and may be too slow to be effective on large text fields in large collections.</p>
+<p>For more information: <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/query/regex/">https://docs.mongodb.com/manual/reference/operator/query/regex/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:{</span> <span class="s1">&#39;$regex&#39;</span><span class="p">:</span> <span class="s1">&#39;land$&#39;</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c2f59d991d14a0490a&#39;), &#39;uids&#39;: [246], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Finland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;FI&#39;], &#39;country_iso3s&#39;: [&#39;FIN&#39;], &#39;country_codes&#39;: [246], &#39;combined_names&#39;: [&#39;Finland&#39;], &#39;population&#39;: 5540718, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+{&#39;_id&#39;: ObjectId(&#39;62af88c2f59d991d14a0490b&#39;), &#39;uids&#39;: [246], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Finland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;FI&#39;], &#39;country_iso3s&#39;: [&#39;FIN&#39;], &#39;country_codes&#39;: [246], &#39;combined_names&#39;: [&#39;Finland&#39;], &#39;population&#39;: 5540718, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can compile a regular expression with python <code class="docutils literal notranslate"><span class="pre">re</span></code> module</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">regx</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;ireland&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;$regex&#39;</span><span class="p">:</span> <span class="n">regx</span> <span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62af88c3f59d991d14a095bf&#39;), &#39;uids&#39;: [372], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Ireland&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;IE&#39;], &#39;country_iso3s&#39;: [&#39;IRL&#39;], &#39;country_codes&#39;: [372], &#39;combined_names&#39;: [&#39;Ireland&#39;], &#39;population&#39;: 4937796, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="aggregations">
+<h3>Aggregations<a class="headerlink" href="#aggregations" title="Permalink to this heading">#</a></h3>
+<p>Count: <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/count/">https://docs.mongodb.com/manual/reference/operator/aggregation/count/</a></p>
+<p>Sum: <a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/sum/">https://docs.mongodb.com/manual/reference/operator/aggregation/sum/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">global_and_us_cln</span> <span class="o">=</span> <span class="n">covid19_db</span><span class="p">[</span><span class="s1">&#39;global_and_us&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">agg</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;$group&#39;</span><span class="p">:{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span><span class="s1">&#39;$country&#39;</span><span class="p">,</span><span class="s1">&#39;count&#39;</span><span class="p">:{</span><span class="s1">&#39;$sum&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}},</span>
+    <span class="p">{</span><span class="s1">&#39;$limit&#39;</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+<span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: &#39;Burma&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Seychelles&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Antigua and Barbuda&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Marshall Islands&#39;, &#39;count&#39;: 879}
+{&#39;_id&#39;: &#39;Kiribati&#39;, &#39;count&#39;: 879}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sorting">
+<h4>Sorting<a class="headerlink" href="#sorting" title="Permalink to this heading">#</a></h4>
+<p>To sort in an aggregation pipeline, use the $sort operator. This query will count the number of documents for each country in the collection, sorted in descending order of count, then in ascending order by ID in case of a tie.</p>
+<p><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/aggregation/sort/">https://docs.mongodb.com/manual/reference/operator/aggregation/sort/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">agg</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span>
+        <span class="p">{</span><span class="s1">&#39;$group&#39;</span><span class="p">:{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span><span class="s1">&#39;$country&#39;</span><span class="p">,</span><span class="s1">&#39;count&#39;</span><span class="p">:{</span><span class="s1">&#39;$sum&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}},</span>
+        <span class="p">{</span><span class="s1">&#39;$sort&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;count&#39;</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span> <span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;$limit&#39;</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+    <span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: &#39;US&#39;, &#39;count&#39;: 2938497}
+{&#39;_id&#39;: &#39;China&#39;, &#39;count&#39;: 29886}
+{&#39;_id&#39;: &#39;Canada&#39;, &#39;count&#39;: 14943}
+{&#39;_id&#39;: &#39;United Kingdom&#39;, &#39;count&#39;: 12306}
+{&#39;_id&#39;: &#39;France&#39;, &#39;count&#39;: 10548}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h3>Sorting<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To sort results by a field value, you use the $orderby operator. This query will return results sorted first by date, then by country. To reverse the ordering, use -1.</p>
+<p><a class="reference external" href="https://docs.mongodb.com/manual/reference/operator/meta/orderby/">https://docs.mongodb.com/manual/reference/operator/meta/orderby/</a></p>
+<p>Note that this has been replaced by .sort() at the mongo shell</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;$query&#39;</span><span class="p">:</span> <span class="p">{},</span> <span class="s1">&#39;$orderby&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;date&#39;</span> <span class="p">:</span> <span class="mi">1</span> <span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span> <span class="p">})</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020-01-22 00:00:00 Afghanistan
+2020-01-22 00:00:00 Albania
+2020-01-22 00:00:00 Algeria
+2020-01-22 00:00:00 Andorra
+2020-01-22 00:00:00 Angola
+</pre></div>
+</div>
+</div>
+</div>
+<section id="aggregations-across-several-records">
+<h4>Aggregations across several records<a class="headerlink" href="#aggregations-across-several-records" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">agg</span> <span class="ow">in</span> <span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span>
+        <span class="p">{</span><span class="s1">&#39;$group&#39;</span><span class="p">:{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span><span class="s1">&#39;$country&#39;</span><span class="p">,</span><span class="s1">&#39;recovered&#39;</span><span class="p">:{</span><span class="s1">&#39;$sum&#39;</span><span class="p">:</span> <span class="s1">&#39;$recovered&#39;</span><span class="p">}}},{</span><span class="s1">&#39;$limit&#39;</span> <span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+    <span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: &#39;Bahrain&#39;, &#39;recovered&#39;: 48612087}
+{&#39;_id&#39;: &#39;France&#39;, &#39;recovered&#39;: 96506536}
+{&#39;_id&#39;: &#39;Mozambique&#39;, &#39;recovered&#39;: 13140950}
+{&#39;_id&#39;: &#39;Tajikistan&#39;, &#39;recovered&#39;: 4615407}
+{&#39;_id&#39;: &#39;Benin&#39;, &#39;recovered&#39;: 1723986}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pandas-dataframes">
+<h3>Pandas dataframes<a class="headerlink" href="#pandas-dataframes" title="Permalink to this heading">#</a></h3>
+<p>You may at some point want to convert your results to pandas dataframes.</p>
+<p>Pandas provides a relatively straighforward method to convert mongodb results (as well as other types of JSON or dictionary-based data) into a dataframe. However, keep in mind that you may be cramming a nested, tree-like structure into a tabular data format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">global_and_us_cln</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;Ireland&#39;</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results of this query show how nested data such as dictionaries or lists gets placed into columns. This may or may not be a problem for you, though ther esult it is not a normalized table and may not be amenable to SQL or pandas operations that would work on fields in first normal form (i.e., with single, indivisible values).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>uid</th>
+      <th>country_iso2</th>
+      <th>country_iso3</th>
+      <th>country_code</th>
+      <th>country</th>
+      <th>combined_name</th>
+      <th>population</th>
+      <th>loc</th>
+      <th>date</th>
+      <th>confirmed</th>
+      <th>deaths</th>
+      <th>recovered</th>
+      <th>confirmed_daily</th>
+      <th>deaths_daily</th>
+      <th>recovered_daily</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>62af814c2c3fd46394cc19fe</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-22</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>62af814c2c3fd46394cc19ff</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-23</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>62af814c2c3fd46394cc1a00</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-24</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>62af814c2c3fd46394cc1a01</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>62af814c2c3fd46394cc1a02</td>
+      <td>372</td>
+      <td>IE</td>
+      <td>IRL</td>
+      <td>372</td>
+      <td>Ireland</td>
+      <td>Ireland</td>
+      <td>4937796</td>
+      <td>{'type': 'Point', 'coordinates': [-7.6921, 53....</td>
+      <td>2020-01-26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For example, the “loc” column contains a dictionary with two keys, ‘type’ and ‘Point’ - where ‘Point’ maps to a list of coordinates</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;loc&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;Point&#39;, &#39;coordinates&#39;: [-7.6921, 53.1424]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-2-upload-data">
+<h2>Section 2. Upload Data<a class="headerlink" href="#section-2-upload-data" title="Permalink to this heading">#</a></h2>
+<p>You will work with the coronavirus research dataset from the Semantic Scholar team at the Allen Institute:</p>
+<ul class="simple">
+<li><p>Go to:
+<a class="reference external" href="https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/historical_releases.html">https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/historical_releases.html</a></p></li>
+<li><p>Download a subset of this data: cord-19_2020-03-13.tar.gz (0.3 GB)</p></li>
+<li><p>Untar it, you should get a folder named: 2020-13-13, within this folder, expand the noncomm-use-subset</p></li>
+<li><p>Create a new database (see <span class="xref myst">mongodb Client</span>) and upload dataset</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Replace MDB_URL with your mongodb connection string</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MDB_URL</span> <span class="o">=</span> <span class="s1">&#39;mongodb+srv://user:password@cluster0.movwmkq.mongodb.net/?retryWrites=true&amp;w=majority&#39;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">MDB_URL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Replace path with your own directory path</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;/Users/olgascrivner/Documents/IU-DataScience/Database/Summer2022/Week7/2020-03-13/noncomm_use_subset/*.json&#39;</span>
+<span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>        
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s1">&#39;Covid-19&#39;</span><span class="p">]</span> <span class="c1"># database name .coronavirus</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uncomment below to insert json files. If you ar egetting authentification error, make sure you have the correct user (with write and read) and password</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># db[&#39;coronavirus&#39;].insert_many(json_files[100:200]) # subset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertManyResult at 0x13e6f5988&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;coronavirus&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;62afcea2e538792866b43df8&#39;), &#39;paper_id&#39;: &#39;2271485cae8757f2abdb1c2d012bb892c5421ba4&#39;, &#39;metadata&#39;: {&#39;title&#39;: &#39;&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;Peter&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;, &#39;affiliation&#39;: {&#39;laboratory&#39;: &#39;&#39;, &#39;institution&#39;: &#39;EcoHealth Alliance&#39;, &#39;location&#39;: {&#39;addrLine&#39;: &#39;460 West 34th Street&#39;, &#39;postCode&#39;: &#39;10001&#39;, &#39;settlement&#39;: &#39;New York&#39;, &#39;region&#39;: &#39;NY&#39;, &#39;country&#39;: &#39;USA&#39;}}, &#39;email&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Kevin&#39;, &#39;middle&#39;: [&#39;J&#39;], &#39;last&#39;: &#39;Olival&#39;, &#39;suffix&#39;: &#39;&#39;, &#39;affiliation&#39;: {&#39;laboratory&#39;: &#39;&#39;, &#39;institution&#39;: &#39;EcoHealth Alliance&#39;, &#39;location&#39;: {&#39;addrLine&#39;: &#39;460 West 34th Street&#39;, &#39;postCode&#39;: &#39;10001&#39;, &#39;settlement&#39;: &#39;New York&#39;, &#39;region&#39;: &#39;NY&#39;, &#39;country&#39;: &#39;USA&#39;}}, &#39;email&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Hongying&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;, &#39;affiliation&#39;: {&#39;laboratory&#39;: &#39;&#39;, &#39;institution&#39;: &#39;EcoHealth Alliance&#39;, &#39;location&#39;: {&#39;addrLine&#39;: &#39;460 West 34th Street&#39;, &#39;postCode&#39;: &#39;10001&#39;, &#39;settlement&#39;: &#39;New York&#39;, &#39;region&#39;: &#39;NY&#39;, &#39;country&#39;: &#39;USA&#39;}}, &#39;email&#39;: &#39;&#39;}]}, &#39;abstract&#39;: [{&#39;text&#39;: &#39;A novel bat-origin coronavirus emerged in Wuhan, China in December 2019 and continues to spread across China and the world. At the time of writing, a massive global response has been implemented to control the disease as it spreads from person to person. Yet the high-risk human-wildlife interactions and interfaces that led to the emergence of SARS-CoV and of 2019-nCoV continue to exist in emerging disease hotspots globally. To prevent the next epidemic and pandemic related to these interfaces, we call for research and investment in three areas: 1) surveillance among wildlife to identify the high-risk pathogens they carry; 2) surveillance among people who have contact with wildlife to identify early spillover events; and 3) improvement of market biosecurity regarding the wildlife trade. As the emergence of a novel virus anywhere can impact the furthest reaches of our connected world, international collaboration among scientists is essential to address these risks and prevent the next pandemic.&#39;, &#39;cite_spans&#39;: [], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Abstract&#39;}], &#39;body_text&#39;: [{&#39;text&#39;: &quot;The emergence of a novel coronavirus, 2019-nCoV in Wuhan December 2019 has led to a global response to the first epidemic of this decade. It has also highlighted two key issues: First, China&#39;s rapid and efficient capacity to identify and investigate a newly emerging disease; and second, our continued global vulnerability to epidemics and pandemics. From the date of the first cluster of cases admitted to a local hospital on December 27, 2019, Chinese scientists identified this disease as a new syndrome, discovered the pathogen as the cause, and reported its genetic sequence to the world in less than 14 days [1, 2] . At the time of writing, we have detailed information on its relationship to other bat coronaviruses, many of which were discovered in a collaboration among EcoHealth Alliance, the Wuhan Institute of Virology, and Duke NUS [3] . We also have data from experimental cell line infections [4] , on the clinical findings [5] , the epidemiology of viral transmission [6] , and on its spread to other countries. These rapid and successful results are a resounding endorsement of China&#39;s emergence as a 21st Century scientific superpower, and of a country with a modern and efficient public health system, technically supported by the China CDC with a system of Provincial and City CDCs that are trained in effective outbreak investigation and control [7] .&quot;, &#39;cite_spans&#39;: [{&#39;start&#39;: 614, &#39;end&#39;: 617, &#39;text&#39;: &#39;[1,&#39;, &#39;ref_id&#39;: &#39;BIBREF0&#39;}, {&#39;start&#39;: 618, &#39;end&#39;: 620, &#39;text&#39;: &#39;2]&#39;, &#39;ref_id&#39;: &#39;BIBREF1&#39;}, {&#39;start&#39;: 845, &#39;end&#39;: 848, &#39;text&#39;: &#39;[3]&#39;, &#39;ref_id&#39;: &#39;BIBREF2&#39;}, {&#39;start&#39;: 908, &#39;end&#39;: 911, &#39;text&#39;: &#39;[4]&#39;, &#39;ref_id&#39;: None}, {&#39;start&#39;: 939, &#39;end&#39;: 942, &#39;text&#39;: &#39;[5]&#39;, &#39;ref_id&#39;: &#39;BIBREF6&#39;}, {&#39;start&#39;: 984, &#39;end&#39;: 987, &#39;text&#39;: &#39;[6]&#39;, &#39;ref_id&#39;: None}, {&#39;start&#39;: 1367, &#39;end&#39;: 1370, &#39;text&#39;: &#39;[7]&#39;, &#39;ref_id&#39;: &#39;BIBREF9&#39;}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Biosafety and Health xxx (xxxx) xxx&#39;}, {&#39;text&#39;: &#39;However, despite these efforts, this novel virus was able to spread via infected people traveling within China and internationally. Furthermore, the mechanism of spillover that led to human infection is still uncertain, although it has all the hallmarks of a bat-origin SARS-related coronavirus (SARSr-CoV) [4] . This leads us to two questions that we need to think ⁎ Corresponding author. through even now to get ready to prevent the next 2019-nCoV-like pandemic:&#39;, &#39;cite_spans&#39;: [{&#39;start&#39;: 307, &#39;end&#39;: 310, &#39;text&#39;: &#39;[4]&#39;, &#39;ref_id&#39;: None}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Biosafety and Health xxx (xxxx) xxx&#39;}, {&#39;text&#39;: &quot;The first question is why did this virus spread so rapidly, and how can we deal with this risk? China has changed significantly since the emergence of SARS in 2002-2003. The economy has expanded, and many people have become wealthier, leading to an expansion of air and high-speed train travel. It is estimated that 3 billion individual journeys were planned during the Lunar New Year holiday (Chunyun), around 80 million of these being flights. The flight habits of Chinese citizens have changed alsowith many more flying internationally for business or tourism. In addition, since 2003, there has been an increase in travel between China and African countries, across Southeast Asia and into the New World as part of China&#39;s expansion of business and trade. This largely explains why the virus was able to spread out of China much more rapidly than SARS-CoV, which took over 2 months to move to Hong Kong then to the rest of the world.&quot;, &#39;cite_spans&#39;: [], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Biosafety and Health xxx (xxxx) xxx&#39;}, {&#39;text&#39;: &#39;The second question is what is the source of this virus? The evidence is fairly clear: Most of the initial cases were linked to a seafood market that also sold butchered livestock meat and some wildlife. The virus itself appears to have a wildlife (bat) origin similar to SARS-CoV, which also emerged in a wildlife market through the interactions of humans and other animals that acted as the intermediate hosts of the virus [3, 8, 9] . With two disease outbreaks originating in China significantly linked to wildlife markets, this is an obvious target for control programs to prevent future epedemics and pandemics. Indeed, there have already been calls from Chinese conservationists, public health leaders and policy makers to reduce the wildlife consumption. However, banning or even reducing the sale of wild game may not be straightforward and it is challenging to change behaviors that are influenced by Chinese culture and traditions. In addition to a strong belief in the purported curative power of wildlife and their by-products, the consumption of the rare and expensive wildlife has become a social statement of wealth boosted by economic growth. Changing these cultural habits will take time, however, recent behavioral questionnaire data suggests a generational transformation with reduced wildlife consumption in the younger generation [10] . There is no doubt, however, that the wildlife trade has an inherent risk of bringing people close to pathogens that wildlife carry, that we have not yet encountered, and that have the potential of leading to the next outbreak.&#39;, &#39;cite_spans&#39;: [{&#39;start&#39;: 425, &#39;end&#39;: 428, &#39;text&#39;: &#39;[3,&#39;, &#39;ref_id&#39;: &#39;BIBREF2&#39;}, {&#39;start&#39;: 429, &#39;end&#39;: 431, &#39;text&#39;: &#39;8,&#39;, &#39;ref_id&#39;: &#39;BIBREF10&#39;}, {&#39;start&#39;: 432, &#39;end&#39;: 434, &#39;text&#39;: &#39;9]&#39;, &#39;ref_id&#39;: &#39;BIBREF11&#39;}, {&#39;start&#39;: 1351, &#39;end&#39;: 1355, &#39;text&#39;: &#39;[10]&#39;, &#39;ref_id&#39;: &#39;BIBREF12&#39;}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Biosafety and Health xxx (xxxx) xxx&#39;}, {&#39;text&#39;: &#39;Here, we propose three key steps to helping reduce the risk of a future epidemic similar to that caused by the novel coronavirus 2019-nCoV: 1) Surveillance of wildlife for high-risk pathogens Over the past 10 years collaborating with scientists in China, we collected samples from over 10,000 bats and~2000 other mammals across South China and discovered 52 novel SARSr-CoVs, 122 other β-CoVs, more than 350 novel α-CoVs (including the new Swine Acute Diarrheal Syndrome Coronavirus SADS-CoV), and a new &quot;lineage E&quot; β-CoV clade [11, 12] . We found SARS-related CoVs that can bind to human cells, and that cause SARS-like disease in humanized mouse models that was not prevented with a vaccine candidate against SARS-CoV, and were not treatable with almost all of the monoclonal therapies being developed for SARS [8, [13] [14] [15] [16] . Finally, we showed serological evidence that people living at the wildlife-human interface in rural China were being exposed to SARSrelated coronaviruses, perhaps even the same virus as nCoV-2019, between the emergence of SARS and the current outbreak [17, 18] . Together these data mark wildlife-origin coronaviruses as a \&#39;clear and present danger\&#39;. They also highlight exactly the issue of key concern in the current outbreakthat there is a large diversity of viral strains in wildlife in China with significant potential for emergence in people. Further, we estimate that there are thousands of other CoVs in bats across Southeast Asia, many of which will have pandemic potential. We strongly urge that scientists in these countries work to discover all of these viruses so that we can catalog them, develop a reference library for rapid pathogen identification and risk assessment, and test vaccines and therapies against them [19, 20] .&#39;, &#39;cite_spans&#39;: [{&#39;start&#39;: 528, &#39;end&#39;: 532, &#39;text&#39;: &#39;[11,&#39;, &#39;ref_id&#39;: None}, {&#39;start&#39;: 533, &#39;end&#39;: 536, &#39;text&#39;: &#39;12]&#39;, &#39;ref_id&#39;: &#39;BIBREF16&#39;}, {&#39;start&#39;: 813, &#39;end&#39;: 816, &#39;text&#39;: &#39;[8,&#39;, &#39;ref_id&#39;: &#39;BIBREF10&#39;}, {&#39;start&#39;: 817, &#39;end&#39;: 821, &#39;text&#39;: &#39;[13]&#39;, &#39;ref_id&#39;: &#39;BIBREF17&#39;}, {&#39;start&#39;: 822, &#39;end&#39;: 826, &#39;text&#39;: &#39;[14]&#39;, &#39;ref_id&#39;: None}, {&#39;start&#39;: 827, &#39;end&#39;: 831, &#39;text&#39;: &#39;[15]&#39;, &#39;ref_id&#39;: &#39;BIBREF20&#39;}, {&#39;start&#39;: 832, &#39;end&#39;: 836, &#39;text&#39;: &#39;[16]&#39;, &#39;ref_id&#39;: &#39;BIBREF21&#39;}, {&#39;start&#39;: 1091, &#39;end&#39;: 1095, &#39;text&#39;: &#39;[17,&#39;, &#39;ref_id&#39;: None}, {&#39;start&#39;: 1096, &#39;end&#39;: 1099, &#39;text&#39;: &#39;18]&#39;, &#39;ref_id&#39;: &#39;BIBREF24&#39;}, {&#39;start&#39;: 1770, &#39;end&#39;: 1774, &#39;text&#39;: &#39;[19,&#39;, &#39;ref_id&#39;: &#39;BIBREF25&#39;}, {&#39;start&#39;: 1775, &#39;end&#39;: 1778, &#39;text&#39;: &#39;20]&#39;, &#39;ref_id&#39;: &#39;BIBREF26&#39;}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Biosafety and Health xxx (xxxx) xxx&#39;}, {&#39;text&#39;: &quot;The finding of people in a small sample of rural communities in southern China seropositive for a bat SARSr-CoV suggests that bat-origin coronaviruses commonly spillover in the region [18] . Single cases or small clusters of human infection may evade surveillanceparticularly in regions and countries that border China with less healthcare capacity or rural areas where people don&#39;t seek diagnosis or treatment in a timely fashion. Surveillance programs can be designed by local public health authorities to identify communities living in regions with high wildlife diversity and likely high diversity of novel viruses [21] . People with frequent contact with wild or domestic animals related to their livelihood and occupation, and patients presenting acute respiratory infection (ARI) or influenza-like illness (ILI) symptoms with unknown etiology can be included into the surveillance as a cost-effective method to identify novel virus spillovers. This &#39;pre-outbreak surveillance&#39; strategy can be coordinated with different sectors of public health, healthcare, agriculture and forestry to implement sample collection and testing of wildlife, domestic animals, and people in collaboration with research institutions. These efforts will help identify and characterize viral genetic sequence, identify high-risk human populations with antibodies and cell-mediated immunity responses to wildlife-origin CoVs [22] , as well as the risk factors in human behaviors and living environment through interviews. Evidencebased strategies to reduce risk can then be designed and implemented in the communities where viral spillover is identified.&quot;, &#39;cite_spans&#39;: [{&#39;start&#39;: 184, &#39;end&#39;: 188, &#39;text&#39;: &#39;[18]&#39;, &#39;ref_id&#39;: &#39;BIBREF24&#39;}, {&#39;start&#39;: 619, &#39;end&#39;: 623, &#39;text&#39;: &#39;[21]&#39;, &#39;ref_id&#39;: &#39;BIBREF27&#39;}, {&#39;start&#39;: 1408, &#39;end&#39;: 1412, &#39;text&#39;: &#39;[22]&#39;, &#39;ref_id&#39;: &#39;BIBREF28&#39;}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;2) Surveillance and risk reduction in people at high risk of contact with wildlife&#39;}, {&#39;text&#39;: &quot;The wildlife trade has clearly played a role in the emergence of 2019-nCoV, as well as previous diseases in China (SARS) and across the world (e.g. monkeypox in the USA, Ebola in Africa, salmonellosis in the USA and Europe). China&#39;s response in the current outbreak was swift and broad: The index market was closed down immediately and once the virus spread, the wildlife trade was banned temporarily in certain provinces, then nationally. Our recent behavioral risk investigations in China identified low levels of environmental biosecurity and high levels of human-animal contact as key risk factors for zoonotic disease emergence, particularly in local wet and animal markets [23] . While the current wildlife trade bans may help disease control at this moment, to prevent future disease emergence, market biosecurity needs to be improved regarding the hygiene and sanitation facilities and regulations, and the source of animals traded at the market. From a viral emergence perspective, farmed animals are likely a lower risk than wild-caught animals. However, given the size of the wildlife farming industry in China, routine disease surveillance and veterinary care at farms and in transport to markets would need to be improved. The connection between this outbreak and wildlife trade have triggered a strong public opinion against wildlife consumption, and scientists have jointly called for an urgent amendment of the Wildlife Protection Law to standardize and manage wildlife trade as a public health and security issue. It requires collaboration among the State Forestry and Grassland Administration, Ministry of Agriculture and Rural Affairs, State Administration for Market Regulation and public health authorities to tackle this issue as a long-term goal.&quot;, &#39;cite_spans&#39;: [{&#39;start&#39;: 679, &#39;end&#39;: 683, &#39;text&#39;: &#39;[23]&#39;, &#39;ref_id&#39;: &#39;BIBREF29&#39;}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;3) Improve biosecurity of the wildlife trade and animal markets&#39;}, {&#39;text&#39;: &quot;Dealing with the risk of future epidemics and pandemics requires a global effort. China is located within a major &#39;emerging disease hotspot&#39; in Southeast Asia, but there is also a high risk of future diseases originating in sub-Saharan Africa, South Asia and Latin America [24] . Furthermore, the drivers of disease emergence are human activities that are expanding on a global scale, including deforestation, agricultural intensification and the wildlife trade. This has led to an exponential increase in the frequency of animal-human contact and likelihood of novel disease emergence and spread, suggesting that pandemics will become more frequent and more devastating in the future. These threats face all countries because once diseases emerge, they travel rapidly and freely through our global networks of travel and trade. We look forward to continued collaboration among scientists from China and the rest of the world, and to helping develop these new strategies to preventing the next pandemic.&quot;, &#39;cite_spans&#39;: [{&#39;start&#39;: 273, &#39;end&#39;: 277, &#39;text&#39;: &#39;[24]&#39;, &#39;ref_id&#39;: &#39;BIBREF30&#39;}], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;3) Improve biosecurity of the wildlife trade and animal markets&#39;}], &#39;bib_entries&#39;: {&#39;BIBREF0&#39;: {&#39;ref_id&#39;: &#39;b0&#39;, &#39;title&#39;: &#39;A novel coronavirus from patients with pneumonia in China&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;D&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Song&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Huang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;R&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Lu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Niu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;F&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhan&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ma&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;D&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Tan&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2019, &#39;venue&#39;: &#39;&#39;, &#39;volume&#39;: &#39;&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1056/NEJMoa2001017&#39;]}}, &#39;BIBREF1&#39;: {&#39;ref_id&#39;: &#39;b1&#39;, &#39;title&#39;: &#39;An outbreak of NCIP (2019-nCoV) infection in China -Wuhan&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;Q&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2019, &#39;venue&#39;: &#39;The 2019-nCoV Outbreak Joint Field Epidemiology Investigation Team&#39;, &#39;volume&#39;: &#39;2&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;79--80&#39;, &#39;other_ids&#39;: {}}, &#39;BIBREF2&#39;: {&#39;ref_id&#39;: &#39;b2&#39;, &#39;title&#39;: &#39;Bats are natural reservoirs of SARS-like coronaviruses&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ren&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Smith&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [&#39;H&#39;], &#39;last&#39;: &#39;Epstein&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Crameri&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Mceachern&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Field&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [&#39;T&#39;], &#39;last&#39;: &#39;Eaton&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;S&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L.-F&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2005, &#39;venue&#39;: &#39;&#39;, &#39;volume&#39;: &#39;310&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;676--679&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1126/science.1118391&#39;]}}, &#39;BIBREF5&#39;: {&#39;ref_id&#39;: &#39;b5&#39;, &#39;title&#39;: &#39;Discovery of a novel coronavirus associated with the recent pneumonia outbreak in humans and its potential bat origin, bioRxiv (2020) https&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z.-L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xiao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: None, &#39;venue&#39;: &#39;&#39;, &#39;volume&#39;: &#39;&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1101/2020.01.22.914952&#39;]}}, &#39;BIBREF6&#39;: {&#39;ref_id&#39;: &#39;b6&#39;, &#39;title&#39;: &#39;Clinical features of patients infected with 2019 novel coronavirus in&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Huang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ren&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Fan&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Gu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Cheng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;T&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xia&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wei&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xie&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yin&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Liu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xiao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Guo&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xie&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;R&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Jiang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Q&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Jin&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Cao&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2020, &#39;venue&#39;: &#39;&#39;, &#39;volume&#39;: &#39;&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;30183--30188&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1016/S0140-6736(20)30183-5&#39;]}}, &#39;BIBREF8&#39;: {&#39;ref_id&#39;: &#39;b8&#39;, &#39;title&#39;: &#39;A familial cluster of pneumonia associated with the 2019 novel coronavirus indicating person-to-person transmission: a study of a family cluster&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;J.-P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ip&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;V&#39;, &#39;middle&#39;: [&#39;C&#39;], &#39;last&#39;: &#39;Cai&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Cheng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [&#39;K&#39;], &#39;last&#39;: &#39;Chen&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;K.-Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hui&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yuen&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2020, &#39;venue&#39;: &#39;Lancet&#39;, &#39;volume&#39;: &#39;&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;30154--30163&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1016/S0140-6736(20)30154-9&#39;]}}, &#39;BIBREF9&#39;: {&#39;ref_id&#39;: &#39;b9&#39;, &#39;title&#39;: &#39;China in action: national strategies to combat against emerging infectious diseases&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Han&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Gu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [&#39;J&#39;], &#39;last&#39;: &#39;Liu&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;Sci. China Life Sci&#39;, &#39;volume&#39;: &#39;60&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;1383--1385&#39;, &#39;other_ids&#39;: {}}, &#39;BIBREF10&#39;: {&#39;ref_id&#39;: &#39;b10&#39;, &#39;title&#39;: &#39;Isolation and characterization of a bat SARSlike coronavirus that uses the ACE2 receptor&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [&#39;Y&#39;], &#39;last&#39;: &#39;Ge&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [&#39;L&#39;], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [&#39;L&#39;], &#39;last&#39;: &#39;Yang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;A&#39;, &#39;middle&#39;: [&#39;A&#39;], &#39;last&#39;: &#39;Chmura&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [&#39;H&#39;], &#39;last&#39;: &#39;Epstein&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [&#39;K&#39;], &#39;last&#39;: &#39;Mazet&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Peng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [&#39;J&#39;], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [&#39;M&#39;], &#39;last&#39;: &#39;Luo&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Tan&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Crameri&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;S&#39;, &#39;middle&#39;: [&#39;Y&#39;], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z&#39;, &#39;middle&#39;: [&#39;L&#39;], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2013, &#39;venue&#39;: &#39;Nature&#39;, &#39;volume&#39;: &#39;503&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;535--538&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1038/nature12711&#39;]}}, &#39;BIBREF11&#39;: {&#39;ref_id&#39;: &#39;b11&#39;, &#39;title&#39;: &#39;Bats, civets and the emergence of SARS, Wildlife and Emerging Zoonotic Diseases: The Biology, Circumstances and Consequences of Cross-Species Transmission&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;L.-F&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [&#39;T&#39;], &#39;last&#39;: &#39;Eaton&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2007, &#39;venue&#39;: &#39;&#39;, &#39;volume&#39;: &#39;&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;325--344&#39;, &#39;other_ids&#39;: {}}, &#39;BIBREF12&#39;: {&#39;ref_id&#39;: &#39;b12&#39;, &#39;title&#39;: &#39;Wildlife consumption and conservation awareness in China: a long way to go&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;F&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yin&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2014, &#39;venue&#39;: &#39;Biodivers. Conserv&#39;, &#39;volume&#39;: &#39;23&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;2371--2381&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1007/s10531-014-0708-4&#39;]}}, &#39;BIBREF15&#39;: {&#39;ref_id&#39;: &#39;b15&#39;, &#39;title&#39;: &#39;Fatal swine acute diarrhoea syndrome caused by an HKU2-related coronavirus of bat origin&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;J.-Y.&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Tong&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ma&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2018, &#39;venue&#39;: &#39;Nature&#39;, &#39;volume&#39;: &#39;556&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;255--258&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1038/s41586-018-0010-9&#39;]}}, &#39;BIBREF16&#39;: {&#39;ref_id&#39;: &#39;b16&#39;, &#39;title&#39;: &#39;Discovery of a rich gene pool of bat SARS-related coronaviruses provides new insights into the origin of SARS coronavirus&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L.-P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zeng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X.-L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X.-Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ge&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;B&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J.-Z&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Xie&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X.-R&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Shen&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y.-Z&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;D.-S&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Luo&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X.-S&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zheng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;M.-N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L.-F&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Cui&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z.-L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;PLoS Pathog&#39;, &#39;volume&#39;: &#39;13&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1371/journal.ppat.1006698&#39;]}}, &#39;BIBREF17&#39;: {&#39;ref_id&#39;: &#39;b17&#39;, &#39;title&#39;: &#39;Viruses in bats and potential spillover to animals and humans&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;D&#39;, &#39;middle&#39;: [&#39;E&#39;], &#39;last&#39;: &#39;Anderson&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2019, &#39;venue&#39;: &#39;Curr Opin Virol&#39;, &#39;volume&#39;: &#39;34&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;79--89&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1016/j.coviro.2018.12.007&#39;]}}, &#39;BIBREF19&#39;: {&#39;ref_id&#39;: &#39;b19&#39;, &#39;title&#39;: &#39;Isolation and characterization of a novel bat coronavirus closely related to the direct progenitor of severe acute respiratory syndrome coronavirus&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2016, &#39;venue&#39;: &#39;J. Virol&#39;, &#39;volume&#39;: &#39;90&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;3253--3256&#39;, &#39;other_ids&#39;: {}}, &#39;BIBREF20&#39;: {&#39;ref_id&#39;: &#39;b20&#39;, &#39;title&#39;: &#39;Jumping species-a mechanism for coronavirus persistence and survival&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;V&#39;, &#39;middle&#39;: [&#39;D&#39;], &#39;last&#39;: &#39;Menachery&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;R&#39;, &#39;middle&#39;: [&#39;L&#39;], &#39;last&#39;: &#39;Graham&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;R&#39;, &#39;middle&#39;: [&#39;S&#39;], &#39;last&#39;: &#39;Baric&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;Curr. Opin. Virol&#39;, &#39;volume&#39;: &#39;23&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;1--7&#39;, &#39;other_ids&#39;: {}}, &#39;BIBREF21&#39;: {&#39;ref_id&#39;: &#39;b21&#39;, &#39;title&#39;: &#39;Cross-neutralization of SARS coronavirus-specific antibodies against bat SARS-like coronaviruses&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [&#39;P&#39;], &#39;last&#39;: &#39;Zeng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;X&#39;, &#39;middle&#39;: [&#39;Y&#39;], &#39;last&#39;: &#39;Ge&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Peng&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Tai&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;S&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Jiang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Du&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Z&#39;, &#39;middle&#39;: [&#39;L&#39;], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;Sci. China Life Sci&#39;, &#39;volume&#39;: &#39;60&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;1399--1402&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1007/s11427-017-9189-3&#39;]}}, &#39;BIBREF23&#39;: {&#39;ref_id&#39;: &#39;b23&#39;, &#39;title&#39;: &#39;Serological evidence of bat SARS-related coronavirus infection in humans, China&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Shi&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2018, &#39;venue&#39;: &#39;Virol Sin&#39;, &#39;volume&#39;: &#39;33&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;104--107&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1007/s12250-018-0012-7&#39;]}}, &#39;BIBREF24&#39;: {&#39;ref_id&#39;: &#39;b24&#39;, &#39;title&#39;: &#39;Human-animal interactions and bat coronavirus spillover potential among rural residents in Southern China&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;E&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Mendelsohn&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zong&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;E&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hagan&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Wang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;S&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Yan&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Huang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhu&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2019, &#39;venue&#39;: &#39;Biosafety and Health&#39;, &#39;volume&#39;: &#39;1&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;84--90&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1016/j.bsheal.2019.10.004&#39;]}}, &#39;BIBREF25&#39;: {&#39;ref_id&#39;: &#39;b25&#39;, &#39;title&#39;: &#39;The global virome project&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;D&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Carroll&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [&#39;D&#39;], &#39;last&#39;: &#39;Wolfe&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [&#39;M&#39;], &#39;last&#39;: &#39;Morel&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;S&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Morzaria&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;A&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Pablos-Méndez&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;O&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Tomori&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;J&#39;, &#39;middle&#39;: [&#39;A&#39;], &#39;last&#39;: &#39;Mazet&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2018, &#39;venue&#39;: &#39;Science&#39;, &#39;volume&#39;: &#39;359&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;872--874&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1016/j.ijid.2016.11.097&#39;]}}, &#39;BIBREF26&#39;: {&#39;ref_id&#39;: &#39;b26&#39;, &#39;title&#39;: &#39;A&quot; IV to &quot;Z&quot; IKV: attacks from emerging and re-emerging pathogens&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2018, &#39;venue&#39;: &#39;Cell&#39;, &#39;volume&#39;: &#39;172&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;1157--1159&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1016/j.cell.2018.02.025&#39;]}}, &#39;BIBREF27&#39;: {&#39;ref_id&#39;: &#39;b27&#39;, &#39;title&#39;: &#39;Host and viral traits predict zoonotic spillover from mammals&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;K&#39;, &#39;middle&#39;: [&#39;J&#39;], &#39;last&#39;: &#39;Olival&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [&#39;R&#39;], &#39;last&#39;: &#39;Hosseini&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zambrana-Torrelio&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Ross&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;T&#39;, &#39;middle&#39;: [&#39;L&#39;], &#39;last&#39;: &#39;Bogich&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;Nature&#39;, &#39;volume&#39;: &#39;546&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;646--650&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1038/nature22975&#39;]}}, &#39;BIBREF28&#39;: {&#39;ref_id&#39;: &#39;b28&#39;, &#39;title&#39;: &#39;Human T-cell immunity against the emerging and re-emerging viruses&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;K&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Liu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [&#39;F&#39;], &#39;last&#39;: &#39;Gao&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;W&#39;, &#39;middle&#39;: [&#39;J&#39;], &#39;last&#39;: &#39;Liu&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;Sci. China Life Sci&#39;, &#39;volume&#39;: &#39;60&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;1307--1316&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1007/s11427-017-9241-3&#39;]}}, &#39;BIBREF29&#39;: {&#39;ref_id&#39;: &#39;b29&#39;, &#39;title&#39;: &#39;A qualitative study of zoonotic risk among rural communities in Southern China&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;H&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Li&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;G&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhu&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;Y&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zhang&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;E&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Hagan&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Stephanie&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;A&#39;, &#39;middle&#39;: [&#39;A&#39;], &#39;last&#39;: &#39;Chmura&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;L&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Francisco&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;T&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Tai&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Maureen&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2020, &#39;venue&#39;: &#39;International Health&#39;, &#39;volume&#39;: &#39;12&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;1--9&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1093/inthealth/ihaa001&#39;]}}, &#39;BIBREF30&#39;: {&#39;ref_id&#39;: &#39;b30&#39;, &#39;title&#39;: &#39;Global hotspots and correlates of emerging zoonotic diseases&#39;, &#39;authors&#39;: [{&#39;first&#39;: &#39;T&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Allen&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;K&#39;, &#39;middle&#39;: [&#39;A&#39;], &#39;last&#39;: &#39;Murray&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Zambrana-Torrelio&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;S&#39;, &#39;middle&#39;: [&#39;S&#39;], &#39;last&#39;: &#39;Morse&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;C&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Rondinini&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;M&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Marco&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;N&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Breit&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;K&#39;, &#39;middle&#39;: [&#39;J&#39;], &#39;last&#39;: &#39;Olival&#39;, &#39;suffix&#39;: &#39;&#39;}, {&#39;first&#39;: &#39;P&#39;, &#39;middle&#39;: [], &#39;last&#39;: &#39;Daszak&#39;, &#39;suffix&#39;: &#39;&#39;}], &#39;year&#39;: 2017, &#39;venue&#39;: &#39;Nat. Commun&#39;, &#39;volume&#39;: &#39;8&#39;, &#39;issn&#39;: &#39;&#39;, &#39;pages&#39;: &#39;&#39;, &#39;other_ids&#39;: {&#39;DOI&#39;: [&#39;10.1038/s41467-017-00923-8&#39;]}}}, &#39;ref_entries&#39;: {&#39;FIGREF0&#39;: {&#39;text&#39;: &#39;E-mail address: daszak@ecohealthalliance.org. (Peter Daszak).&#39;, &#39;latex&#39;: None, &#39;type&#39;: &#39;figure&#39;}, &#39;FIGREF1&#39;: {&#39;text&#39;: &#39;http://dx.doi.org/10.1016/j.bsheal.2020.01.003 2590-0536/© 2020 Chinese Medical Association Publishing House. Published by Elsevier B.V. This is an open access article under the CC BY-NC-ND license (http:// creativecommons.org/licenses/by-nc-nd/4this article as: P. Daszak, K.J. Olival and H. Li, , Biosafety and Health, http://dx.doi.org/10.1016/j.bsheal.2020.01.003&#39;, &#39;latex&#39;: None, &#39;type&#39;: &#39;figure&#39;}}, &#39;back_matter&#39;: [{&#39;text&#39;: &#39;The authors declare that there are no conflicts of interest.&#39;, &#39;cite_spans&#39;: [], &#39;ref_spans&#39;: [], &#39;section&#39;: &#39;Conflflict of interest statement&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-covid-19-data-johns-hopkins-overview">Section 1: Covid-19 Data Johns Hopkins Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-the-mongodb-server">Connect to the MongoDB server</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-the-databases-and-collections">List the databases and collections</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-the-available-databases">List the available databases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-database">Select a database</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-database-collections">List database collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#select-collection">Select Collection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#queries">Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-record-query">Single Record Query</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-record-query">Multiple Record Query</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-all-documents-in-a-collection">Counting all documents in a collection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projecting">Projecting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering">Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-value-filter">Single Value Filter</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-or-query">Boolean OR query</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-in">Using IN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-and">Using AND</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinct-values">Distinct Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregations">Aggregations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sorting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregations-across-several-records">Aggregations across several records</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-dataframes">Pandas dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-upload-data">Section 2. Upload Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Olga Scrivner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

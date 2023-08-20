@@ -71,7 +71,25 @@ Amazon runs two models for businesses: 1P and 3P. For 1P, Amazon is the retailer
     - Columns
         - attributes
 
-### Types of Databases
+## Database Selection
+
+> The success of a software application often hinges on the choice of the right databases. 
+<small>Alex Xu. 2023. Understanding Database Types</small>
+
+Learning objectives: the art of database selection
+
+The process of database selection is guided by
+- Database types (Relational, noSQL, Time-series, NewSQL)
+- Various factors influenicng selection
+   - Cost, security, performance, scalability, data model
+
+
+
+### Understanding Database Types
+Database management systems are ranked according to their popularity.
+![database types](_static/module1_database_types.png)
+
+
 
 Below is the main difference between NoSQL and SQL:
 
