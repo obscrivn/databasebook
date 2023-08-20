@@ -1,7 +1,7 @@
-## Basic Concepts
+# Basic Concepts
 
 <small>Source: Fundamentals of Database Systems (Elmasri) </small>
-### Applied Database Technologies
+## Applied Database Technologies
 Database management systems are ranked according to their popularity.
 ![](_static/db-rank.png)
 
@@ -12,7 +12,7 @@ Database management systems are ranked according to their popularity.
 As of June 2021, the most popular commercial database management system (DBMS) in the world was Oracle, MySQL and Microsoft SQL server. Free and open-source DBMSs such as PostgreSQL and Apache Cassandra remain highly competitive. The most popular open source database management system (DBMS) in the world was MySQL.
 <small>[https://www.statista.com/statistics/809750/worldwide-popularity-ranking-database-management-systems/#statisticContainer](https://www.statista.com/statistics/809750/worldwide-popularity-ranking-database-management-systems/#statisticContainer) (Shanhong Liu June 2021)</small>
 
-#### What is Database?
+### What is Database?
 
 A database is a collection of **related data**. For example, consider the names, telephone numbers, and addresses of the people you know. A database has the following properties:
 
@@ -22,7 +22,7 @@ A database is a collection of **related data**. For example, consider the names,
 
 * A database is designed, built, and populated with data for a specific purpose. It has an intended group of users and some preconceived applications in which these users are interested.
 
-#### Database Management System
+### Database Management System
 
 > A database management system (DBMS) is a computerized system that enables users to create and maintain a database. The DBMS is a general-purpose software system that facilitates the processes of **defining**, **constructing**, **manipulating**, **sharing**, **protecting** and **maintaning**.
 
@@ -40,7 +40,7 @@ A database is a collection of **related data**. For example, consider the names,
 
 - **Maintainance**: allowing system to evolve over time
 
-##### Example: Amazon 
+#### Example: Amazon 
 
 Let's look at one of the largest commercial databases. Amazon is responsible for 386 billion revenue in 2020.
 
@@ -57,7 +57,7 @@ Amazon runs two models for businesses: 1P and 3P. For 1P, Amazon is the retailer
 
 <small>Source: [https://www.businessofapps.com/data/amazon-statistics/](https://www.businessofapps.com/data/amazon-statistics/)</small>
 
-### Database Components
+## Database Components
 
 - Entity: 
     - a person, place, event, or thing about which data is collected
@@ -71,7 +71,25 @@ Amazon runs two models for businesses: 1P and 3P. For 1P, Amazon is the retailer
     - Columns
         - attributes
 
-### Types of Databases
+## Database Selection
+
+> The success of a software application often hinges on the choice of the right databases. 
+<small>Alex Xu. 2023. Understanding Database Types</small>
+
+Learning objectives: the art of database selection
+
+The process of database selection is guided by
+- Database types (Relational, noSQL, Time-series, NewSQL)
+- Various factors influenicng selection
+   - Cost, security, performance, scalability, data model
+
+
+
+## Understanding Database Types
+Database management systems are ranked according to their popularity.
+![database types](_static/module1_database_types.png)
+
+
 
 Below is the main difference between NoSQL and SQL:
 

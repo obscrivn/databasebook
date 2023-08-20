@@ -1,4 +1,4 @@
-## SQLite
+# SQLite
 
 >SQLite is an open-source, zero-configuration, self-contained, stand-alone, transaction relational database engine designed to be embedded into an application.
 
@@ -10,7 +10,7 @@ Sqlite was designed by D. Richard Hipp in 2000 for the purpose of no administrat
 
 <small>Source: [https://www.geeksforgeeks.org/introduction-to-sqlite/](https://www.geeksforgeeks.org/introduction-to-sqlite/)</small>
 
-### Sqlite Basics
+## Sqlite Basics
 
 Python has a native library for SQLite3 called sqlite3.
 <small>Source: [https://www.geeksforgeeks.org/sql-using-python/](https://www.geeksforgeeks.org/sql-using-python/)</small>
@@ -28,7 +28,7 @@ The relation between SQLite datatypes and Python datatypes:
 
 Below are various steps using sqlite in python:
 
-#### Connect
+### Connect
 **Step 1. Connecting to SQLite Database**
 - we must import sqlite3
 ```
@@ -47,7 +47,7 @@ connection = sqlite3.connect('mydatabase.db')
 ```
 cursor = connection.cursor()
 ```
-#### Create
+### Create
 **Step 5. Create a table**
 ```
 sql_command = """CREATE TABLE emp ( 
@@ -63,7 +63,7 @@ Or read from CSV
 read_emp = pd.read_csv(r'emp.csv')
 read_emp.to_sql('emp', conn, if_exists='append', index = False) 
 ```
-#### Execute
+### Execute
 **Step 6. Execute**
 
 ```
@@ -85,7 +85,7 @@ mydata = cursor.fetchall()
 for i in mydata:
     print(i)
 ```
-#### Close
+### Close
 **Step 10. Close connection**
 ```
 connection.close()
