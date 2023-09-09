@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Undestanding SQL &#8212; D-532 Applied Database Technologies</title>
+    <title>Join Types &#8212; D-532 Applied Database Technologies</title>
   
   
   
@@ -61,11 +61,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'week3';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'join';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Relational Algebra" href="algebra.html" />
-    <link rel="prev" title="SQLite" href="sqlite_intro.html" />
+    <link rel="prev" title="SQL Examples" href="ra_queries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,9 +161,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Undestanding SQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module2.html">Undestanding SQL</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Join Types</a></li>
 </ul>
 </li>
 </ul>
@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek3.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fjoin.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -268,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/week3.md" target="_blank"
+      <li><a href="_sources/join.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Undestanding SQL</h1>
+    <h1>Join Types</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -360,8 +360,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-algebra">Relational Algebra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-join-types">Database Join Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-join">Natural Join</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection">Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename">Rename</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-product">Cross Product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">Union</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">Intersect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Natural Join</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -373,23 +382,102 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="undestanding-sql">
-<h1>Undestanding SQL<a class="headerlink" href="#undestanding-sql" title="Permalink to this heading">#</a></h1>
-<section id="relational-algebra">
-<h2>Relational Algebra<a class="headerlink" href="#relational-algebra" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="algebra.html"><span class="doc std std-doc">Relational Algebra</span></a></p></li>
-<li><p><a class="reference internal" href="ra_queries.html"><span class="doc std std-doc">RA SQL queries</span></a></p></li>
-</ul>
+  <section id="join-types">
+<h1>Join Types<a class="headerlink" href="#join-types" title="Permalink to this heading">#</a></h1>
+<p><small>Source: <a class="reference external" href="https://www.geeksforgeeks.org/difference-between-natural-join-and-inner-join-in-sql/">https://www.geeksforgeeks.org/difference-between-natural-join-and-inner-join-in-sql/</a> </small></p>
+<section id="natural-join">
+<h2>Natural Join<a class="headerlink" href="#natural-join" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>Natural Join joins two tables based on same attribute name and datatypes. The resulting table will contain all the attributes of both the table but keep only one copy of each common column.</p>
+</div></blockquote>
+<p><img alt="" src="_images/rel_database.png" /></p>
 </section>
-<section id="database-join-types">
-<h2>Database Join Types<a class="headerlink" href="#database-join-types" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><span class="xref myst">Join Types</span></p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
+<section id="operators">
+<h2>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">#</a></h2>
+<section id="projection">
+<h3>Projection<a class="headerlink" href="#projection" title="Permalink to this heading">#</a></h3>
+<p>Projection is used to select the required columns of data from a relation. Note that projection removes duplicate data (tuples).</p>
+<blockquote>
+<div><p>Query: Member IDs of members who have borrowed books.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">member_id</span> <span class="n">FROM</span> <span class="n">borrow</span><span class="p">;</span>
+</pre></div>
 </div>
+<p><img alt="" src="_images/projection1.png" /></p>
+<blockquote>
+<div><p>Query: Member IDs of members and the Book IDs of the books they have borrowed books.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">member_id</span><span class="p">,</span><span class="n">book_id</span> <span class="n">FROM</span> <span class="n">borrow</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><img alt="" src="_images/projection2.png" /></p>
+</section>
+<section id="selection">
+<h3>Selection<a class="headerlink" href="#selection" title="Permalink to this heading">#</a></h3>
+<p>Selection is used to select the required tuples of data from a relation. During selection, we can specify certain conditions that the data must satisfy.</p>
+<blockquote>
+<div><p>Query: Rename the Member relation as LibraryMember</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">member_id</span><span class="p">,</span><span class="n">book_id</span> <span class="n">FROM</span> <span class="n">borrow</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><img alt="" src="_static/selection.png" /></p>
+</section>
+<section id="rename">
+<h3>Rename<a class="headerlink" href="#rename" title="Permalink to this heading">#</a></h3>
+<p>RENAME - altering the attribute name of the resultant relation or to give a specific name to the resultant relation.</p>
+<ul class="simple">
+<li><p>Remove confusion if two or more relations have attributes with the same name</p></li>
+<li><p>Provide user-friendly names for attributes, especially when interfacing with reporting engines</p></li>
+<li><p>Provide a convenient way to change the relation definition and still be backward compatible</p></li>
+</ul>
+<p>In SQL we would translate the RENAME operator using the SQL ‘AS’ statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT dob AS ‘Birth_Date’, empno AS ‘Employee_Number’ FROM EMPLOYEE
+</pre></div>
+</div>
+</section>
+<section id="cross-product">
+<h3>Cross Product<a class="headerlink" href="#cross-product" title="Permalink to this heading">#</a></h3>
+<p>Cross product - combining data from two different relations into one relation. If we consider two relations; A with n tuples and B with m tuples, A ✕ B will consist of n.m tuples.</p>
+<blockquote>
+<div><p>Query: Member ✕ Borrow</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">member</span><span class="p">,</span><span class="n">borrow</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="union">
+<h3>Union<a class="headerlink" href="#union" title="Permalink to this heading">#</a></h3>
+<p>Union is very similar to that of set theory. Both the relations must have the same set of attributes.</p>
+<blockquote>
+<div><p>Query: Book IDs of the books borrowed by Charlie and Mike.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">book_id</span> <span class="n">FROM</span> <span class="n">member</span> <span class="n">natural</span> <span class="n">join</span> <span class="n">borrow</span> <span class="n">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Charlie&#39;</span> <span class="n">UNION</span>
+<span class="n">SELECT</span> <span class="n">book_id</span> <span class="n">FROM</span> <span class="n">member</span> <span class="n">natural</span> <span class="n">join</span> <span class="n">borrow</span> <span class="n">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Mike&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><img alt="" src="_images/union.png" /></p>
+</section>
+<section id="intersect">
+<h3>Intersect<a class="headerlink" href="#intersect" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Query: Member IDs of the members who have borrowed both the books “Fences” and “Inheritance”.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">borrow</span><span class="o">.</span><span class="n">member_id</span> <span class="n">FROM</span> <span class="n">borrow</span> 
+<span class="n">JOIN</span> <span class="n">book</span> <span class="n">ON</span> <span class="n">book</span><span class="o">.</span><span class="n">book_id</span> <span class="o">=</span> <span class="n">borrow</span><span class="o">.</span><span class="n">book_id</span> 
+<span class="n">WHERE</span> <span class="n">name</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;Fences&#39;</span><span class="p">,</span><span class="s1">&#39;Inheritance&#39;</span><span class="p">)</span>
+<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">member_id</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Natural Join<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Natural join between two or more relations will result in all the combination of tuples where they have equal values for the common attribute.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">member</span> <span class="n">NATURAL</span> <span class="n">JOIN</span> <span class="n">borrow</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -424,22 +512,13 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sqlite_intro.html"
+       href="ra_queries.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SQLite</p>
+        <p class="prev-next-title">SQL Examples</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="algebra.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Relational Algebra</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -459,8 +538,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-algebra">Relational Algebra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-join-types">Database Join Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-join">Natural Join</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection">Projection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection">Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename">Rename</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-product">Cross Product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#union">Union</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intersect">Intersect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Natural Join</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
