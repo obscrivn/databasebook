@@ -1,4 +1,4 @@
-## SQL Examples
+# SQL Examples
 
 -- Projection example
 ```

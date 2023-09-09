@@ -1,8 +1,8 @@
-## Relational Algebra
+# Relational Algebra
 
 <small>A Quick Guide to Relational Algebra Operators in DBMS </small>
 
-### Definition
+## Definition
 
 > Relational algebra is a family of algebras with a well-founded semantics used for modelling the data stored in relational databases, and defining queries on it.
 
@@ -13,9 +13,9 @@
 
 ![](_static/rel_database.png)
 
-### Operators
+## Operators
 
-#### Projection
+### Projection
 Projection is used to select the required columns of data from a relation. Note that projection removes duplicate data (tuples).
 
 > Query: Member IDs of members who have borrowed books.
@@ -31,7 +31,7 @@ SELECT DISTINCT member_id,book_id FROM borrow;
 ```
 ![](_static/projection2.png)
 
-#### Selection
+### Selection
 
 Selection is used to select the required tuples of data from a relation. During selection, we can specify certain conditions that the data must satisfy.
 
@@ -40,9 +40,9 @@ Selection is used to select the required tuples of data from a relation. During 
 ```
 SELECT DISTINCT member_id,book_id FROM borrow;
 ```
-![](_static/selection.png)
+![](_static/select.png)
 
-#### Rename
+### Rename
 
 RENAME - altering the attribute name of the resultant relation or to give a specific name to the resultant relation.
 - Remove confusion if two or more relations have attributes with the same name
@@ -54,7 +54,7 @@ In SQL we would translate the RENAME operator using the SQL ‘AS’ statement:
 SELECT dob AS ‘Birth_Date’, empno AS ‘Employee_Number’ FROM EMPLOYEE
 ```
 
-#### Cross Product
+### Cross Product
 
 
 Cross product - combining data from two different relations into one relation. If we consider two relations; A with n tuples and B with m tuples, A ✕ B will consist of n.m tuples.
@@ -65,7 +65,7 @@ Cross product - combining data from two different relations into one relation. I
 SELECT * FROM member,borrow;
 ```
 
-#### Union
+### Union
 
 Union is very similar to that of set theory. Both the relations must have the same set of attributes.
 
@@ -76,7 +76,7 @@ SELECT book_id FROM member natural join borrow where name='Mike';
 ```
 ![](_static/union.png)
 
-#### Intersect
+### Intersect
 
 
 > Query: Member IDs of the members who have borrowed both the books “Fences” and “Inheritance”.
@@ -88,7 +88,7 @@ WHERE name IN ('Fences','Inheritance')
 GROUP BY member_id;
 ```
 
-#### Natural Join
+### Natural Join
 
 Natural join between two or more relations will result in all the combination of tuples where they have equal values for the common attribute.
 ```

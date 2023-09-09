@@ -8,6 +8,6 @@
 
 ## Database Join Types
 
-- [Join Types]()
+- [Join Types](join.md)
 
 
