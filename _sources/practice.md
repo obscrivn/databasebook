@@ -123,7 +123,7 @@ DROP COLUMN Project2_ID;
 
 - In the new table we have Project and Customer ids and foreign key constraints on Projects and Customers ids
 ```sql
-REATE TABLE ProjectFeedback (
+CREATE TABLE ProjectFeedback (
 ID INT PRIMARY KEY AUTO_INCREMENT,
 ProjectID INT,
 CustomerID INT,
