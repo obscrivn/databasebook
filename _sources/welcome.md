@@ -1,4 +1,4 @@
-# Welcome to D-532 Applied Database Technologies Fall 23
+# Welcome to D-532 Applied Database Technologies Spring 24
 
 ![banner](_static/D-532-banner.gif)
 
