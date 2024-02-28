@@ -474,55 +474,63 @@ document.write(`
 <h4>List the available databases<a class="headerlink" href="#list-the-available-databases" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># uncomment </span>
+<span class="c1"># client.list_database_names()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-a-database">
+<h4>Select a database<a class="headerlink" href="#select-a-database" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_database</span><span class="p">(</span><span class="s2">&quot;covid19&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">covid19_db</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pymongo.database.Database
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-database-collections">
+<h4>List database collections<a class="headerlink" href="#list-database-collections" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">covid19_db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
 
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/mongo_client.py:1952,</span> in <span class="ni">MongoClient.list_database_names</span><span class="nt">(self, session, comment)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1934</span> <span class="k">def</span> <span class="nf">list_database_names</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1935</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1936</span>     <span class="n">session</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">client_session</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1937</span>     <span class="n">comment</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1938</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1939</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Get a list of the names of all databases on the connected server.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1940</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1941</span><span class="sd">     :Parameters:</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1950</span><span class="sd">     .. versionadded:: 3.6</span>
-<span class="g g-Whitespace">   </span><span class="mi">1951</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1952</span>     <span class="k">return</span> <span class="p">[</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_databases</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">nameOnly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">)]</span>
+<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/database.py:1147,</span> in <span class="ni">Database.list_collection_names</span><span class="nt">(self, session, filter, comment, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">filter</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="s2">&quot;name&quot;</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>         <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;nameOnly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">-&gt; </span><span class="mi">1147</span> <span class="k">return</span> <span class="p">[</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_collections</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
 
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/mongo_client.py:1925,</span> in <span class="ni">MongoClient.list_databases</span><span class="nt">(self, session, comment, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1923</span>     <span class="n">cmd</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comment</span>
-<span class="g g-Whitespace">   </span><span class="mi">1924</span> <span class="n">admin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_database_default_options</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1925</span> <span class="n">res</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">_retryable_read_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1926</span> <span class="c1"># listDatabases doesn&#39;t return a cursor (yet). Fake one.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1927</span> <span class="n">cursor</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">   </span><span class="mi">1928</span>     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1929</span>     <span class="s2">&quot;firstBatch&quot;</span><span class="p">:</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;databases&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1930</span>     <span class="s2">&quot;ns&quot;</span><span class="p">:</span> <span class="s2">&quot;admin.$cmd&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1931</span> <span class="p">}</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/database.py:1026,</span> in <span class="ni">Database._retryable_read_command</span><span class="nt">(self, command, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="k">def</span> <span class="nf">_cmd</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">session</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ClientSession</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">_server</span><span class="p">:</span> <span class="n">Server</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1016</span>     <span class="n">conn</span><span class="p">:</span> <span class="n">Connection</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1017</span>     <span class="n">read_preference</span><span class="p">:</span> <span class="n">_ServerMode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1019</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1020</span>         <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1021</span>         <span class="n">command</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>         <span class="n">read_preference</span><span class="o">=</span><span class="n">read_preference</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__client</span><span class="o">.</span><span class="n">_retryable_read</span><span class="p">(</span><span class="n">_cmd</span><span class="p">,</span> <span class="n">read_preference</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span>
+<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/database.py:1099,</span> in <span class="ni">Database.list_collections</span><span class="nt">(self, session, filter, comment, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1091</span> <span class="k">def</span> <span class="nf">_cmd</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1092</span>     <span class="n">session</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ClientSession</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1093</span>     <span class="n">_server</span><span class="p">:</span> <span class="n">Server</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1094</span>     <span class="n">conn</span><span class="p">:</span> <span class="n">Connection</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1095</span>     <span class="n">read_preference</span><span class="p">:</span> <span class="n">_ServerMode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1096</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CommandCursor</span><span class="p">[</span><span class="n">MutableMapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_list_collections</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">read_preference</span><span class="o">=</span><span class="n">read_preference</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1099</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__client</span><span class="o">.</span><span class="n">_retryable_read</span><span class="p">(</span><span class="n">_cmd</span><span class="p">,</span> <span class="n">read_pref</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span>
 
 <span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/mongo_client.py:1492,</span> in <span class="ni">MongoClient._retryable_read</span><span class="nt">(self, func, read_pref, session, address, retryable)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1487</span> <span class="c1"># Ensure that the client supports retrying on reads and there is no session in</span>
@@ -661,51 +669,6 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">326</span>         <span class="n">gotit</span> <span class="o">=</span> <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="select-a-database">
-<h4>Select a database<a class="headerlink" href="#select-a-database" title="Permalink to this heading">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_database</span><span class="p">(</span><span class="s2">&quot;covid19&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">covid19_db</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pymongo.database.Database
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="list-database-collections">
-<h4>List database collections<a class="headerlink" href="#list-database-collections" title="Permalink to this heading">#</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">covid19_db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;metadata&#39;,
- &#39;benford&#39;,
- &#39;global_and_us&#39;,
- &#39;system.views&#39;,
- &#39;global&#39;,
- &#39;us_only&#39;,
- &#39;countries_summary&#39;,
- &#39;benford_view&#39;,
- &#39;benford_view_world&#39;]
 </pre></div>
 </div>
 </div>
