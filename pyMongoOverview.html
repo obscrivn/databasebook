@@ -530,7 +530,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collection(Database(MongoClient(host=[&#39;covid-19-shard-00-01.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-02.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-00.hip2i.mongodb.net:27017&#39;], document_class=dict, tz_aware=False, connect=True, authsource=&#39;admin&#39;, replicaset=&#39;covid-19-shard-0&#39;, tls=True), &#39;covid19&#39;), &#39;countries_summary&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collection(Database(MongoClient(host=[&#39;covid-19-shard-00-00.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-01.hip2i.mongodb.net:27017&#39;, &#39;covid-19-shard-00-02.hip2i.mongodb.net:27017&#39;], document_class=dict, tz_aware=False, connect=True, authsource=&#39;admin&#39;, replicaset=&#39;covid-19-shard-0&#39;, tls=True), &#39;covid19&#39;), &#39;countries_summary&#39;)
 </pre></div>
 </div>
 </div>
@@ -544,89 +544,8 @@ document.write(`
 <p>To inspect just one record from the countries_summary collection, we can use the <code class="docutils literal notranslate"><span class="pre">find_one()</span></code> command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find_one</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">countries_summary_cl</span><span class="o">.</span><span class="n">find_one</span><span class="p">()</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/collection.py:1506,</span> in <span class="ni">Collection.find_one</span><span class="nt">(self, filter, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1504</span>     <span class="nb">filter</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="nb">filter</span><span class="p">}</span>
-<span class="g g-Whitespace">   </span><span class="mi">1505</span> <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="nb">filter</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1506</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1507</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">1508</span> <span class="k">return</span> <span class="kc">None</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/cursor.py:1264,</span> in <span class="ni">Cursor.next</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1262</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__empty</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1263</span>     <span class="k">raise</span> <span class="ne">StopIteration</span>
-<span class="ne">-&gt; </span><span class="mi">1264</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__data</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_refresh</span><span class="p">():</span>
-<span class="g g-Whitespace">   </span><span class="mi">1265</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__data</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1266</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/cursor.py:1155,</span> in <span class="ni">Cursor._refresh</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1152</span>     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__data</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1154</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1155</span>     <span class="bp">self</span><span class="o">.</span><span class="n">__session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collection</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">_ensure_session</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1157</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Query</span>
-<span class="g g-Whitespace">   </span><span class="mi">1158</span>     <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__min</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">__max</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__hint</span><span class="p">:</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/mongo_client.py:1823,</span> in <span class="ni">MongoClient._ensure_session</span><span class="nt">(self, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1818</span>     <span class="k">return</span> <span class="n">session</span>
-<span class="g g-Whitespace">   </span><span class="mi">1820</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1821</span>     <span class="c1"># Don&#39;t make implicit sessions causally consistent. Applications</span>
-<span class="g g-Whitespace">   </span><span class="mi">1822</span>     <span class="c1"># should always opt-in.</span>
-<span class="ne">-&gt; </span><span class="mi">1823</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__start_session</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">causal_consistency</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1824</span> <span class="k">except</span> <span class="p">(</span><span class="n">ConfigurationError</span><span class="p">,</span> <span class="n">InvalidOperation</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1825</span>     <span class="c1"># Sessions not supported.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1826</span>     <span class="k">return</span> <span class="kc">None</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/mongo_client.py:1766,</span> in <span class="ni">MongoClient.__start_session</span><span class="nt">(self, implicit, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1763</span> <span class="k">def</span> <span class="nf">__start_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">implicit</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClientSession</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1764</span>     <span class="c1"># Raises ConfigurationError if sessions are not supported.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1765</span>     <span class="k">if</span> <span class="n">implicit</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1766</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_topology</span><span class="o">.</span><span class="n">_check_implicit_session_support</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1767</span>         <span class="n">server_session</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">_EmptyServerSession</span><span class="p">,</span> <span class="n">_ServerSession</span><span class="p">]</span> <span class="o">=</span> <span class="n">_EmptyServerSession</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1768</span>     <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/topology.py:573,</span> in <span class="ni">Topology._check_implicit_session_support</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span> <span class="k">def</span> <span class="nf">_check_implicit_session_support</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">573</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_session_support</span><span class="p">()</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/topology.py:589,</span> in <span class="ni">Topology._check_session_support</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_select_servers_loop</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>             <span class="n">any_server_selector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_server_selection_timeout</span><span class="p">(),</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span><span class="o">.</span><span class="n">readable_servers</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">589</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_select_servers_loop</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">590</span>         <span class="n">readable_server_selector</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_server_selection_timeout</span><span class="p">(),</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">593</span> <span class="n">session_timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span><span class="o">.</span><span class="n">logical_session_timeout_minutes</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span> <span class="k">if</span> <span class="n">session_timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/Documents/IU-DataScience/Database/book/venv/lib/python3.10/site-packages/pymongo/topology.py:270,</span> in <span class="ni">Topology._select_servers_loop</span><span class="nt">(self, selector, timeout, address)</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request_check_all</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="c1"># Release the lock and wait for the topology description to</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="c1"># change, or for a timeout. We won&#39;t miss any changes that</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span> <span class="c1"># came after our most recent apply_selector call, since we&#39;ve</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span> <span class="c1"># held the lock until now.</span>
-<span class="ne">--&gt; </span><span class="mi">270</span> <span class="bp">self</span><span class="o">.</span><span class="n">_condition</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">MIN_HEARTBEAT_INTERVAL</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span> <span class="bp">self</span><span class="o">.</span><span class="n">_description</span><span class="o">.</span><span class="n">check_compatible</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span> <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
-
-<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/threading.py:324,</span> in <span class="ni">Condition.wait</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">324</span>         <span class="n">gotit</span> <span class="o">=</span> <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>         <span class="n">gotit</span> <span class="o">=</span> <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># uncomment</span>
+<span class="c1"># countries_summary_cl.find_one()</span>
 </pre></div>
 </div>
 </div>
@@ -644,16 +563,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Afghanistan 0
-{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f722f&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 22, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
-Afghanistan 0
-{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7230&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 23, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
-Afghanistan 0
-{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7231&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 24, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
-Afghanistan 0
-{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7232&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 25, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
-Afghanistan 0
-{&#39;_id&#39;: ObjectId(&#39;62af88c1f59d991d149f7233&#39;), &#39;uids&#39;: [4], &#39;confirmed&#39;: 0, &#39;deaths&#39;: 0, &#39;country&#39;: &#39;Afghanistan&#39;, &#39;date&#39;: datetime.datetime(2020, 1, 26, 0, 0), &#39;country_iso2s&#39;: [&#39;AF&#39;], &#39;country_iso3s&#39;: [&#39;AFG&#39;], &#39;country_codes&#39;: [4], &#39;combined_names&#39;: [&#39;Afghanistan&#39;], &#39;population&#39;: 38928341, &#39;recovered&#39;: 0, &#39;confirmed_daily&#39;: 0, &#39;deaths_daily&#39;: 0, &#39;recovered_daily&#39;: 0}
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KeyboardInterrupt
 </pre></div>
 </div>
 </div>
