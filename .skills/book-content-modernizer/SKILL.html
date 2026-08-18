@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Book Content Modernizer &#8212; D-532 Applied Database Technologies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '.skills/book-content-modernizer/SKILL';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="D-532 Applied Database Technologies - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="D-532 Applied Database Technologies - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../welcome.html">
+                    Welcome to D-532 Applied Database Technologies Spring 24
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../module1.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../why-databases-still-matter.html">Why Databases Still Matter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sqlite_intro.html">SQLite</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../module2.html">Undestanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../algebra.html">Relational Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ra_queries.html">SQL Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../join.html">Join Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../module3.html">Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../practice.html">Practice</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../week6.html">SQL vs noSQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../postgres.html">PostgreSQL and MySQL</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../week7.html">MongoDB Intergration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mongodb.html">MongoDB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pyMongoOverview.html">Mongo DB Cluster</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F.skills/book-content-modernizer/SKILL.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/.skills/book-content-modernizer/SKILL.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Book Content Modernizer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-priority">Source Priority</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-inputs">Weekly Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-source-preference">Weekly Source Preference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-pedagogical-input">Primary Pedagogical Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-week">1. Understand the Week</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-the-existing-book">2. Review the Existing Book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-current-relevance">3. Research Current Relevance</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="book-content-modernizer">
+<h1>Book Content Modernizer<a class="headerlink" href="#book-content-modernizer" title="Permalink to this heading">#</a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this heading">#</a></h2>
+<p>Modernize Jupyter Book content so students gain a current understanding of database technologies and why they remain important in modern software, data, AI, and agentic architectures.</p>
+<p>The book is supplemental to the lectures. It does not need to reproduce lecture content exactly or preserve the current chapter structure.</p>
+<p>The goal is to create useful, modern instructional material that:</p>
+<ul class="simple">
+<li><p>reinforces weekly lecture objectives</p></li>
+<li><p>explains why database concepts still matter</p></li>
+<li><p>connects foundational concepts to current systems</p></li>
+<li><p>develops practical and transferable database skills</p></li>
+<li><p>prepares students for Coding Practice and Labs</p></li>
+<li><p>provides useful material beyond what is covered directly in lecture</p></li>
+</ul>
+</section>
+<section id="source-priority">
+<h2>Source Priority<a class="headerlink" href="#source-priority" title="Permalink to this heading">#</a></h2>
+<p>When course materials conflict or represent different stages of the course, use this priority:</p>
+<p>current instructor instructions and redesign decisions
+current weekly lecture objectives and lecture notes
+current weekly Canvas overview
+existing Jupyter Book content
+legacy Coding Practice, Labs, and older course materials</p>
+<p>Do not allow outdated course artifacts to override current instructor decisions.</p>
+</section>
+<section id="weekly-inputs">
+<h2>Weekly Inputs<a class="headerlink" href="#weekly-inputs" title="Permalink to this heading">#</a></h2>
+<p>For each week, the user may provide:</p>
+<p>weekly Canvas overview
+lecture objectives
+lecture notes or topics
+relevant existing book chapter(s)
+Coding Practice
+Lab materials
+other supporting course resources</p>
+<p>The weekly overview provides course context, but it is not automatically the authoritative specification for the redesigned course.</p>
+<p>It may contain outdated grading rules, tools, dates, assignment structures, or terminology.</p>
+</section>
+<section id="weekly-source-preference">
+<h2>Weekly Source Preference<a class="headerlink" href="#weekly-source-preference" title="Permalink to this heading">#</a></h2>
+<p>When multiple versions of the same weekly overview are available, prefer sources in this order:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.txt</span></code> or source text copied from Canvas</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.html</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.pdf</span></code></p></li>
+</ol>
+<p>Use PDF mainly for visual or layout confirmation.</p>
+<p>Do not treat duplicate formats as separate course artifacts.</p>
+</section>
+<section id="primary-pedagogical-input">
+<h2>Primary Pedagogical Input<a class="headerlink" href="#primary-pedagogical-input" title="Permalink to this heading">#</a></h2>
+<p>For each week, the user will provide the lecture objectives or topics.</p>
+<p>Treat those objectives as the primary anchor for deciding:</p>
+<ul class="simple">
+<li><p>what book content is useful</p></li>
+<li><p>what should be added</p></li>
+<li><p>what should be removed</p></li>
+<li><p>what deserves deeper explanation</p></li>
+<li><p>what modern examples or architectures should be introduced</p></li>
+</ul>
+<p>Do not assume that every lecture topic requires a corresponding book section.</p>
+<p>Do not assume that every existing book section must remain.</p>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this heading">#</a></h2>
+<section id="understand-the-week">
+<h3>1. Understand the Week<a class="headerlink" href="#understand-the-week" title="Permalink to this heading">#</a></h3>
+<p>Review:</p>
+<ul class="simple">
+<li><p>user-provided lecture objectives</p></li>
+<li><p>relevant existing book chapters</p></li>
+<li><p>related Coding Practice</p></li>
+<li><p>related Lab materials when available</p></li>
+<li><p>surrounding weeks when needed for prerequisite or progression context</p></li>
+</ul>
+<p>Identify:</p>
+<ul class="simple">
+<li><p>foundational concepts</p></li>
+<li><p>practical skills students should gain</p></li>
+<li><p>concepts that deserve supplemental explanation</p></li>
+<li><p>connections to later course topics</p></li>
+<li><p>opportunities to connect database concepts to modern systems</p></li>
+</ul>
+<p>Do not edit yet.</p>
+</section>
+<section id="review-the-existing-book">
+<h3>2. Review the Existing Book<a class="headerlink" href="#review-the-existing-book" title="Permalink to this heading">#</a></h3>
+<p>Inspect the relevant Markdown, MyST Markdown, or notebook source.</p>
+<p>Evaluate both content and organization.</p>
+<p>Classify existing material as:</p>
+<p>useful
+needs modernization
+needs clarification
+worth rewriting
+worth replacing
+redundant
+no longer useful
+missing important modern context</p>
+<p>Do not optimize for preserving existing content.</p>
+<p>The chapter may be substantially restructured when that improves learning.</p>
+</section>
+<section id="research-current-relevance">
+<h3>3. Research Current Relevance<a class="headerlink" href="#research-current-relevance" title="Permalink to this heading">#</a></h3>
+<p>Research current authoritative sources where needed.</p>
+<p>Prefer:</p>
+<ul class="simple">
+<li><p>official database documentation</p></li>
+<li><p>official cloud/platform documentation</p></li>
+<li><p>standards</p></li>
+<li><p>primary technical documentation</p></li>
+<li><p>high-quality architecture documentation</p></li>
+<li><p>research papers when appropriate</p></li>
+</ul>
+<p>Use external research to answer questions such as:</p>
+<ul class="simple">
+<li><p>Why is this database concept still important?</p></li>
+<li><p>Where does it appear in modern systems?</p></li>
+<li><p>How is it used in cloud architectures?</p></li>
+<li><p>How does it appear in AI and agentic applications?</p></li>
+<li><p>What tradeoffs do engineers make today?</p></li>
+<li><p>What has changed since the original chapter was written?</p></li>
+</ul>
+<p>Where relevant, connect concepts to modern architectures such as:</p>
+<ul class="simple">
+<li><p>cloud-native applications</p></li>
+<li><p>microservices</p></li>
+<li><p>analytics platforms</p></li>
+<li><p>event-driven systems</p></li>
+<li><p>vector search and retrieval systems</p></li>
+<li><p>RAG architectures</p></li>
+<li><p>agentic applications</p></li>
+<li><p>tool-using agents</p></li>
+<li><p>memory and state management</p></li>
+<li><p>transactional systems</p></li>
+<li><p>distributed data platforms</p></li>
+</ul>
+<p>Do not force AI or agentic examples into sections where they do not provide meaningful educational value.</p>
+<ol class="arabic simple" start="4">
+<li><p>Focus on Why, Value, and Transferable Skills</p></li>
+</ol>
+<p>For each major topic, help students understand:</p>
+<p>What is it?
+Why does it matter?
+Where is it used today?
+What problem does it solve?
+What tradeoff should I understand?
+What skill am I gaining?</p>
+<p>Prefer durable database skills such as:</p>
+<p>reasoning about data models
+understanding relational structure
+choosing database types
+querying
+schema design
+relationships
+transactions
+consistency
+indexing
+retrieval
+connecting applications to databases
+evaluating technology tradeoffs
+reading technical documentation
+understanding persistent data in modern applications
+5. Evaluate Course Progression</p>
+<p>Consider the intended progression:</p>
+<p>Lecture → Book → Coding Practice → Lab</p>
+<p>The lecture provides primary instruction.</p>
+<p>The book provides supplemental explanation, modern context, examples, and conceptual connections.</p>
+<p>Coding Practice provides guided hands-on experience.</p>
+<p>Labs require more independent application.</p>
+<p>Identify:</p>
+<p>unnecessary duplication
+missing prerequisite explanations
+opportunities for the book to better prepare students for practice
+concepts that should remain in lecture rather than be duplicated in the book
+6. Propose a Modernized Structure</p>
+<p>Before implementation, provide a proposal.</p>
+<p>Include:</p>
+<p>Weekly Objectives Reviewed</p>
+<p>List the relevant lecture objectives and other current instructor guidance.</p>
+<p>Current Book Assessment</p>
+<p>Summarize:</p>
+<p>what exists
+what is dated
+what is weak
+what still has value
+what is missing
+Proposed Structure</p>
+<p>Show a proposed chapter/section hierarchy.</p>
+<p>The proposal may:</p>
+<p>add sections
+remove sections
+merge sections
+reorder material
+rename chapters
+create new Markdown pages
+create notebooks
+add diagrams or images
+move content between chapters
+Proposed Changes</p>
+<p>For each substantial change, label it:</p>
+<p>Keep
+Rewrite
+Add
+Remove
+Move
+Merge</p>
+<p>Explain the rationale.</p>
+<p>Student Value</p>
+<p>Explain how the proposed structure improves:</p>
+<p>conceptual understanding
+practical skill
+modern relevance
+preparation for Coding Practice
+preparation for Lab
+ability to understand modern technical architectures
+Modern Architecture Connections</p>
+<p>Identify modern architecture examples that would genuinely reinforce the week’s concepts.</p>
+<p>Avoid adding them merely for novelty.</p>
+<p>Resources Consulted</p>
+<p>Provide direct links to authoritative resources used during research.</p>
+<p>For each resource, briefly state what concept or claim it supports.</p>
+<ol class="arabic simple" start="7">
+<li><p>Wait for Instructor Review</p></li>
+</ol>
+<p>Do not implement substantial restructuring immediately.</p>
+<p>Allow the instructor to:</p>
+<p>approve
+reject
+reorder
+simplify
+deepen
+remove
+add</p>
+<p>proposed content.</p>
+<p>Treat the approved proposal as the implementation specification.</p>
+<ol class="arabic simple" start="8">
+<li><p>Implement Approved Changes</p></li>
+</ol>
+<p>After approval:</p>
+<p>modify authoritative Markdown/MyST/notebook sources
+create new sections or source files when approved
+update _toc.yml when navigation changes
+update cross-references
+add useful diagrams or images
+integrate links to Coding Practice where appropriate</p>
+<p>Do not edit generated _build/ output.</p>
+<ol class="arabic simple" start="9">
+<li><p>Validate</p></li>
+</ol>
+<p>After implementation:</p>
+<p>build the Jupyter Book
+verify navigation
+verify internal links
+verify external links
+verify images and assets
+execute notebooks when applicable
+inspect rendered output
+confirm alignment with approved weekly objectives
+report validation failures rather than silently ignoring them
+Visual Content</p>
+<p>Recommend or create visuals when they materially improve learning.</p>
+<p>Examples include:</p>
+<p>data-model diagrams
+relational structures
+application-to-database architecture
+transaction flows
+database-type comparisons
+modern application architecture
+RAG data architecture
+agent state/memory architecture</p>
+<p>Avoid decorative visuals with little instructional value.</p>
+<p>Research Rules</p>
+<p>When discussing current technologies, architectures, products, or practices:</p>
+<p>research before making current claims
+prefer primary or authoritative sources
+provide source links
+distinguish durable concepts from current examples
+avoid popularity rankings unless popularity itself is relevant
+avoid statistics that will quickly become stale
+avoid vendor marketing claims presented as general technical truth
+Output Before Implementation</p>
+<p>Always provide:</p>
+<p>weekly objectives reviewed
+current book assessment
+proposed chapter structure
+proposed changes with rationale
+student-value explanation
+modern architecture connections
+resources consulted with links
+Coding Practice/Lab implications
+decisions requiring instructor approval
+Output After Implementation</p>
+<p>Report:</p>
+<p>files modified
+sections added
+sections removed
+sections reorganized
+resources cited
+images or diagrams added
+TOC changes
+build result
+link validation result
+unresolved issues</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./.skills/book-content-modernizer"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-priority">Source Priority</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-inputs">Weekly Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weekly-source-preference">Weekly Source Preference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-pedagogical-input">Primary Pedagogical Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understand-the-week">1. Understand the Week</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-the-existing-book">2. Review the Existing Book</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-current-relevance">3. Research Current Relevance</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Olga Scrivner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

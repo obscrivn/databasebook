@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Repository hygiene audit for databasebook &#8212; D-532 Applied Database Technologies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '.github/plans/001-repository-hygiene';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="D-532 Applied Database Technologies - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="D-532 Applied Database Technologies - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../welcome.html">
+                    Welcome to D-532 Applied Database Technologies Spring 24
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../module1.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../why-databases-still-matter.html">Why Databases Still Matter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sqlite_intro.html">SQLite</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../module2.html">Undestanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../algebra.html">Relational Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ra_queries.html">SQL Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../join.html">Join Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../module3.html">Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../practice.html">Practice</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../week6.html">SQL vs noSQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../postgres.html">PostgreSQL and MySQL</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../week7.html">MongoDB Intergration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mongodb.html">MongoDB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pyMongoOverview.html">Mongo DB Cluster</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F.github/plans/001-repository-hygiene.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/.github/plans/001-repository-hygiene.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Repository hygiene audit for databasebook</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todos">Todos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-repository-structure-summary">A. Repository Structure Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-source-vs-generated-files">B. Source vs Generated Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generated">Generated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-only">Local-only</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unclear-requires-verification">Unclear / requires verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-proposed-gitignore">C. Proposed .gitignore</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-currently-tracked-cleanup-candidates">D. Currently Tracked Cleanup Candidates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-publishing-risk">E. Publishing Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-recommended-cleanup-plan">F. Recommended Cleanup Plan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="repository-hygiene-audit-for-databasebook">
+<h1>Repository hygiene audit for databasebook<a class="headerlink" href="#repository-hygiene-audit-for-databasebook" title="Permalink to this heading">#</a></h1>
+<section id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
+<p>Audit the repository before modernization work so source content can be preserved while generated output, local artifacts, and stale files are identified safely.</p>
+</section>
+<section id="approach">
+<h2>Approach<a class="headerlink" href="#approach" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Inspected the current worktree, tracked-file inventory, branch layout, and Git status.</p></li>
+<li><p>Inspected Jupyter Book configuration in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>.</p></li>
+<li><p>Inspected branch evidence for publishing, especially the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch and the absence of GitHub Actions workflows.</p></li>
+<li><p>Distinguished current source files from generated output and local-only artifacts based on file roles, references, and Git metadata.</p></li>
+</ul>
+</section>
+<section id="todos">
+<h2>Todos<a class="headerlink" href="#todos" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>inventory-repository-state</p></li>
+<li><p>assess-publishing-workflow</p></li>
+<li><p>draft-cleanup-recommendations</p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The current worktree is not clean. It contains tracked deletions from older course material plus untracked new source files and untracked new build output.</p></li>
+<li><p>Findings below separate “currently in the worktree” from “currently tracked in Git” where that distinction matters.</p></li>
+</ul>
+</section>
+<section id="a-repository-structure-summary">
+<h2>A. Repository Structure Summary<a class="headerlink" href="#a-repository-structure-summary" title="Permalink to this heading">#</a></h2>
+<p>Major directories and likely purpose:</p>
+<ul class="simple">
+<li><p>Repository root: Jupyter Book source root. Current top-level source files include <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>, chapter markdown files, <code class="docutils literal notranslate"><span class="pre">pyMongoOverview.ipynb</span></code>, datasets (<code class="docutils literal notranslate"><span class="pre">dept.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">emp.csv</span></code>), bibliography, logo, and requirements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/</span></code>: source static assets for the book (images and one PDF). This should generally stay version-controlled, but it currently also contains checkpoint noise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/</span></code>: generated Jupyter Book / Sphinx output. Contains <code class="docutils literal notranslate"><span class="pre">.doctrees</span></code>, rendered HTML, copied assets, search index, reports, and executed notebook output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.ipynb_checkpoints/</span></code>: Jupyter autosave checkpoints; local-only, not source.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/</span></code>: maintainer/copilot metadata in the current worktree; not part of the book build or publishing flow.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.git/</span></code>: repository metadata.</p></li>
+</ul>
+<p>Branch-level publishing structure:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">main</span></code> / <code class="docutils literal notranslate"><span class="pre">course-redesign-2026</span></code>: source branch history.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>: root-level rendered site with <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code>, HTML pages, <code class="docutils literal notranslate"><span class="pre">_static/</span></code>, <code class="docutils literal notranslate"><span class="pre">_images/</span></code>, <code class="docutils literal notranslate"><span class="pre">_sources/</span></code>, and <code class="docutils literal notranslate"><span class="pre">searchindex.js</span></code>.</p></li>
+<li><p>No <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> directory was found, so there is no repository-local automated Pages deployment workflow in the worktree.</p></li>
+</ul>
+<p>High-signal current-state observations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">ls-files</span></code> reports 425 tracked paths on <code class="docutils literal notranslate"><span class="pre">main</span></code>; 349 of them are under <code class="docutils literal notranslate"><span class="pre">_build/</span></code>.</p></li>
+<li><p>The current worktree contains untracked source-like files that are referenced by the current TOC and/or chapters: <code class="docutils literal notranslate"><span class="pre">module2.md</span></code>, <code class="docutils literal notranslate"><span class="pre">module3.md</span></code>, <code class="docutils literal notranslate"><span class="pre">normalization.md</span></code>, <code class="docutils literal notranslate"><span class="pre">practice.md</span></code>, <code class="docutils literal notranslate"><span class="pre">_static/diff.png</span></code>, <code class="docutils literal notranslate"><span class="pre">_static/customers.png</span></code>, <code class="docutils literal notranslate"><span class="pre">_static/project_schema.png</span></code>.</p></li>
+<li><p>The current worktree also contains tracked deletions of older material such as <code class="docutils literal notranslate"><span class="pre">week1.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week1_sqlite.ipynb</span></code>, <code class="docutils literal notranslate"><span class="pre">week2.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week3.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week5.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week8.md</span></code>, <code class="docutils literal notranslate"><span class="pre">sqlite-intro.md</span></code>, <code class="docutils literal notranslate"><span class="pre">sqlite_r.md</span></code>, <code class="docutils literal notranslate"><span class="pre">cassandra.md</span></code>, <code class="docutils literal notranslate"><span class="pre">database_selection.md</span></code>, <code class="docutils literal notranslate"><span class="pre">markdown.md</span></code>, and scratch notebooks <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code> / <code class="docutils literal notranslate"><span class="pre">Untitled1.ipynb</span></code>.</p></li>
+</ul>
+</section>
+<section id="b-source-vs-generated-files">
+<h2>B. Source vs Generated Files<a class="headerlink" href="#b-source-vs-generated-files" title="Permalink to this heading">#</a></h2>
+<section id="source">
+<h3>Source<a class="headerlink" href="#source" title="Permalink to this heading">#</a></h3>
+<p>Current source files/directories that should remain under version control:</p>
+<ul class="simple">
+<li><p>Book config: <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code></p></li>
+<li><p>Current chapter/source content:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">welcome.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module1.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intro.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite_intro.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algebra.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ra_queries.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">join.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week6.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postgres.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week7.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mongodb.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyMongoOverview.ipynb</span></code></p></li>
+</ul>
+</li>
+<li><p>Current worktree source additions that also appear to be real book content and should likely be tracked if retained:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">module2.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module3.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">normalization.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">practice.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/diff.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/customers.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/project_schema.png</span></code></p></li>
+</ul>
+</li>
+<li><p>Source assets/data:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/</span></code> images/PDF (excluding nested checkpoint files and <code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logo.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dept.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">emp.csv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">references.bib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="generated">
+<h3>Generated<a class="headerlink" href="#generated" title="Permalink to this heading">#</a></h3>
+<p>Generated build artifacts:</p>
+<ul class="simple">
+<li><p>Entire <code class="docutils literal notranslate"><span class="pre">_build/</span></code> tree, including:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/.doctrees/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/jupyter_execute/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/_sources/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/_images/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/_static/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/reports/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/searchindex.js</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/objects.inv</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/.buildinfo</span></code></p></li>
+</ul>
+</li>
+<li><p>Rendered HTML on <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> is also generated, even if it is currently required for publishing.</p></li>
+</ul>
+</section>
+<section id="local-only">
+<h3>Local-only<a class="headerlink" href="#local-only" title="Permalink to this heading">#</a></h3>
+<p>Files/directories that should normally stay out of version control:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/.DS_Store</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.ipynb_checkpoints/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/.ipynb_checkpoints/</span></code></p></li>
+<li><p>Scratch notebooks like <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">Untitled1.ipynb</span></code></p></li>
+<li><p>Build/execution logs such as <code class="docutils literal notranslate"><span class="pre">_build/html/reports/*.log</span></code> and <code class="docutils literal notranslate"><span class="pre">*.err.log</span></code></p></li>
+<li><p>Local database artifact <code class="docutils literal notranslate"><span class="pre">week1.db</span></code></p></li>
+</ul>
+</section>
+<section id="unclear-requires-verification">
+<h3>Unclear / requires verification<a class="headerlink" href="#unclear-requires-verification" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyMongoOverview.py</span></code>: present in the current worktree but untracked. It looks like a notebook-exported or parallel script version of <code class="docutils literal notranslate"><span class="pre">pyMongoOverview.ipynb</span></code>, and it contains an absolute local path. Likely local/derived unless intentionally maintained as a separate source artifact.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">databasebook</span></code> tracked entry on <code class="docutils literal notranslate"><span class="pre">main</span></code>: Git reports it as a gitlink/submodule entry (<code class="docutils literal notranslate"><span class="pre">160000</span></code>) but there is no <code class="docutils literal notranslate"><span class="pre">.gitmodules</span></code> mapping. This is stale and should be treated as suspicious metadata until intentionally resolved.</p></li>
+<li><p>Older lesson files deleted in the worktree but still tracked in <code class="docutils literal notranslate"><span class="pre">main</span></code> history (for example <code class="docutils literal notranslate"><span class="pre">week1.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week1_sqlite*.ipynb</span></code>, <code class="docutils literal notranslate"><span class="pre">week2.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week3.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week5.md</span></code>, <code class="docutils literal notranslate"><span class="pre">week8.md</span></code>, <code class="docutils literal notranslate"><span class="pre">cassandra.md</span></code>, <code class="docutils literal notranslate"><span class="pre">database_selection.md</span></code>, <code class="docutils literal notranslate"><span class="pre">markdown.md</span></code>, <code class="docutils literal notranslate"><span class="pre">sqlite_r.md</span></code>). These may be intentionally retired source rather than accidental clutter; keep them only if still pedagogically needed.</p></li>
+</ul>
+</section>
+</section>
+<section id="c-proposed-gitignore">
+<h2>C. Proposed .gitignore<a class="headerlink" href="#c-proposed-gitignore" title="Permalink to this heading">#</a></h2>
+<p>Proposed entries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code></p>
+<ul>
+<li><p>Ignore macOS Finder metadata files.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">**/.ipynb_checkpoints/</span></code></p>
+<ul>
+<li><p>Ignore Jupyter autosave checkpoint directories everywhere in the repo, including root and nested under <code class="docutils literal notranslate"><span class="pre">_static/</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/</span></code></p>
+<ul>
+<li><p>Ignore Jupyter Book / Sphinx build output, rendered HTML, copied static assets, search indexes, reports, doctrees, and executed notebooks.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.jupyter_cache/</span></code></p>
+<ul>
+<li><p>Ignore Jupyter execution cache if it is introduced later.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__pycache__/</span></code></p>
+<ul>
+<li><p>Ignore Python bytecode cache directories.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*.py[cod]</span></code></p>
+<ul>
+<li><p>Ignore Python bytecode files.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.venv/</span></code></p>
+<ul>
+<li><p>Ignore project-local virtual environments.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">venv/</span></code></p>
+<ul>
+<li><p>Ignore virtual environments created with the conventional name <code class="docutils literal notranslate"><span class="pre">venv</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env</span></code></p>
+<ul>
+<li><p>Ignore a local environment file if one is added later.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env.*</span></code></p>
+<ul>
+<li><p>Ignore environment-specific variants such as <code class="docutils literal notranslate"><span class="pre">.env.local</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*.log</span></code></p>
+<ul>
+<li><p>Ignore local and build-generated log files such as notebook execution reports.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Untitled*.ipynb</span></code></p>
+<ul>
+<li><p>Ignore scratch notebooks created during ad hoc exploration.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*.db</span></code></p>
+<ul>
+<li><p>Likely appropriate for local SQLite exercise outputs such as <code class="docutils literal notranslate"><span class="pre">week1.db</span></code>; if the course intentionally ships seed databases later, narrow this rule to specific filenames instead.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="d-currently-tracked-cleanup-candidates">
+<h2>D. Currently Tracked Cleanup Candidates<a class="headerlink" href="#d-currently-tracked-cleanup-candidates" title="Permalink to this heading">#</a></h2>
+<p>Tracked or historically tracked items that would normally be excluded or reviewed for removal from the source branch:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/**</span></code></p>
+<ul>
+<li><p>349 tracked paths on <code class="docutils literal notranslate"><span class="pre">main</span></code>; all are generated build artifacts.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.ipynb_checkpoints/**</span></code></p>
+<ul>
+<li><p>Tracked checkpoint files exist at the repository root.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/.ipynb_checkpoints/**</span></code></p>
+<ul>
+<li><p>Tracked nested checkpoint notebooks/images exist under source assets.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code></p>
+<ul>
+<li><p>Tracked at repository root.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/.DS_Store</span></code></p>
+<ul>
+<li><p>Tracked under source assets.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/reports/*.log</span></code> and <code class="docutils literal notranslate"><span class="pre">*.err.log</span></code></p>
+<ul>
+<li><p>Generated execution logs; one currently contains local filesystem paths from <code class="docutils literal notranslate"><span class="pre">/Users/olgascrivner/...</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week1.db</span></code></p>
+<ul>
+<li><p>Tracked SQLite database file; typically a local exercise artifact.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">databasebook</span></code></p>
+<ul>
+<li><p>Tracked gitlink/submodule entry with no <code class="docutils literal notranslate"><span class="pre">.gitmodules</span></code> mapping.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code>, <code class="docutils literal notranslate"><span class="pre">Untitled1.ipynb</span></code></p>
+<ul>
+<li><p>Scratch-looking notebooks.</p></li>
+</ul>
+</li>
+<li><p>Likely stale or duplicate content currently tracked in <code class="docutils literal notranslate"><span class="pre">main</span></code> history and deleted in the worktree:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite-intro.md</span></code> (duplicate naming variant of <code class="docutils literal notranslate"><span class="pre">sqlite_intro.md</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week1.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week1_sqlite.ipynb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week1_sqlite_problems.ipynb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week1_sqlite_solutions.ipynb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week2.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week3.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week5.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">week8.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqlite_r.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cassandra.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">database_selection.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">markdown.md</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_static/diff.ppng.png</span></code></p>
+<ul>
+<li><p>Tracked typo/duplicate-looking asset; replaced in the current worktree by <code class="docutils literal notranslate"><span class="pre">_static/diff.png</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Important nuance:</p>
+<ul class="simple">
+<li><p>Several cleanup candidates are already deleted from the current worktree but not yet committed. Do not treat those deletions as complete cleanup until the source-of-truth branch strategy is decided.</p></li>
+</ul>
+</section>
+<section id="e-publishing-risk">
+<h2>E. Publishing Risk<a class="headerlink" href="#e-publishing-risk" title="Permalink to this heading">#</a></h2>
+<p>Evidence inspected:</p>
+<ul class="simple">
+<li><p>No <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> directory exists in the current worktree.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> exists as a separate branch and contains root-level rendered site files plus <code class="docutils literal notranslate"><span class="pre">.nojekyll</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> latest commit is an “Update documentation” commit that changes rendered HTML/output files.</p></li>
+<li><p>The source branch still tracks <code class="docutils literal notranslate"><span class="pre">_build/</span></code>, but the published branch stores rendered HTML at the branch root, not under <code class="docutils literal notranslate"><span class="pre">_build/</span></code>.</p></li>
+</ul>
+<p>Likely interpretation:</p>
+<ul class="simple">
+<li><p>GitHub Pages is most likely serving the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, not <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> directly from <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+<li><p>That means removing generated <code class="docutils literal notranslate"><span class="pre">_build/</span></code> files from the source branch would probably not take the currently published site offline.</p></li>
+<li><p>However, the current publish process appears manual or external to the repository, because no in-repo automation was found.</p></li>
+</ul>
+<p>Why caution is still required:</p>
+<ul class="simple">
+<li><p>If the maintainer currently builds from the source branch and then manually copies or imports <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> to <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>, <code class="docutils literal notranslate"><span class="pre">_build/</span></code> remains a necessary local intermediate even if it should not be tracked.</p></li>
+<li><p>Repository metadata in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> is stale:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">repository.url</span></code> points to <code class="docutils literal notranslate"><span class="pre">https://github.com/executablebooks/jupyter-book</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repository.path_to_book</span></code> is <code class="docutils literal notranslate"><span class="pre">docs</span></code>, but the book root is the repository root</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">repository.branch</span></code> is <code class="docutils literal notranslate"><span class="pre">master</span></code>, but the active source branch is <code class="docutils literal notranslate"><span class="pre">main</span></code> / <code class="docutils literal notranslate"><span class="pre">course-redesign-2026</span></code></p></li>
+</ul>
+</li>
+<li><p>Those stale settings affect repository/issue links in the rendered book and are evidence that the deployment configuration has drifted.</p></li>
+</ul>
+<p>Additional stale/environment-specific findings relevant to publishing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyMongoOverview.py</span></code> contains a hard-coded absolute local path: <code class="docutils literal notranslate"><span class="pre">/Users/olgascrivner/Documents/IU-DataScience/Database/Summer2022/Week7/2020-03-13/noncomm_use_subset/*.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/html/reports/pyMongoOverview.err.log</span></code> contains local virtualenv paths and a notebook timeout trace.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyMongoOverview.ipynb</span></code> references <code class="docutils literal notranslate"><span class="pre">mongosetup.md</span></code>, which is missing from the current worktree.</p></li>
+<li><p>The current tracked <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> in the worktree references source files that are still untracked, so the worktree is not yet in a clean publishable source-controlled state.</p></li>
+</ul>
+<p>Risk conclusion:</p>
+<ul class="simple">
+<li><p>Removing generated files from version control on the source branch is probably safe for the live site only after GitHub Pages branch settings and the human publishing procedure are verified.</p></li>
+<li><p>Removing or rewriting generated files on <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> without a tested replacement publish step would be risky.</p></li>
+</ul>
+</section>
+<section id="f-recommended-cleanup-plan">
+<h2>F. Recommended Cleanup Plan<a class="headerlink" href="#f-recommended-cleanup-plan" title="Permalink to this heading">#</a></h2>
+<p>Safe sequence:</p>
+<ol class="arabic simple">
+<li><p>Confirm GitHub Pages settings on GitHub:</p>
+<ul class="simple">
+<li><p>verify which branch/folder is published</p></li>
+<li><p>verify whether Pages serves <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> root</p></li>
+</ul>
+</li>
+<li><p>Preserve source before cleanup:</p>
+<ul class="simple">
+<li><p>decide which current untracked source files are intentional and should be committed as source (<code class="docutils literal notranslate"><span class="pre">module2.md</span></code>, <code class="docutils literal notranslate"><span class="pre">module3.md</span></code>, <code class="docutils literal notranslate"><span class="pre">normalization.md</span></code>, <code class="docutils literal notranslate"><span class="pre">practice.md</span></code>, and referenced <code class="docutils literal notranslate"><span class="pre">_static/</span></code> assets)</p></li>
+<li><p>decide whether <code class="docutils literal notranslate"><span class="pre">pyMongoOverview.py</span></code> is a maintained source artifact or local derivative</p></li>
+</ul>
+</li>
+<li><p>Add a repository <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> first:</p>
+<ul class="simple">
+<li><p>ignore checkpoints, <code class="docutils literal notranslate"><span class="pre">_build/</span></code>, <code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code>, logs, virtualenvs, env files, and likely local SQLite outputs</p></li>
+</ul>
+</li>
+<li><p>Clean only the source branch first:</p>
+<ul class="simple">
+<li><p>stop tracking <code class="docutils literal notranslate"><span class="pre">_build/**</span></code></p></li>
+<li><p>stop tracking checkpoint directories</p></li>
+<li><p>stop tracking <code class="docutils literal notranslate"><span class="pre">.DS_Store</span></code> and execution logs</p></li>
+<li><p>remove the stale <code class="docutils literal notranslate"><span class="pre">databasebook</span></code> gitlink if it is no longer a real submodule</p></li>
+</ul>
+</li>
+<li><p>Verify the source branch builds successfully from source alone:</p>
+<ul class="simple">
+<li><p>ensure all TOC-referenced files are actually tracked</p></li>
+<li><p>fix stale config metadata and broken internal references</p></li>
+<li><p>run a clean Jupyter Book build locally</p></li>
+</ul>
+</li>
+<li><p>Keep publishing isolated:</p>
+<ul class="simple">
+<li><p>do not delete <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> output until a fresh publish from the cleaned source branch succeeds</p></li>
+<li><p>after a successful test publish, treat <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> as generated deploy output, not authoring source</p></li>
+</ul>
+</li>
+<li><p>Only then review pedagogical/stale source cleanup:</p>
+<ul class="simple">
+<li><p>archive or remove retired lessons and duplicate files once it is clear they are not needed for the course redesign</p></li>
+</ul>
+</li>
+</ol>
+<p>Suggested order of operations for follow-up work:</p>
+<ul class="simple">
+<li><p>Phase 1: source-control hygiene (<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, untrack generated/local files)</p></li>
+<li><p>Phase 2: source consistency (track intended chapters/assets, fix stale config and broken references)</p></li>
+<li><p>Phase 3: publishing validation (clean build, publish to <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>, verify live site)</p></li>
+<li><p>Phase 4: historical source pruning (retired lessons, duplicate filenames, stale submodule entry)</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./.github/plans"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach">Approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todos">Todos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-repository-structure-summary">A. Repository Structure Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-source-vs-generated-files">B. Source vs Generated Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generated">Generated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-only">Local-only</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unclear-requires-verification">Unclear / requires verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-proposed-gitignore">C. Proposed .gitignore</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-currently-tracked-cleanup-candidates">D. Currently Tracked Cleanup Candidates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-publishing-risk">E. Publishing Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-recommended-cleanup-plan">F. Recommended Cleanup Plan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Olga Scrivner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

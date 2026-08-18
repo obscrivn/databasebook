@@ -3,31 +3,31 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to D-532 Applied Database Technologies Spring 24 &#8212; D-532 Applied Database Technologies</title>
+    <title>Applied Database Technologies &#8212; D-532 Applied Database Technologies</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -74,19 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -108,12 +113,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +143,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="#">
+  
   
   
   
@@ -140,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="D-532 Applied Database Technologies - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="D-532 Applied Database Technologies - Home"/>`);</script>
   
   
 </a></div>
@@ -151,36 +170,38 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to D-532 Applied Database Technologies Spring 24
+                    Applied Database Technologies
                 </a>
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="module1.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html">Basic Concepts</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module1.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">Why Databases Still Matter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro-relational.html">Relational Databases and SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_sqlite_practice.html">Week 1 Coding Practice: A Tiny Travel Database</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Undestanding SQL</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Undestanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="join.html">Join Types</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Undestanding Normalization</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="practice.html">Practice</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="week6.html">SQL vs noSQL</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week6.html">SQL vs noSQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL and MySQL</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="week7.html">MongoDB Intergration</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week7.html">MongoDB Intergration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="mongodb.html">MongoDB Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyMongoOverview.html">Mongo DB Cluster</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -196,7 +217,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -205,7 +226,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -334,20 +355,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -364,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to D-532 Applied Database Technologies Spring 24</h1>
+    <h1>Applied Database Technologies</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,8 +397,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-description">Course Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-prerequisites">Course Prerequisites:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-course-matters">Why this course matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to use this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-philosophy">Course philosophy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-course-is-designed-to-do">What this course is designed to do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-modern-view-of-databases">A modern view of databases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-application-architecture-in-the-content">Modern application architecture in the content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking ahead</a></li>
 </ul>
             </nav>
         </div>
@@ -385,27 +414,124 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-d-532-applied-database-technologies-spring-24">
-<h1>Welcome to D-532 Applied Database Technologies Spring 24<a class="headerlink" href="#welcome-to-d-532-applied-database-technologies-spring-24" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="applied-database-technologies">
+<h1>Applied Database Technologies<a class="headerlink" href="#applied-database-technologies" title="Permalink to this heading">#</a></h1>
 <p><img alt="banner" src="_images/D-532-banner.gif" /></p>
-<p><img alt="quote" src="_images/quote.png" /></p>
-<p>This course provides practical skills and breadth of knowledge of many tools/technologies rather than deep knowledge of any particular tool/technology.</p>
-<section id="course-description">
-<h2>Course Description<a class="headerlink" href="#course-description" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Databases are still at the core of modern applications.</strong></p>
+<p>Web apps, cloud platforms, analytics systems, AI applications, and autonomous agents all depend on reliable ways to store, retrieve, relate, and protect data.</p>
+</div>
+<p>This book supplements the course by connecting foundational database concepts with current technologies, application architecture, and practical decision-making.</p>
+<p>The course emphasizes transferable database concepts and practical skills rather than mastery of a single database product.</p>
+<section id="why-this-course-matters">
+<h2>Why this course matters<a class="headerlink" href="#why-this-course-matters" title="Permalink to this heading">#</a></h2>
+<p>Modern software rarely runs without a database behind it.</p>
+<p>Whether you are building a web application, working with analytics pipelines, integrating a mobile app, or designing an AI-enabled system, you still need to understand:</p>
 <ul class="simple">
-<li><p>Introduction to Database systems with practical applications</p></li>
-<li><p>Data modeling and database design</p></li>
-<li><p>Database querying</p></li>
-<li><p>SQL and noSQL</p></li>
-<li><p>The art of database selection</p></li>
-<li><p>Developing a web app with database integration</p></li>
+<li><p>how data is structured</p></li>
+<li><p>how information is stored and retrieved</p></li>
+<li><p>how records relate to one another</p></li>
+<li><p>how constraints and integrity protect the system</p></li>
+<li><p>how applications and databases work together</p></li>
+</ul>
+<p>These ideas remain valuable even as tools change.</p>
+</section>
+<section id="what-you-will-learn">
+<h2>What you will learn<a class="headerlink" href="#what-you-will-learn" title="Permalink to this heading">#</a></h2>
+<p>Students will develop skills in:</p>
+<ul class="simple">
+<li><p>relational data modeling and database design</p></li>
+<li><p>SQL querying and data manipulation</p></li>
+<li><p>normalization and data integrity</p></li>
+<li><p>working with relational and NoSQL databases</p></li>
+<li><p>choosing database technologies based on application requirements</p></li>
+<li><p>connecting applications to databases</p></li>
+<li><p>understanding how databases fit into modern cloud, data, and AI architectures</p></li>
 </ul>
 </section>
-<section id="course-prerequisites">
-<h2>Course Prerequisites:<a class="headerlink" href="#course-prerequisites" title="Permalink to this heading">#</a></h2>
-<p>Python</p>
+<section id="how-to-use-this-book">
+<h2>How to use this book<a class="headerlink" href="#how-to-use-this-book" title="Permalink to this heading">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Each module connects concepts to examples, guided practice, and lab work.</p>
+<p>The learning flow is:</p>
+<p><strong>Lecture → Book → Interactive Practice → Lab</strong></p>
+</div>
+<p>This structure is intentional: the book helps you understand why a concept matters before you apply it in coding practice or lab activities.</p>
+</section>
+<section id="course-philosophy">
+<h2>Course philosophy<a class="headerlink" href="#course-philosophy" title="Permalink to this heading">#</a></h2>
+<p>This course is not about memorizing one tool or product.</p>
+<p>It is about learning the ideas that remain useful as database technologies evolve:</p>
+<ul class="simple">
+<li><p>data modeling</p></li>
+<li><p>relationships and constraints</p></li>
+<li><p>querying and updates</p></li>
+<li><p>integrity and consistency</p></li>
+<li><p>tradeoffs in system design</p></li>
+</ul>
+<p>Those concepts still matter whether you work with PostgreSQL, SQLite, MySQL, MongoDB, or a cloud-managed data platform.</p>
+</section>
+<section id="what-this-course-is-designed-to-do">
+<h2>What this course is designed to do<a class="headerlink" href="#what-this-course-is-designed-to-do" title="Permalink to this heading">#</a></h2>
+<p>The course blends theory and practice so that students can:</p>
+<ul class="simple">
+<li><p>understand how databases represent real-world systems</p></li>
+<li><p>write and reason about SQL queries</p></li>
+<li><p>design and evaluate simple schemas</p></li>
+<li><p>compare different database approaches based on requirements</p></li>
+<li><p>connect database concepts to modern application design</p></li>
+</ul>
+</section>
+<section id="a-modern-view-of-databases">
+<h2>A modern view of databases<a class="headerlink" href="#a-modern-view-of-databases" title="Permalink to this heading">#</a></h2>
+<p>Modern applications rarely use a single database in isolation.</p>
+<p>A web or mobile application may rely on:</p>
+<ul class="simple">
+<li><p>a relational database for transactional records</p></li>
+<li><p>object storage for files and media</p></li>
+<li><p>a cache for repeated fast access</p></li>
+<li><p>a search or vector system for semantic discovery</p></li>
+</ul>
+<p>Databases are still foundational infrastructure beneath modern software systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>They are especially useful when you need to:</p>
+<ul class="simple">
+<li><p>organize data into clear tables</p></li>
+<li><p>connect related data</p></li>
+<li><p>enforce business rules</p></li>
+<li><p>support accurate updates</p></li>
+<li><p>answer many different questions about the same data</p></li>
+</ul>
+</div>
+</section>
+<section id="modern-application-architecture-in-the-content">
+<h2>Modern application architecture in the content<a class="headerlink" href="#modern-application-architecture-in-the-content" title="Permalink to this heading">#</a></h2>
+<p>The current course header can stay for now. It is familiar and works well for a course landing page.</p>
+<p>The more modern architecture concept is better used inside the course content, where it can help students connect database systems to real application design.</p>
+<figure class="align-default" id="welcome-course-header-architecture">
+<img alt="_images/course-header-architecture.svg" src="_images/course-header-architecture.svg" /><figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Modern application and data architecture. Instructor-created conceptual diagram.</span><a class="headerlink" href="#welcome-course-header-architecture" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This visual emphasizes that modern applications usually include several layers at the same time:</p>
+<ul class="simple">
+<li><p>app interfaces</p></li>
+<li><p>relational storage for structured data</p></li>
+<li><p>object storage for files and media</p></li>
+<li><p>caches and search indexes for performance</p></li>
+<li><p>AI or agent components that still rely on persistent application data</p></li>
+</ul>
+<p>That is a better fit for the course content than a specialized header image.</p>
+</section>
+<section id="looking-ahead">
+<h2>Looking ahead<a class="headerlink" href="#looking-ahead" title="Permalink to this heading">#</a></h2>
+<p>As you move through the course, you will see that database systems are not isolated tools. They are part of the larger architecture of modern applications, analytics, and intelligent systems.</p>
+<p>The goal is not to master every database product. The goal is to understand the principles that help you choose, design, and reason about data systems intelligently.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -436,11 +562,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
        href="module1.html"
@@ -451,10 +576,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -463,14 +585,21 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-description">Course Description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-prerequisites">Course Prerequisites:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-course-matters">Why this course matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to use this book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-philosophy">Course philosophy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-course-is-designed-to-do">What this course is designed to do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-modern-view-of-databases">A modern view of databases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-application-architecture-in-the-content">Modern application architecture in the content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking ahead</a></li>
 </ul>
   </nav></div>
 
@@ -492,9 +621,10 @@ By Olga Scrivner
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2026, Olga Scrivner.
       <br/>
     
   </p>
@@ -518,8 +648,8 @@ By Olga Scrivner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

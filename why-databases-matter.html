@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Why Databases Matter &#8212; D-532 Applied Database Technologies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'why-databases-matter';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SQLite" href="sqlite_intro.html" />
+    <link rel="prev" title="Introduction" href="module1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="D-532 Applied Database Technologies - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="D-532 Applied Database Technologies - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="welcome.html">
+                    Welcome to D-532 Applied Database Technologies Spring 24
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Why Databases Matter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Undestanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="join.html">Join Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practice.html">Practice</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week6.html">SQL vs noSQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="postgres.html">PostgreSQL and MySQL</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week7.html">MongoDB Intergration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="mongodb.html">MongoDB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyMongoOverview.html">Mongo DB Cluster</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fwhy-databases-matter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/why-databases-matter.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Why Databases Matter</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-databases-still-matter">Why databases still matter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-database">What is a database?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-a-dbms-do">What does a DBMS do?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-visual-1">Suggested visual 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts-for-this-course">Core concepts for this course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-visual-2">Suggested visual 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-relational-databases-and-sql-still-matter">Why relational databases and SQL still matter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-databases-will-continue-to-matter">Why databases will continue to matter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-visual-3">Suggested visual 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-1-connection">Week 1 connection</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="why-databases-matter">
+<h1>Why Databases Matter<a class="headerlink" href="#why-databases-matter" title="Permalink to this heading">#</a></h1>
+<section id="why-databases-still-matter">
+<h2>Why databases still matter<a class="headerlink" href="#why-databases-still-matter" title="Permalink to this heading">#</a></h2>
+<p>Most modern applications depend on data that must be stored, updated, shared, and protected over time. When you register for classes, place an online order, check a bank balance, submit a healthcare form, or stream media, a database is usually involved behind the scenes.</p>
+<p>Databases matter because organizations need information that is:</p>
+<ul class="simple">
+<li><p>organized</p></li>
+<li><p>reliable</p></li>
+<li><p>searchable</p></li>
+<li><p>shareable across many users and systems</p></li>
+<li><p>protected from accidental loss or unauthorized access</p></li>
+</ul>
+<p>For very small tasks, a simple file may be enough. As soon as data must support many users, repeated updates, reporting, or consistent business rules, a database becomes much more useful than a collection of disconnected files.</p>
+</section>
+<section id="what-is-a-database">
+<h2>What is a database?<a class="headerlink" href="#what-is-a-database" title="Permalink to this heading">#</a></h2>
+<p>A database is a collection of <strong>related data</strong> organized for a specific purpose.</p>
+<p>A useful database has several important properties:</p>
+<ul class="simple">
+<li><p>It represents some part of the real world.</p></li>
+<li><p>Its data has meaning and structure.</p></li>
+<li><p>It is created for a particular set of users, questions, or applications.</p></li>
+</ul>
+<p>In this course, the goal is not only to store data, but also to design it well enough that people and software can use it effectively.</p>
+</section>
+<section id="what-does-a-dbms-do">
+<h2>What does a DBMS do?<a class="headerlink" href="#what-does-a-dbms-do" title="Permalink to this heading">#</a></h2>
+<p>A <strong>database management system (DBMS)</strong> is software that enables users and applications to create, store, manage, and use a database.</p>
+<p>A DBMS helps with several important tasks:</p>
+<ul class="simple">
+<li><p><strong>Defining</strong> data types, structures, and rules</p></li>
+<li><p><strong>Storing</strong> data in an organized way</p></li>
+<li><p><strong>Querying</strong> data to answer questions</p></li>
+<li><p><strong>Updating</strong> data as the real world changes</p></li>
+<li><p><strong>Sharing</strong> data across multiple users and applications</p></li>
+<li><p><strong>Protecting</strong> data through security and recovery mechanisms</p></li>
+<li><p><strong>Maintaining</strong> the system as needs change over time</p></li>
+</ul>
+<p>Metadata is also important. Metadata is data about the data, such as descriptions of tables, columns, data types, and constraints.</p>
+<section id="suggested-visual-1">
+<h3>Suggested visual 1<a class="headerlink" href="#suggested-visual-1" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Visual concept: “How a DBMS supports an application”</p>
+<p>Show three layers:</p>
+<ul class="simple">
+<li><p>people or applications</p></li>
+<li><p>DBMS</p></li>
+<li><p>stored data</p></li>
+</ul>
+<p>Add callouts around the DBMS:</p>
+<ul class="simple">
+<li><p>define</p></li>
+<li><p>store</p></li>
+<li><p>query</p></li>
+<li><p>update</p></li>
+<li><p>protect</p></li>
+<li><p>share</p></li>
+<li><p>recover</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="core-concepts-for-this-course">
+<h2>Core concepts for this course<a class="headerlink" href="#core-concepts-for-this-course" title="Permalink to this heading">#</a></h2>
+<p>Several concepts introduced in Week 1 will continue throughout the semester.</p>
+<ul class="simple">
+<li><p><strong>Entity</strong>: a person, place, event, or thing about which data is collected</p></li>
+<li><p><strong>Attribute</strong>: a characteristic that describes an entity</p></li>
+<li><p><strong>Relationship</strong>: how two or more entities are connected</p></li>
+<li><p><strong>Table</strong>: an organized structure used to store data in rows and columns</p></li>
+<li><p><strong>Row</strong>: one record in a table</p></li>
+<li><p><strong>Column</strong>: one attribute stored for many records</p></li>
+<li><p><strong>Schema</strong>: the overall structure of the database</p></li>
+</ul>
+<p>These concepts help us move from a real-world problem to a data model that can support queries, reports, and applications.</p>
+<section id="suggested-visual-2">
+<h3>Suggested visual 2<a class="headerlink" href="#suggested-visual-2" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Visual concept: “Core database concepts”</p>
+<p>Use a simple classroom example such as Student, Course, and Enrollment.</p>
+<p>Show:</p>
+<ul class="simple">
+<li><p>entities</p></li>
+<li><p>attributes</p></li>
+<li><p>one relationship</p></li>
+</ul>
+<p>Keep the labels simple and large enough to reuse later when introducing tables and joins.</p>
+</div>
+</section>
+</section>
+<section id="why-relational-databases-and-sql-still-matter">
+<h2>Why relational databases and SQL still matter<a class="headerlink" href="#why-relational-databases-and-sql-still-matter" title="Permalink to this heading">#</a></h2>
+<p>Relational databases remain important because many organizations need data that is structured, consistent, and connected.</p>
+<p>Relational systems are especially useful when you need to:</p>
+<ul class="simple">
+<li><p>organize data into clearly defined tables</p></li>
+<li><p>connect related data</p></li>
+<li><p>enforce business rules</p></li>
+<li><p>support accurate updates</p></li>
+<li><p>answer many different questions about the same data</p></li>
+</ul>
+<p>SQL remains important because it gives users a powerful way to define, query, and manage structured data. Even when tools and platforms change, the core ideas behind relational databases and SQL continue to transfer across systems.</p>
+<p>This course uses a relational workflow because it provides a strong foundation for thinking carefully about data design and querying.</p>
+</section>
+<section id="why-databases-will-continue-to-matter">
+<h2>Why databases will continue to matter<a class="headerlink" href="#why-databases-will-continue-to-matter" title="Permalink to this heading">#</a></h2>
+<p>The tools used to manage data will continue to evolve, but the need for well-organized data will not disappear.</p>
+<p>Databases will continue to matter because:</p>
+<ul class="simple">
+<li><p>organizations keep collecting more data</p></li>
+<li><p>applications depend on timely and accurate information</p></li>
+<li><p>users expect systems to be reliable</p></li>
+<li><p>decision-making depends on trustworthy records</p></li>
+<li><p>data must often be shared across people, teams, and software systems</p></li>
+</ul>
+<p>Learning database concepts now gives you durable skills. Specific tools may change, but the ability to model data, ask good questions, and work with structured information will remain valuable.</p>
+<section id="suggested-visual-3">
+<h3>Suggested visual 3<a class="headerlink" href="#suggested-visual-3" title="Permalink to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Visual concept: “Why databases continue to matter”</p>
+<p>Show several familiar domains:</p>
+<ul class="simple">
+<li><p>education</p></li>
+<li><p>healthcare</p></li>
+<li><p>retail</p></li>
+<li><p>finance</p></li>
+</ul>
+<p>Each domain points to shared needs such as:</p>
+<ul class="simple">
+<li><p>trusted records</p></li>
+<li><p>updates</p></li>
+<li><p>reporting</p></li>
+<li><p>secure access</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="week-1-connection">
+<h2>Week 1 connection<a class="headerlink" href="#week-1-connection" title="Permalink to this heading">#</a></h2>
+<p>This week introduces the basic language and ideas needed for the rest of the course. As you begin hands-on work, focus on how data is structured, how relationships are represented, and how a DBMS helps users work with data safely and efficiently.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Standard course activities use a relational workflow. Advanced students may optionally explore PostgreSQL or other tools, but the main Week 1 goal is to understand the core database concepts rather than tool-specific differences.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="module1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sqlite_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SQLite</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-databases-still-matter">Why databases still matter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-database">What is a database?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-a-dbms-do">What does a DBMS do?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-visual-1">Suggested visual 1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts-for-this-course">Core concepts for this course</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-visual-2">Suggested visual 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-relational-databases-and-sql-still-matter">Why relational databases and SQL still matter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-databases-will-continue-to-matter">Why databases will continue to matter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-visual-3">Suggested visual 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week-1-connection">Week 1 connection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Olga Scrivner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
