@@ -9,7 +9,10 @@ descrription: This website presents a set of lecture notes and coding practice f
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  exclude_patterns:
+    - 'pyMongoOverview'
+ # execute_notebooks: auto
+
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -31,3 +34,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  copyright: "2026"
+
+sphinx:
+  config:
+    copyright: "2026, Olga Scrivner"

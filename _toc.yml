@@ -6,24 +6,31 @@ root: welcome
 chapters:
 - file: module1
   sections:
-    - file: intro
+    - file: why-databases-still-matter
+    - file: intro-relational
     - file: sqlite_intro
+    - file: week1_sqlite_practice
     
-# - file: week3
-#   sections:
-#     - file: algebra
-#     - file: ra_queries
+- file: module2
+  sections:
+    - file: algebra
+    - file: ra_queries
+    - file: join
     
+- file: module3
+  sections:
+    - file: normalization
+    - file: practice
+
 # - file: week5
 #   sections:
 #     - file: sqlite_r
     
-# - file: week6
-#   sections:
-#    - file: postgres
+- file: week6
+  sections:
+    - file: postgres
    
-# - file: week7
-#   sections:
-#   - file: mongosetup
-#   - file: pyMongoOverview
-
+- file: week7
+  sections:
+    - file: mongodb
+    - file: pyMongoOverview

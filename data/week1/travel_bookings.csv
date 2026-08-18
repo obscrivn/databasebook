@@ -1,0 +1,7 @@
+booking_id,traveler_name,destination,nights,status
+1,Ana Torres,Chicago,2,confirmed
+2,Derrick Hall,Seattle,4,confirmed
+3,Mei Chen,Denver,1,pending
+4,Riley Brooks,Austin,3,cancelled
+5,Sofia Patel,Boston,2,confirmed
+6,Noah Kim,New Orleans,5,pending
