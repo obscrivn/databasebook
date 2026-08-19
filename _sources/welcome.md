@@ -28,7 +28,7 @@ These ideas remain valuable even as tools change.
 
 ## What you will learn
 
-Students will develop skills in:
+You will develop skills in:
 
 - relational data modeling and database design
 - SQL querying and data manipulation
@@ -66,7 +66,7 @@ Those concepts still matter whether you work with PostgreSQL, SQLite, MySQL, Mon
 
 ## What this course is designed to do
 
-The course blends theory and practice so that students can:
+The course blends theory and practice so that you can:
 
 - understand how databases represent real-world systems
 - write and reason about SQL queries
@@ -101,7 +101,7 @@ They are especially useful when you need to:
 
 The current course header can stay for now. It is familiar and works well for a course landing page.
 
-The more modern architecture concept is better used inside the course content, where it can help students connect database systems to real application design.
+The more modern architecture concept is better used inside the course content, where it can help you connect database systems to real application design.
 
 ```{figure} _static/course-header-architecture.svg
 :name: welcome-course-header-architecture

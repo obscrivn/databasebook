@@ -1,4 +1,4 @@
-# Relational Databases and SQL
+# 1.2 Relational Databases and SQL
 
 ```{note}
 **Big idea:** A relational database is a structured way to store data so that records, relationships, and rules are clear.
@@ -6,7 +6,7 @@
 SQL is the language people use to work with that data.
 ```
 
-This chapter gives students the practical foundation they need before they start querying a database in class.
+This chapter gives you the practical foundation you need before you start querying a database.
 
 We will keep the focus narrow and useful:
 
@@ -48,16 +48,6 @@ The `student_id` helps identify each row and may also link to other tables.
 - **Relationship**: a connection between entities
 - **Table**: the storage structure for rows and columns
 - **Key**: a way to identify and connect records
-
-```{note}
-For this course, it helps to separate two kinds of vocabulary:
-
-**Modeling vocabulary:** entity, attribute, relationship
-
-**Implementation vocabulary:** table, row, column, schema
-```
-
-This distinction matters because the same real-world idea can be represented in a database in a well-structured way.
 
 ## 2. What is SQL?
 
@@ -124,11 +114,11 @@ Each database system may differ in:
 - deployment model
 - ecosystem support
 
-This means students should learn the ideas behind SQL and relational design, not only the buttons or interface of one product.
+This means you should learn the ideas behind SQL and relational design, not only the buttons or interface of one product.
 
 ## 4. Common relational database systems
 
-Here are a few of the most common systems students will hear about:
+Here are a few of the most common systems you will hear about:
 
 | System | Helpful student-level distinction |
 | --- | --- |
@@ -144,9 +134,7 @@ SQLite is especially useful to distinguish because it is a serverless SQL engine
 MySQL and PostgreSQL are usually run as database servers that clients connect to over a network or local connection.
 ```
 
-This matters because students often assume that every database is the same kind of system.
-
-It is not.
+This matters because it is easy to assume that every database is the same kind of system.
 
 ## 5. Local database vs database server
 
@@ -189,7 +177,7 @@ The same pattern is true for many tools:
 - the **server** stores and manages the database
 - the **client or tool** helps you connect, query, and inspect it
 
-Students should not confuse the tool with the database itself.
+You should not confuse the tool with the database itself.
 
 This is why database concepts, server setup, credentials, ports, and connections matter so much in real software work.
 
@@ -224,22 +212,16 @@ What changes is the deployment and management model.
 Modern application architecture showing how databases sit beneath applications, data services, and AI components.
 ```
 
-This is a useful way to frame the course early:
-
 - the app still needs data storage
 - the database still holds the core records
 - object storage, caches, and search systems support performance and retrieval
 - AI systems still rely on persistent application state, records, and data access
-
-The point is not to teach a cloud architecture diagram in detail.
 
 The point is to show that relational databases remain central even in modern software stacks.
 
 ## 8. Which one are we using and why?
 
 In this course, you will encounter multiple database systems because each helps illustrate a different part of the technology.
-
-The goal is not to memorize product interfaces.
 
 The goal is to learn transferable concepts:
 
@@ -250,9 +232,7 @@ The goal is to learn transferable concepts:
 - how tools help us work with databases
 
 ```{important}
-The course is not trying to turn students into experts in one vendor's ecosystem.
-
-It is trying to help students understand the ideas that transfer across systems.
+The course is trying to help you understand the ideas that transfer across systems.
 ```
 
 ## 9. What comes next?
@@ -264,8 +244,6 @@ In the Coding Practice, you will interact with a relational database and connect
 
 You will inspect tables, review schemas, and run basic SQL to see how a database behaves in practice.
 ```
-
-That is the bridge from concept to hands-on work.
 
 ## References
 

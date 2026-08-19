@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Relational Databases and SQL &#8212; D-532 Applied Database Technologies</title>
+    <title>1.2 Relational Databases and SQL &#8212; D-532 Applied Database Technologies</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SQLite" href="sqlite_intro.html" />
-    <link rel="prev" title="Why Databases Still Matter" href="why-databases-still-matter.html" />
+    <link rel="prev" title="1.1 Why Databases Still Matter" href="why-databases-still-matter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,14 +174,14 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">Why Databases Still Matter</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Relational Databases and SQL</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Module 1: Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">1.1 Why Databases Still Matter</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2 Relational Databases and SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="week1_sqlite_practice.html">Week 1 Coding Practice: A Tiny Travel Database</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Undestanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Module 2: Understanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="join.html">Join Types</a></li>
@@ -386,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Relational Databases and SQL</h1>
+    <h1>1.2 Relational Databases and SQL</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,13 +428,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="relational-databases-and-sql">
-<h1>Relational Databases and SQL<a class="headerlink" href="#relational-databases-and-sql" title="Permalink to this heading">#</a></h1>
+<h1>1.2 Relational Databases and SQL<a class="headerlink" href="#relational-databases-and-sql" title="Permalink to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Big idea:</strong> A relational database is a structured way to store data so that records, relationships, and rules are clear.</p>
 <p>SQL is the language people use to work with that data.</p>
 </div>
-<p>This chapter gives students the practical foundation they need before they start querying a database in class.</p>
+<p>This chapter gives you the practical foundation you need before you start querying a database.</p>
 <p>We will keep the focus narrow and useful:</p>
 <ul class="simple">
 <li><p>what a relational database is</p></li>
@@ -488,13 +488,6 @@ document.write(`
 <li><p><strong>Table</strong>: the storage structure for rows and columns</p></li>
 <li><p><strong>Key</strong>: a way to identify and connect records</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For this course, it helps to separate two kinds of vocabulary:</p>
-<p><strong>Modeling vocabulary:</strong> entity, attribute, relationship</p>
-<p><strong>Implementation vocabulary:</strong> table, row, column, schema</p>
-</div>
-<p>This distinction matters because the same real-world idea can be represented in a database in a well-structured way.</p>
 </section>
 </section>
 <section id="what-is-sql">
@@ -552,11 +545,11 @@ document.write(`
 <li><p>deployment model</p></li>
 <li><p>ecosystem support</p></li>
 </ul>
-<p>This means students should learn the ideas behind SQL and relational design, not only the buttons or interface of one product.</p>
+<p>This means you should learn the ideas behind SQL and relational design, not only the buttons or interface of one product.</p>
 </section>
 <section id="common-relational-database-systems">
 <h2>4. Common relational database systems<a class="headerlink" href="#common-relational-database-systems" title="Permalink to this heading">#</a></h2>
-<p>Here are a few of the most common systems students will hear about:</p>
+<p>Here are a few of the most common systems you will hear about:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>System</p></th>
@@ -587,8 +580,7 @@ document.write(`
 <p>SQLite is especially useful to distinguish because it is a serverless SQL engine that stores data in a database file.</p>
 <p>MySQL and PostgreSQL are usually run as database servers that clients connect to over a network or local connection.</p>
 </div>
-<p>This matters because students often assume that every database is the same kind of system.</p>
-<p>It is not.</p>
+<p>This matters because it is easy to assume that every database is the same kind of system.</p>
 </section>
 <section id="local-database-vs-database-server">
 <h2>5. Local database vs database server<a class="headerlink" href="#local-database-vs-database-server" title="Permalink to this heading">#</a></h2>
@@ -629,7 +621,7 @@ document.write(`
 <li><p>the <strong>server</strong> stores and manages the database</p></li>
 <li><p>the <strong>client or tool</strong> helps you connect, query, and inspect it</p></li>
 </ul>
-<p>Students should not confuse the tool with the database itself.</p>
+<p>You should not confuse the tool with the database itself.</p>
 <p>This is why database concepts, server setup, credentials, ports, and connections matter so much in real software work.</p>
 </section>
 <section id="databases-can-run-locally-or-in-the-cloud">
@@ -657,21 +649,18 @@ Application → managed database service → relational database
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Modern application architecture showing how databases sit beneath applications, data services, and AI components.</span><a class="headerlink" href="#intro-course-header-architecture" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This is a useful way to frame the course early:</p>
 <ul class="simple">
 <li><p>the app still needs data storage</p></li>
 <li><p>the database still holds the core records</p></li>
 <li><p>object storage, caches, and search systems support performance and retrieval</p></li>
 <li><p>AI systems still rely on persistent application state, records, and data access</p></li>
 </ul>
-<p>The point is not to teach a cloud architecture diagram in detail.</p>
 <p>The point is to show that relational databases remain central even in modern software stacks.</p>
 </section>
 </section>
 <section id="which-one-are-we-using-and-why">
 <h2>8. Which one are we using and why?<a class="headerlink" href="#which-one-are-we-using-and-why" title="Permalink to this heading">#</a></h2>
 <p>In this course, you will encounter multiple database systems because each helps illustrate a different part of the technology.</p>
-<p>The goal is not to memorize product interfaces.</p>
 <p>The goal is to learn transferable concepts:</p>
 <ul class="simple">
 <li><p>how data is organized</p></li>
@@ -682,8 +671,7 @@ Application → managed database service → relational database
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>The course is not trying to turn students into experts in one vendor’s ecosystem.</p>
-<p>It is trying to help students understand the ideas that transfer across systems.</p>
+<p>The course is trying to help you understand the ideas that transfer across systems.</p>
 </div>
 </section>
 <section id="what-comes-next">
@@ -694,7 +682,6 @@ Application → managed database service → relational database
 <p>In the Coding Practice, you will interact with a relational database and connect the vocabulary from this chapter to a real system.</p>
 <p>You will inspect tables, review schemas, and run basic SQL to see how a database behaves in practice.</p>
 </div>
-<p>That is the bridge from concept to hands-on work.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
@@ -745,7 +732,7 @@ Application → managed database service → relational database
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Why Databases Still Matter</p>
+        <p class="prev-next-title">1.1 Why Databases Still Matter</p>
       </div>
     </a>
     <a class="right-next"

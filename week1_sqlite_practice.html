@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'week1_sqlite_practice';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Undestanding SQL" href="module2.html" />
+    <link rel="next" title="Module 2: Understanding SQL" href="module2.html" />
     <link rel="prev" title="SQLite" href="sqlite_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,14 +174,14 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">Why Databases Still Matter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro-relational.html">Relational Databases and SQL</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Module 1: Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">1.1 Why Databases Still Matter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro-relational.html">1.2 Relational Databases and SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Week 1 Coding Practice: A Tiny Travel Database</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Undestanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Module 2: Understanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="join.html">Join Types</a></li>
@@ -396,6 +396,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-notebook">How to use this notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data">1. Load the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-table-structure">2. Inspect the table structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observe-the-full-table">3. Observe the full table</a></li>
@@ -424,18 +425,36 @@ document.write(`
 <li><p>explain what changed.</p></li>
 </ul>
 <p>The goal is to connect the Week 1 ideas about databases, tables, rows, columns, and SQL to a visible result you can explore right away.</p>
+<section id="how-to-use-this-notebook">
+<h2>How to use this notebook<a class="headerlink" href="#how-to-use-this-notebook" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Open this file in Jupyter Notebook, JupyterLab, VS Code, or Colab.</p></li>
+<li><p>Choose a Python kernel.</p></li>
+<li><p>Run each code cell from top to bottom, or use Run All.</p></li>
+<li><p>No extra files, installs, or database setup are required.</p></li>
+</ol>
+<p>This activity is self-contained and works from a clean checkout or a downloaded notebook.</p>
+</section>
 <section id="load-the-data">
 <h2>1. Load the data<a class="headerlink" href="#load-the-data" title="Permalink to this heading">#</a></h2>
-<p>We will use SQLite in memory and load a tiny travel bookings dataset from a repository-relative CSV file.</p>
+<p>We will use SQLite in memory and create a tiny travel bookings dataset directly in this notebook. This keeps the activity self-contained and portable.</p>
+<p>Instructions: Run the cell below to create the <code class="docutils literal notranslate"><span class="pre">bookings</span></code> table and load the sample rows.</p>
+<p>Expected output: a short message telling you the dataset loaded successfully.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/week1/travel_bookings.csv&quot;</span><span class="p">)</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span><span class="p">)</span>
 <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Ana Torres&quot;</span><span class="p">,</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;confirmed&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Derrick Hall&quot;</span><span class="p">,</span> <span class="s2">&quot;Seattle&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;confirmed&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Mei Chen&quot;</span><span class="p">,</span> <span class="s2">&quot;Denver&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Riley Brooks&quot;</span><span class="p">,</span> <span class="s2">&quot;Austin&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;cancelled&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;Sofia Patel&quot;</span><span class="p">,</span> <span class="s2">&quot;Boston&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;confirmed&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Noah Kim&quot;</span><span class="p">,</span> <span class="s2">&quot;New Orleans&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;pending&quot;</span><span class="p">),</span>
+<span class="p">]</span>
 
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -449,28 +468,15 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
 <span class="p">)</span>
 
-<span class="k">with</span> <span class="n">data_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span>
-            <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;booking_id&quot;</span><span class="p">]),</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;traveler_name&quot;</span><span class="p">],</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;destination&quot;</span><span class="p">],</span>
-            <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;nights&quot;</span><span class="p">]),</span>
-            <span class="n">row</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">],</span>
-        <span class="p">)</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span>
-    <span class="p">]</span>
-
 <span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO bookings VALUES (?, ?, ?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows from </span><span class="si">{</span><span class="n">data_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="si">}</span><span class="s2"> rows from the in-memory dataset&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded 6 rows from data/week1/travel_bookings.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loaded 6 rows from the in-memory dataset
 </pre></div>
 </div>
 </div>
@@ -479,6 +485,7 @@ document.write(`
 <section id="inspect-the-table-structure">
 <h2>2. Inspect the table structure<a class="headerlink" href="#inspect-the-table-structure" title="Permalink to this heading">#</a></h2>
 <p>A schema tells us what columns a table has and what type of data each column stores.</p>
+<p>Instructions: Run the cell below to print the columns and their data types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns in bookings:&quot;</span><span class="p">)</span>
@@ -504,6 +511,7 @@ document.write(`
 <h2>3. Observe the full table<a class="headerlink" href="#observe-the-full-table" title="Permalink to this heading">#</a></h2>
 <p><strong>Predict:</strong> What do you think <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span></code> will show?</p>
 <p>Then run the query and compare your prediction.</p>
+<p>Expected output: a table with six rows, showing the booking_id, traveler name, destination, length of stay, and booking status.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_query</span><span class="p">(</span><span class="n">sql_text</span><span class="p">):</span>
@@ -542,6 +550,7 @@ document.write(`
 <h2>4. Select only the columns you need<a class="headerlink" href="#select-only-the-columns-you-need" title="Permalink to this heading">#</a></h2>
 <p>Now try a smaller query that shows just the traveler and destination.</p>
 <p><strong>Your turn:</strong> change the order of the columns and rerun the cell.</p>
+<p>Expected output: a two-column table listing traveler names and destinations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_query</span><span class="p">(</span><span class="s2">&quot;SELECT traveler_name, destination FROM bookings;&quot;</span><span class="p">)</span>
@@ -568,6 +577,7 @@ Noah Kim | New Orleans
 <h2>5. Filter the rows with WHERE<a class="headerlink" href="#filter-the-rows-with-where" title="Permalink to this heading">#</a></h2>
 <p>The next query shows only confirmed bookings.</p>
 <p><strong>Predict:</strong> What will change if you replace <code class="docutils literal notranslate"><span class="pre">confirmed</span></code> with <code class="docutils literal notranslate"><span class="pre">pending</span></code>?</p>
+<p>Expected output: only the rows where <code class="docutils literal notranslate"><span class="pre">status</span></code> is <code class="docutils literal notranslate"><span class="pre">confirmed</span></code> are displayed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_query</span><span class="p">(</span>
@@ -599,6 +609,7 @@ Sofia Patel | Boston | confirmed
 <li><p><code class="docutils literal notranslate"><span class="pre">WHERE</span></code> filters the rows you want.</p></li>
 </ul>
 <p>If you can read the query and explain the result, you have the core Week 1 idea.</p>
+<p>This notebook is designed to be run from top to bottom without any hidden setup steps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -659,7 +670,7 @@ Sofia Patel | Boston | confirmed
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Undestanding SQL</p>
+        <p class="prev-next-title">Module 2: Understanding SQL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -679,6 +690,7 @@ Sofia Patel | Boston | confirmed
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-notebook">How to use this notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data">1. Load the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-table-structure">2. Inspect the table structure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observe-the-full-table">3. Observe the full table</a></li>

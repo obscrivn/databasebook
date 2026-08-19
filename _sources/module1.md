@@ -1,9 +1,9 @@
-# Introduction
+# Module 1: Introduction
 
 ## Basic Concepts
 
-- [Why Databases Still Matter](why-databases-still-matter.md)
-- [Relational Databases and SQL](intro-relational.md)
+- [1.1 Why Databases Still Matter](why-databases-still-matter.md)
+- [1.2 Relational Databases and SQL](intro-relational.md)
 
 
 ## Introduction to SQLite

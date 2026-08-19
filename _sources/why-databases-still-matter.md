@@ -1,4 +1,4 @@
-# Why Databases Still Matter
+# 1.1 Why Databases Still Matter
 
 ## Why databases still matter
 

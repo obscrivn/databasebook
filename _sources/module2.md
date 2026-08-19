@@ -1,4 +1,4 @@
-# Undestanding SQL
+# Module 2: Understanding SQL
 
 ## Relational Algebra
 
@@ -9,5 +9,4 @@
 ## Database Join Types
 
 - [Join Types](join.md)
-
 
