@@ -1,4 +1,4 @@
-# SQLite
+# 1.3: SQLite
 
 >SQLite is an open-source, zero-configuration, self-contained, stand-alone, transaction relational database engine designed to be embedded into an application.
 
