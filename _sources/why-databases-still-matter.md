@@ -156,12 +156,6 @@ Databases will continue to matter because:
 
 If you learn database concepts now, those skills will stay useful even as tools evolve.
 
-## Week 1 connection
-
-In the next Coding Practice, you will interactively apply the basic database concepts introduced in this chapter.
-
-You will work with a small database to explore how data is organized into tables, how records and attributes are represented, and how a DBMS allows you to inspect and query structured data.
-
 ## References
 
 - Elmasri, Ramez, and Shamkant Navathe. *Fundamentals of Database Systems*.

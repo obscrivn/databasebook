@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'welcome';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Module 1: Introduction" href="module1.html" />
+    <link rel="next" title="Module 1. Introduction" href="module1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,20 +175,20 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="module1.html">Module 1: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module1.html">Module 1. Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">1.1 Why Databases Still Matter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="intro-relational.html">1.2 Relational Databases and SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="week1_sqlite_practice.html">Week 1 Coding Practice: A Tiny Travel Database</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Module 2: Understanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Module 2. Understanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="join.html">Join Types</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Module 3. Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="practice.html">Practice</a></li>
 </ul>
@@ -399,11 +399,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-course-matters">Why this course matters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to use this book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-philosophy">Course philosophy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-course-is-designed-to-do">What this course is designed to do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-modern-view-of-databases">A modern view of databases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-application-architecture-in-the-content">Modern application architecture in the content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking ahead</a></li>
 </ul>
             </nav>
@@ -418,7 +415,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="applied-database-technologies">
 <h1>Applied Database Technologies<a class="headerlink" href="#applied-database-technologies" title="Permalink to this heading">#</a></h1>
-<p><img alt="banner" src="_images/D-532-banner.gif" /></p>
+<p><img alt="banner" src="_images/course-header-architecture.svg" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Databases are still at the core of modern applications.</strong></p>
@@ -452,16 +449,6 @@ document.write(`
 <li><p>understanding how databases fit into modern cloud, data, and AI architectures</p></li>
 </ul>
 </section>
-<section id="how-to-use-this-book">
-<h2>How to use this book<a class="headerlink" href="#how-to-use-this-book" title="Permalink to this heading">#</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>Each module connects concepts to examples, guided practice, and lab work.</p>
-<p>The learning flow is:</p>
-<p><strong>Lecture → Book → Interactive Practice → Lab</strong></p>
-</div>
-<p>This structure is intentional: the book helps you understand why a concept matters before you apply it in coding practice or lab activities.</p>
-</section>
 <section id="course-philosophy">
 <h2>Course philosophy<a class="headerlink" href="#course-philosophy" title="Permalink to this heading">#</a></h2>
 <p>This course is not about memorizing one tool or product.</p>
@@ -485,48 +472,6 @@ document.write(`
 <li><p>compare different database approaches based on requirements</p></li>
 <li><p>connect database concepts to modern application design</p></li>
 </ul>
-</section>
-<section id="a-modern-view-of-databases">
-<h2>A modern view of databases<a class="headerlink" href="#a-modern-view-of-databases" title="Permalink to this heading">#</a></h2>
-<p>Modern applications rarely use a single database in isolation.</p>
-<p>A web or mobile application may rely on:</p>
-<ul class="simple">
-<li><p>a relational database for transactional records</p></li>
-<li><p>object storage for files and media</p></li>
-<li><p>a cache for repeated fast access</p></li>
-<li><p>a search or vector system for semantic discovery</p></li>
-</ul>
-<p>Databases are still foundational infrastructure beneath modern software systems.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>They are especially useful when you need to:</p>
-<ul class="simple">
-<li><p>organize data into clear tables</p></li>
-<li><p>connect related data</p></li>
-<li><p>enforce business rules</p></li>
-<li><p>support accurate updates</p></li>
-<li><p>answer many different questions about the same data</p></li>
-</ul>
-</div>
-</section>
-<section id="modern-application-architecture-in-the-content">
-<h2>Modern application architecture in the content<a class="headerlink" href="#modern-application-architecture-in-the-content" title="Permalink to this heading">#</a></h2>
-<p>The current course header can stay for now. It is familiar and works well for a course landing page.</p>
-<p>The more modern architecture concept is better used inside the course content, where it can help you connect database systems to real application design.</p>
-<figure class="align-default" id="welcome-course-header-architecture">
-<img alt="_images/course-header-architecture.svg" src="_images/course-header-architecture.svg" /><figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Modern application and data architecture. Instructor-created conceptual diagram.</span><a class="headerlink" href="#welcome-course-header-architecture" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>This visual emphasizes that modern applications usually include several layers at the same time:</p>
-<ul class="simple">
-<li><p>app interfaces</p></li>
-<li><p>relational storage for structured data</p></li>
-<li><p>object storage for files and media</p></li>
-<li><p>caches and search indexes for performance</p></li>
-<li><p>AI or agent components that still rely on persistent application data</p></li>
-</ul>
-<p>That is a better fit for the course content than a specialized header image.</p>
 </section>
 <section id="looking-ahead">
 <h2>Looking ahead<a class="headerlink" href="#looking-ahead" title="Permalink to this heading">#</a></h2>
@@ -572,7 +517,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Module 1: Introduction</p>
+        <p class="prev-next-title">Module 1. Introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -594,11 +539,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-course-matters">Why this course matters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to use this book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-philosophy">Course philosophy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-course-is-designed-to-do">What this course is designed to do</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-modern-view-of-databases">A modern view of databases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-application-architecture-in-the-content">Modern application architecture in the content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">Looking ahead</a></li>
 </ul>
   </nav></div>

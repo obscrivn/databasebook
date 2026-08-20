@@ -205,44 +205,12 @@ The important idea is simple:
 
 What changes is the deployment and management model.
 
-### Modern application architecture
-
-```{figure} _static/course-header-architecture.svg
-:name: intro-course-header-architecture
-Modern application architecture showing how databases sit beneath applications, data services, and AI components.
-```
-
-- the app still needs data storage
-- the database still holds the core records
-- object storage, caches, and search systems support performance and retrieval
-- AI systems still rely on persistent application state, records, and data access
-
-The point is to show that relational databases remain central even in modern software stacks.
-
-## 8. Which one are we using and why?
-
-In this course, you will encounter multiple database systems because each helps illustrate a different part of the technology.
-
-The goal is to learn transferable concepts:
-
-- how data is organized
-- how tables relate to one another
-- how SQL works
-- how database systems manage storage and access
-- how tools help us work with databases
-
-```{important}
-The course is trying to help you understand the ideas that transfer across systems.
-```
-
 ## 9. What comes next?
 
 ```{note}
 **Next: See a database in action**
 
-In the Coding Practice, you will interact with a relational database and connect the vocabulary from this chapter to a real system.
-
-You will inspect tables, review schemas, and run basic SQL to see how a database behaves in practice.
+In the Coding Practice, you will use SQLite and interact with a relational database.
 ```
 
 ## References
@@ -252,4 +220,4 @@ You will inspect tables, review schemas, and run basic SQL to see how a database
 - MySQL Documentation: [https://dev.mysql.com/doc/](https://dev.mysql.com/doc/)
 - Oracle Database Concepts: [https://docs.oracle.com/en/database/oracle/oracle-database/](https://docs.oracle.com/en/database/oracle/oracle-database/)
 - Microsoft SQL Server Documentation: [https://learn.microsoft.com/en-us/sql/sql-server](https://learn.microsoft.com/en-us/sql/sql-server)
-- IBM, "What is SQL?": [https://www.ibm.com/topics/sql](https://www.ibm.com/topics/sql)
+

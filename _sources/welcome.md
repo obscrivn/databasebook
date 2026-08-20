@@ -1,6 +1,6 @@
 # Applied Database Technologies
 
-![banner](_static/D-532-banner.gif)
+![banner](_static/course-header-architecture.svg)
 
 ```{note}
 **Databases are still at the core of modern applications.**
@@ -38,18 +38,6 @@ You will develop skills in:
 - connecting applications to databases
 - understanding how databases fit into modern cloud, data, and AI architectures
 
-## How to use this book
-
-```{important}
-Each module connects concepts to examples, guided practice, and lab work.
-
-The learning flow is:
-
-**Lecture → Book → Interactive Practice → Lab**
-```
-
-This structure is intentional: the book helps you understand why a concept matters before you apply it in coding practice or lab activities.
-
 ## Course philosophy
 
 This course is not about memorizing one tool or product.
@@ -74,49 +62,6 @@ The course blends theory and practice so that you can:
 - compare different database approaches based on requirements
 - connect database concepts to modern application design
 
-## A modern view of databases
-
-Modern applications rarely use a single database in isolation.
-
-A web or mobile application may rely on:
-
-- a relational database for transactional records
-- object storage for files and media
-- a cache for repeated fast access
-- a search or vector system for semantic discovery
-
-Databases are still foundational infrastructure beneath modern software systems.
-
-```{note}
-They are especially useful when you need to:
-
-- organize data into clear tables
-- connect related data
-- enforce business rules
-- support accurate updates
-- answer many different questions about the same data
-```
-
-## Modern application architecture in the content
-
-The current course header can stay for now. It is familiar and works well for a course landing page.
-
-The more modern architecture concept is better used inside the course content, where it can help you connect database systems to real application design.
-
-```{figure} _static/course-header-architecture.svg
-:name: welcome-course-header-architecture
-Modern application and data architecture. Instructor-created conceptual diagram.
-```
-
-This visual emphasizes that modern applications usually include several layers at the same time:
-
-- app interfaces
-- relational storage for structured data
-- object storage for files and media
-- caches and search indexes for performance
-- AI or agent components that still rely on persistent application data
-
-That is a better fit for the course content than a specialized header image.
 
 ## Looking ahead
 

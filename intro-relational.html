@@ -174,20 +174,20 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Module 1: Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="module1.html">Module 1. Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="why-databases-still-matter.html">1.1 Why Databases Still Matter</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2 Relational Databases and SQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sqlite_intro.html">SQLite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="week1_sqlite_practice.html">Week 1 Coding Practice: A Tiny Travel Database</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Module 2: Understanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module2.html">Module 2. Understanding SQL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="algebra.html">Relational Algebra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ra_queries.html">SQL Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="join.html">Join Types</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module3.html">Module 3. Undestanding Normalization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="normalization.html">Normalization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="practice.html">Practice</a></li>
 </ul>
@@ -409,11 +409,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-server-vs-database-tool">6. Database server vs database tool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases-can-run-locally-or-in-the-cloud">7. Databases can run locally or in the cloud</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-application-architecture">Modern application architecture</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-one-are-we-using-and-why">8. Which one are we using and why?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases-can-run-locally-or-in-the-cloud">7. Databases can run locally or in the cloud</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-comes-next">9. What comes next?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
@@ -642,45 +638,13 @@ Application → managed database service → relational database
 <div><p>The relational model does not change just because the database is hosted in the cloud.</p>
 </div></blockquote>
 <p>What changes is the deployment and management model.</p>
-<section id="modern-application-architecture">
-<h3>Modern application architecture<a class="headerlink" href="#modern-application-architecture" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="intro-course-header-architecture">
-<img alt="_images/course-header-architecture.svg" src="_images/course-header-architecture.svg" /><figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Modern application architecture showing how databases sit beneath applications, data services, and AI components.</span><a class="headerlink" href="#intro-course-header-architecture" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul class="simple">
-<li><p>the app still needs data storage</p></li>
-<li><p>the database still holds the core records</p></li>
-<li><p>object storage, caches, and search systems support performance and retrieval</p></li>
-<li><p>AI systems still rely on persistent application state, records, and data access</p></li>
-</ul>
-<p>The point is to show that relational databases remain central even in modern software stacks.</p>
-</section>
-</section>
-<section id="which-one-are-we-using-and-why">
-<h2>8. Which one are we using and why?<a class="headerlink" href="#which-one-are-we-using-and-why" title="Permalink to this heading">#</a></h2>
-<p>In this course, you will encounter multiple database systems because each helps illustrate a different part of the technology.</p>
-<p>The goal is to learn transferable concepts:</p>
-<ul class="simple">
-<li><p>how data is organized</p></li>
-<li><p>how tables relate to one another</p></li>
-<li><p>how SQL works</p></li>
-<li><p>how database systems manage storage and access</p></li>
-<li><p>how tools help us work with databases</p></li>
-</ul>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The course is trying to help you understand the ideas that transfer across systems.</p>
-</div>
 </section>
 <section id="what-comes-next">
 <h2>9. What comes next?<a class="headerlink" href="#what-comes-next" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Next: See a database in action</strong></p>
-<p>In the Coding Practice, you will interact with a relational database and connect the vocabulary from this chapter to a real system.</p>
-<p>You will inspect tables, review schemas, and run basic SQL to see how a database behaves in practice.</p>
+<p>In the Coding Practice, you will use SQLite and interact with a relational database.</p>
 </div>
 </section>
 <section id="references">
@@ -691,7 +655,6 @@ Application → managed database service → relational database
 <li><p>MySQL Documentation: <a class="reference external" href="https://dev.mysql.com/doc/">https://dev.mysql.com/doc/</a></p></li>
 <li><p>Oracle Database Concepts: <a class="reference external" href="https://docs.oracle.com/en/database/oracle/oracle-database/">https://docs.oracle.com/en/database/oracle/oracle-database/</a></p></li>
 <li><p>Microsoft SQL Server Documentation: <a class="reference external" href="https://learn.microsoft.com/en-us/sql/sql-server">https://learn.microsoft.com/en-us/sql/sql-server</a></p></li>
-<li><p>IBM, “What is SQL?”: <a class="reference external" href="https://www.ibm.com/topics/sql">https://www.ibm.com/topics/sql</a></p></li>
 </ul>
 </section>
 </section>
@@ -773,11 +736,7 @@ Application → managed database service → relational database
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-server-vs-database-tool">6. Database server vs database tool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases-can-run-locally-or-in-the-cloud">7. Databases can run locally or in the cloud</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-application-architecture">Modern application architecture</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-one-are-we-using-and-why">8. Which one are we using and why?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databases-can-run-locally-or-in-the-cloud">7. Databases can run locally or in the cloud</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-comes-next">9. What comes next?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>

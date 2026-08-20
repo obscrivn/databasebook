@@ -1,12 +1,11 @@
-# Module 2: Understanding SQL
+# Module 2. Understanding SQL
 
-## Relational Algebra
+## Part 1: Relational Algebra
 
 - [Relational Algebra](algebra.md)
-
 - [RA SQL queries](ra_queries.md)
 
-## Database Join Types
+## Part 2: Database Join Types
 
 - [Join Types](join.md)
 
